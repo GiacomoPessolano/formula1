@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("application")
 }
 
 group = "it.unicam.cs.giacomopessolano.formula1"
@@ -16,4 +17,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+application {
+    mainClass = "it.unicam.cs.giacomopessolano.formula1.root.main.Main"
 }
