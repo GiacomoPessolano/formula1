@@ -20,5 +20,5 @@ tasks.test {
 }
 
 application {
-    mainClass = "it.unicam.cs.giacomopessolano.formula1.root.main.Main"
+    mainClass = "it.unicam.cs.giacomopessolano.formula1.main.Main"
 }

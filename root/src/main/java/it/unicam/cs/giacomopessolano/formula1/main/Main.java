@@ -1,4 +1,4 @@
-package it.unicam.cs.giacomopessolano.formula1.root.main;
+package it.unicam.cs.giacomopessolano.formula1.main;
 
 public class Main {
     public static void main(String[] args) {
