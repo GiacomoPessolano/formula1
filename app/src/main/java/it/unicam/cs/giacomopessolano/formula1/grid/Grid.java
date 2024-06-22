@@ -1,13 +1,13 @@
 package it.unicam.cs.giacomopessolano.formula1.grid;
 
-//TODO javadoc
+import it.unicam.cs.giacomopessolano.formula1.player.Position;
 
 public interface Grid {
+
+    Cell getCell(Position position);
 
     int getWidth();
 
     int getHeight();
-
-    Cell getCell(Position position);
 
 }

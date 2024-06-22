@@ -6,14 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO javadoc, testa se width o height = 0
-
-public class ArrayGridFromTxtInitializer implements GridInitializer {
+public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
     @Override
-    public Grid initializeGrid(String filename) throws IOException {
-        if (!filename.endsWith(".txt")) {
-            throw new IOException("File must have a .txt extension.");
-        }
+    public Grid parseGrid(String filename) throws IOException {
+        validateFileExtension(filename);
 
         List<char[]> rows = generateRows(filename);
         int width = findMaxWidth(rows);
@@ -61,11 +57,11 @@ public class ArrayGridFromTxtInitializer implements GridInitializer {
 
     private Cell symbolToCell(char symbol) throws IOException {
         return switch (symbol) {
-            case 'R' -> new Cell(CellState.ROAD);
+            case 'R' -> new Cell(CellState.TRACK);
             case 'S' -> new Cell(CellState.START);
             case 'E' -> new Cell(CellState.END);
             case 'O' -> new Cell(CellState.OILED);
-            case 'X' -> new Cell(CellState.OFFROAD);
+            case 'X' -> new Cell(CellState.OFFTRACK);
             default -> throw new IOException("The symbol " + symbol + " is not valid.");
         };
 

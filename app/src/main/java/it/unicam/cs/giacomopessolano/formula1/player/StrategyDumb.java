@@ -1,23 +1,21 @@
 package it.unicam.cs.giacomopessolano.formula1.player;
 
-//TODO javadoc, move
-
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
-import it.unicam.cs.giacomopessolano.formula1.grid.Position;
 
-public class StrategyDumb implements Strategy{
-    @Override
-    public String getName() {
-        return "Dumb";
-    }
+import java.util.Random;
 
+public class StrategyDumb implements Strategy {
     @Override
-    public String getDescription() {
-        return "Moves randomly.";
-    }
-
-    @Override
-    public Move move(Move lastMove, Position currentPosition, Grid grid) {
+    public Choice move(Move lastMove, Grid grid, Position position) {
+        //todo
         return null;
+    }
+
+    public String getName() {
+        return "DUMB";
+    }
+
+    public String getDescription() {
+        return "Player that moves randomly.";
     }
 }

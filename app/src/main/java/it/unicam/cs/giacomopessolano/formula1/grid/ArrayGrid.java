@@ -1,5 +1,7 @@
 package it.unicam.cs.giacomopessolano.formula1.grid;
 
+import it.unicam.cs.giacomopessolano.formula1.player.Position;
+
 public class ArrayGrid implements Grid{
 
     private final Cell[][] grid;
