@@ -1,5 +1,7 @@
 package it.unicam.cs.giacomopessolano.formula1.grid;
 
+//TODO javadoc
+
 public class Cell {
 
     CellState state;

@@ -1,16 +1,18 @@
 package it.unicam.cs.giacomopessolano.formula1.grid;
 
-public class ArrayGrid implements Grid{
+import java.util.ArrayList;
 
-    private final Cell[][] grid;
+public class ArrayListGrid implements Grid{
+
+    final ArrayList<ArrayList<Cell>> grid;
     private final int width;
     private final int height;
 
-    ArrayGrid(Cell[][] grid) {
+    public ArrayListGrid(ArrayList<ArrayList<Cell>> grid) {
         //TODO javadoc, default access control
         this.grid = grid;
-        this.width = grid[0].length;
-        this.height = grid.length;
+        this.width = grid.getFirst().size();
+        this.height = grid.size();
     }
 
     @Override
@@ -25,10 +27,10 @@ public class ArrayGrid implements Grid{
 
     @Override
     public Cell getCell(Position position) {
-        return grid[position.y()][position.x()];
+        return grid.get(position.y()).get(position.x());
     }
 
-    public Cell[][] getGrid(){
+    public ArrayList<ArrayList<Cell>> getGrid() {
         return grid;
     }
 }

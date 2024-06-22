@@ -12,9 +12,11 @@ public class ArrayGridFromTxtInitializerTest {
         try {
             Grid grid = initializer.initializeGrid("src/test/resources/small.txt");
             assertNotNull(grid);
-            assertEquals(grid.getCell(1, 4).state, CellState.OFFROAD);
-            assertEquals(grid.getCell(2, 4).state, CellState.OFFROAD);
-            assertEquals(grid.getCell(4, 4).state, CellState.OFFROAD);
+            assertEquals(grid.getCell(new Position(1, 4)).state, CellState.OFFROAD);
+            assertEquals(grid.getCell(new Position(2, 4)).state, CellState.OFFROAD);
+            assertEquals(grid.getCell(new Position(4, 4)).state, CellState.OFFROAD);
+            assertEquals(grid.getWidth(), 5);
+            assertEquals(grid.getHeight(), 5);
         } catch (IOException e) {
             fail("IOException should not be thrown for a valid file.");
         }

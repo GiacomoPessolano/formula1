@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+//TODO javadoc, testa se width o height = 0
 
 public class ArrayGridFromTxtInitializer implements GridInitializer {
     @Override
