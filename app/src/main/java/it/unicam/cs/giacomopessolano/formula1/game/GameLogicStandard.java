@@ -29,6 +29,7 @@ public class GameLogicStandard implements GameLogic {
         Position newPosition = new Position
                 (currentPosition.x() + move.x(), currentPosition.y() + move.y());
         checkIfOccupied(newPosition);
+        manager.getGrid().getCell(currentPosition).flushPlayer();
 
         updatePosition(player, newPosition);
         updateLastMove(player, move);
@@ -37,6 +38,7 @@ public class GameLogicStandard implements GameLogic {
     @Override
     public void updatePosition(Player player, Position position) {
         manager.setPlayerPosition(player, position);
+        manager.getGrid().getCell(position).occupy(player);
     }
 
     @Override

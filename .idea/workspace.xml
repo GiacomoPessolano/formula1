@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Restarted">
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Added GameLogic and GameManager; performance improved for PlayerBotInitializerFromTxt">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/TurnManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameInitializerFromTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameStateChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameStateChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerInitializerFromTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/resources/small.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/resources/small.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameLogicStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameLogicStandard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameStateChecker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +132,7 @@
       <workItem from="1718974857571" duration="24243000" />
       <workItem from="1719036589747" duration="17141000" />
       <workItem from="1719056976026" duration="24445000" />
-      <workItem from="1719094253586" duration="7935000" />
+      <workItem from="1719094253586" duration="11313000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -169,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719086868213</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added GameLogic and GameManager; performance improved for PlayerBotInitializerFromTxt">
+      <option name="closed" value="true" />
+      <created>1719102582358</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1719102582358</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +185,8 @@
     <MESSAGE value="New Grid implementation. Added Position record. Fixes." />
     <MESSAGE value="Added interfaces and incomplete implementations for players and their strategies." />
     <MESSAGE value="Restarted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Restarted" />
+    <MESSAGE value="Added GameLogic and GameManager; performance improved for PlayerBotInitializerFromTxt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GameLogic and GameManager; performance improved for PlayerBotInitializerFromTxt" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

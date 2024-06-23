@@ -6,4 +6,5 @@ public interface Player {
 
     Strategy getStrategy();
 
+    boolean hasCrashed();
 }

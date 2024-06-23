@@ -4,10 +4,12 @@ public class PlayerBot implements Player {
 
     private final String name;
     private final Strategy strategy;
+    private boolean hasCrashed;
 
     PlayerBot(String name, Strategy strategy) {
         this.name = name;
         this.strategy = strategy;
+        hasCrashed = false;
     }
 
     @Override
@@ -18,5 +20,14 @@ public class PlayerBot implements Player {
     @Override
     public Strategy getStrategy() {
         return strategy;
+    }
+
+    public void crash() {
+        hasCrashed = true;
+    }
+
+    @Override
+    public boolean hasCrashed() {
+        return hasCrashed;
     }
 }
