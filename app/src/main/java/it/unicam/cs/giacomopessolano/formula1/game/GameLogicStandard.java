@@ -1,6 +1,5 @@
 package it.unicam.cs.giacomopessolano.formula1.game;
 
-
 import it.unicam.cs.giacomopessolano.formula1.grid.CellState;
 import it.unicam.cs.giacomopessolano.formula1.player.Direction;
 import it.unicam.cs.giacomopessolano.formula1.player.Move;
@@ -37,6 +36,7 @@ public class GameLogicStandard implements GameLogic {
 
         CellState traversedCell = movementResult.traverse(manager.getGrid(), currentPosition, newPosition);
         updateState(player, traversedCell, currentPosition, newPosition, choice);
+        manager.nextTurn();
     }
 
     private void updateState(Player player, CellState traversedCell, Position currentPosition,

@@ -16,9 +16,9 @@ public class GameManagerStandard implements GameManager {
     private Grid grid;
     private Map<Player, Position> positionMap;
     private List<Player> players;
-    int turn;
-    boolean gameOver = false;
-    Player winner = null;
+    private int turn;
+    private boolean gameOver = false;
+    private Player winner = null;
 
     public GameManagerStandard(GameInitializer initializer) {
         this.initializer = initializer;
@@ -41,7 +41,7 @@ public class GameManagerStandard implements GameManager {
 
     @Override
     public void nextTurn() {
-
+        turn = (turn + 1) % players.size();
     }
 
     @Override
