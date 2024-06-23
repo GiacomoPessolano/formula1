@@ -22,7 +22,7 @@ public class GameLogicStandard implements GameLogic {
 
     @Override
     public void movePlayer(Player player, Direction choice) {
-        Move lastMove = manager.getLastMove(player);
+        Move lastMove = player.getLastMove();
         Position currentPosition = manager.getPlayerPosition(player);
         Position center = moveCalculator.getCenter(currentPosition, lastMove);
 
@@ -39,7 +39,7 @@ public class GameLogicStandard implements GameLogic {
         updateState(player, traversedCell, currentPosition, newPosition, choice);
     }
 
-    public void updateState(Player player, CellState traversedCell, Position currentPosition,
+    private void updateState(Player player, CellState traversedCell, Position currentPosition,
                             Position newPosition, Direction choice) {
         manager.getGrid().getCell(currentPosition).flushPlayer();
         switch (traversedCell) {

@@ -4,7 +4,9 @@ import java.io.IOException;
 
 public interface GridInitializerFromTxt {
 
-    Grid parseGrid(String filename) throws IOException;
+    void initialize(String filename) throws IOException;
+
+    Grid getGrid();
 
     default void validateFileExtension(String filename) throws IOException {
         if (!filename.endsWith(".txt")) {

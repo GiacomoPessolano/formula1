@@ -44,4 +44,15 @@ public class PlayerBot implements Player {
     private Move firstMove(Direction choice) {
         return new Move(0, 0).update(choice);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj instanceof PlayerBot other) {
+            return name.equals(other.name) && strategy.equals(other.strategy)
+                    && lastMove.equals(other.lastMove);
+        }
+
+        return false;
+    }
 }

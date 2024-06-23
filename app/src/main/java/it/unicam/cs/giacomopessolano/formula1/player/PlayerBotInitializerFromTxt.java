@@ -8,13 +8,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//todo supplier for Strategy and Direction, playerFactory?
+
 public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
 
-    @Override
-    public Map<Player, Position> parsePlayers(String filename) throws IOException {
-        validateFileExtension(filename);
+    private Map<Player, Position> playerPositionMap;
+    private List<Player> players;
 
-        return findPlayerPositions(readPlayerData(filename));
+    @Override
+    public void initialize(String filename) throws IOException {
+        validateFileExtension(filename);
+        List<String[]> playerData = readPlayerData(filename);
+        findPlayers(playerData);
+    }
+
+
+    @Override
+    public Map<Player, Position> getPositions() {
+        return playerPositionMap;
+    }
+
+    @Override
+    public List<Player> getPlayers() {
+        return players;
     }
 
     private List<String[]> readPlayerData(String filename) throws IOException {
@@ -41,8 +57,9 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
         return playerData;
     }
 
-    private Map<Player, Position> findPlayerPositions(List<String[]> playerData) throws IOException {
-        Map<Player, Position> players = new HashMap<>();
+    private void findPlayers(List<String[]> playerData) throws IOException {
+        Map<Player, Position> positionMap = new HashMap<>();
+        List<Player> turns = new ArrayList<>();
 
         for (String[] playerInfo : playerData) {
             for (String player : playerInfo) {
@@ -52,11 +69,14 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
                 int y = Integer.parseInt(playerAttributes[2]);
                 Strategy strategy = parseStrategy(playerAttributes[3]);
                 Direction startingMove = parseDirection(playerAttributes[4]);
-                players.put(new PlayerBot(name, strategy, startingMove), new Position(x, y));
+                Player newPlayer = new PlayerBot(name, strategy, startingMove);
+                positionMap.put(newPlayer, new Position(x, y));
+                players.add(newPlayer);
             }
         }
 
-        return players;
+        this.playerPositionMap = positionMap;
+        this.players = turns;
     }
 
     private Strategy parseStrategy(String s) throws IOException {
@@ -64,7 +84,7 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
             case "DUMB" -> new StrategyDumb();
             case "STANDARD" -> new StrategyStandard();
             case "CHEATER" -> new StrategyCheater();
-            default -> throw new IOException("The strategy " + s + " is not valid.");
+            default -> throw new IOException("The strategy " + s + " is not supported.");
         };
     }
 
@@ -74,7 +94,7 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
             case "DOWN" -> Direction.DOWN;
             case "LEFT" -> Direction.LEFT;
             case "RIGHT" -> Direction.RIGHT;
-            default -> throw new IOException("The starting direction " + s + " is not valid.");
+            default -> throw new IOException("The starting direction " + s + " is not supported.");
         };
     }
 

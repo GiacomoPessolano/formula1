@@ -7,14 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
+
+    private Grid grid;
+
     @Override
-    public Grid parseGrid(String filename) throws IOException {
+    public void initialize(String filename) throws IOException {
         validateFileExtension(filename);
 
         List<char[]> rows = generateRows(filename);
         int width = findMaxWidth(rows);
 
-        return createGrid(rows, width);
+        this.grid = createGrid(rows, width);
+    }
+
+    @Override
+    public Grid getGrid()  {
+        return this.grid;
     }
 
     private ArrayList<char[]> generateRows(String filename) throws IOException {
