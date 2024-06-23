@@ -4,11 +4,13 @@ public class PlayerBot implements Player {
 
     private final String name;
     private final Strategy strategy;
+    private Move lastMove;
     private boolean hasCrashed;
 
-    PlayerBot(String name, Strategy strategy) {
+    PlayerBot(String name, Strategy strategy, Direction choice) {
         this.name = name;
         this.strategy = strategy;
+        lastMove = firstMove(choice);
         hasCrashed = false;
     }
 
@@ -26,8 +28,20 @@ public class PlayerBot implements Player {
         hasCrashed = true;
     }
 
+    public Move getLastMove() {
+        return lastMove;
+    }
+
+    public void setLastMove(Direction choice) {
+        this.lastMove = lastMove.update(choice);
+    }
+
     @Override
     public boolean hasCrashed() {
         return hasCrashed;
+    }
+
+    private Move firstMove(Direction choice) {
+        return new Move(0, 0).update(choice);
     }
 }

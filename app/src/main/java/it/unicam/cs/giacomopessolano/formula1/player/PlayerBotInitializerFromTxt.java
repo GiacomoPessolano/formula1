@@ -10,42 +10,11 @@ import java.util.Map;
 
 public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
 
-    private List<String[]> playerData;
-
     @Override
     public Map<Player, Position> parsePlayers(String filename) throws IOException {
         validateFileExtension(filename);
 
-        if (playerData == null) {
-            playerData = readPlayerData(filename);
-        }
-        return findPlayerPositions(playerData);
-    }
-
-    @Override
-    public List<Player> parseTurns(String filename) throws IOException {
-        validateFileExtension(filename);
-
-        if (playerData == null) {
-            playerData = readPlayerData(filename);
-        }
-        return findPlayerTurns(playerData);
-    }
-
-    public Map<Player, Move> parseFirstMoves(String filename) throws IOException {
-        validateFileExtension(filename);
-
-        if (playerData == null) {
-            playerData = readPlayerData(filename);
-        }
-        Map<Player, Move> moves = new HashMap<>();
-
-        for (String[] playerDataLine : playerData) {
-            moves.put(new PlayerBot(playerDataLine[0], parseStrategy(playerDataLine[3])),
-                    parseDirection(playerDataLine[5]));
-        }
-
-        return moves;
+        return findPlayerPositions(readPlayerData(filename));
     }
 
     private List<String[]> readPlayerData(String filename) throws IOException {
@@ -82,26 +51,12 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
                 int x = Integer.parseInt(playerAttributes[1]);
                 int y = Integer.parseInt(playerAttributes[2]);
                 Strategy strategy = parseStrategy(playerAttributes[3]);
-                players.put(new PlayerBot(name, strategy), new Position(x, y));
+                Direction startingMove = parseDirection(playerAttributes[4]);
+                players.put(new PlayerBot(name, strategy, startingMove), new Position(x, y));
             }
         }
 
         return players;
-    }
-
-    private List<Player> findPlayerTurns(List<String[]> playerData) throws IOException {
-        List<Player> turns = new ArrayList<>();
-
-        for (String[] playerInfo : playerData) {
-            for (String player : playerInfo) {
-                String[] playerAttributes = player.split(" ");
-                String name = playerAttributes[0];
-                Strategy strategy = parseStrategy(playerAttributes[3]);
-                turns.add(new PlayerBot(name, strategy));
-            }
-        }
-
-        return turns;
     }
 
     private Strategy parseStrategy(String s) throws IOException {
@@ -113,12 +68,12 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
         };
     }
 
-    private Move parseDirection(String s) throws IOException {
+    private Direction parseDirection(String s) throws IOException {
         return switch (s) {
-            case "UP" -> new Move(0, -1);
-            case "DOWN" -> new Move(0, 1);
-            case "LEFT" -> new Move(-1, 0);
-            case "RIGHT" -> new Move(1, 0);
+            case "UP" -> Direction.UP;
+            case "DOWN" -> Direction.DOWN;
+            case "LEFT" -> Direction.LEFT;
+            case "RIGHT" -> Direction.RIGHT;
             default -> throw new IOException("The starting direction " + s + " is not valid.");
         };
     }

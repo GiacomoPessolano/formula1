@@ -1,6 +1,6 @@
 package it.unicam.cs.giacomopessolano.formula1.player;
 
-public enum Choice {
+public enum Direction {
     UP,
     DOWN,
     LEFT,

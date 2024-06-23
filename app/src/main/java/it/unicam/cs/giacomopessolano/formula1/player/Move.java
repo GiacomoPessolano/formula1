@@ -2,7 +2,7 @@ package it.unicam.cs.giacomopessolano.formula1.player;
 
 public record Move(int x, int y) {
 
-    public Move update(Choice choice) {
+    public Move update(Direction choice) {
         return switch (choice) {
             case UP -> new Move(x, y - 1);
             case DOWN -> new Move(x, y + 1);
@@ -13,7 +13,6 @@ public record Move(int x, int y) {
             case DOWNLEFT -> new Move(x - 1, y + 1);
             case DOWNRIGHT -> new Move(x + 1, y + 1);
             case CENTER -> new Move(x, y);
-            default -> null;
         };
     }
 

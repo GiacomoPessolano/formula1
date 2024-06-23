@@ -15,12 +15,8 @@ public interface GameManager {
 
     Position getPlayerPosition(Player p);
 
-    void setPlayerPosition(Player player, Position position);
-
-    Map<Player, Move> getLastMoves();
-
     Move getLastMove(Player p);
 
-    void setLastMove(Player p, Move move);
+    void gameOver(Player player);
 
 }

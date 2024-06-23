@@ -2,13 +2,11 @@ package it.unicam.cs.giacomopessolano.formula1.game;
 
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.grid.GridInitializerFromTxt;
-import it.unicam.cs.giacomopessolano.formula1.player.Move;
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
 import it.unicam.cs.giacomopessolano.formula1.player.PlayerInitializerFromTxt;
 import it.unicam.cs.giacomopessolano.formula1.player.Position;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 public class GameInitializerFromTxt implements GameInitializer {
@@ -27,15 +25,6 @@ public class GameInitializerFromTxt implements GameInitializer {
     @Override
     public Map<Player, Position> parsePlayers() throws IOException {
         return playerInitializer.parsePlayers(filename);
-    }
-
-    @Override
-    public List<Player> parseTurns() throws IOException {
-        return playerInitializer.parseTurns(filename);
-    }
-
-    public Map<Player, Move> parseFirstMoves() throws IOException {
-        return playerInitializer.parseFirstMoves(filename);
     }
 
     @Override

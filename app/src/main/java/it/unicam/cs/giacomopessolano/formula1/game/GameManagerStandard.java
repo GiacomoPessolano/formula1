@@ -7,18 +7,18 @@ import it.unicam.cs.giacomopessolano.formula1.player.Position;
 
 import java.util.Map;
 
-//todo default access for setters?
+//todo default access for setters and constructor?
 
 public class GameManagerStandard implements GameManager {
 
     private final Grid grid;
-    private final Map<Player, Position> playerPositions;
-    private final Map<Player, Move> lastMoves;
+    private final Map<Player, Position> players;
+    boolean gameOver = false;
+    Player winner = null;
 
-    public GameManagerStandard(Grid grid, Map<Player, Position> playerPositions, Map<Player, Move> firstMoves) {
+    public GameManagerStandard(Grid grid, Map<Player, Position> players) {
         this.grid = grid;
-        this.playerPositions = playerPositions;
-        this.lastMoves = firstMoves;
+        this.players = players;
     }
 
     @Override
@@ -28,31 +28,22 @@ public class GameManagerStandard implements GameManager {
 
     @Override
     public Map<Player, Position> getPlayerPositions() {
-        return playerPositions;
+        return players;
     }
 
     @Override
     public Position getPlayerPosition(Player p) {
-        return playerPositions.get(p);
+        return players.get(p);
     }
 
     @Override
-    public void setPlayerPosition(Player player, Position position) {
-        playerPositions.put(player, position);
+    public Move getLastMove(Player player) {
+        return player.getLastMove();
     }
 
     @Override
-    public Map<Player, Move> getLastMoves() {
-        return lastMoves;
-    }
-
-    @Override
-    public Move getLastMove(Player p) {
-        return lastMoves.get(p);
-    }
-
-    @Override
-    public void setLastMove(Player p, Move move) {
-        lastMoves.put(p, move);
+    public void gameOver(Player player) {
+        gameOver = true;
+        winner = player;
     }
 }

@@ -6,5 +6,11 @@ public interface Player {
 
     Strategy getStrategy();
 
+    Move getLastMove();
+
+    void setLastMove(Direction choice);
+
+    void crash();
+
     boolean hasCrashed();
 }
