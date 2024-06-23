@@ -10,11 +10,15 @@ import java.util.Map;
 
 public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
 
+    private List<String[]> playerData;
+
     @Override
     public Map<Player, Position> parsePlayers(String filename) throws IOException {
         validateFileExtension(filename);
 
-        List<String[]> playerData = readPlayerData(filename);
+        if (playerData == null) {
+            playerData = readPlayerData(filename);
+        }
         return findPlayerPositions(playerData);
     }
 
@@ -22,8 +26,26 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
     public List<Player> parseTurns(String filename) throws IOException {
         validateFileExtension(filename);
 
-        List<String[]> playerData = readPlayerData(filename);
+        if (playerData == null) {
+            playerData = readPlayerData(filename);
+        }
         return findPlayerTurns(playerData);
+    }
+
+    public Map<Player, Move> parseFirstMoves(String filename) throws IOException {
+        validateFileExtension(filename);
+
+        if (playerData == null) {
+            playerData = readPlayerData(filename);
+        }
+        Map<Player, Move> moves = new HashMap<>();
+
+        for (String[] playerDataLine : playerData) {
+            moves.put(new PlayerBot(playerDataLine[0], parseStrategy(playerDataLine[3])),
+                    parseDirection(playerDataLine[5]));
+        }
+
+        return moves;
     }
 
     private List<String[]> readPlayerData(String filename) throws IOException {
@@ -90,4 +112,15 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
             default -> throw new IOException("The strategy " + s + " is not valid.");
         };
     }
+
+    private Move parseDirection(String s) throws IOException {
+        return switch (s) {
+            case "UP" -> new Move(0, -1);
+            case "DOWN" -> new Move(0, 1);
+            case "LEFT" -> new Move(-1, 0);
+            case "RIGHT" -> new Move(1, 0);
+            default -> throw new IOException("The starting direction " + s + " is not valid.");
+        };
+    }
+
 }

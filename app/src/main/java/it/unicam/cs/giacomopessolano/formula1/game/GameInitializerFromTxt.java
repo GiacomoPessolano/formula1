@@ -2,6 +2,7 @@ package it.unicam.cs.giacomopessolano.formula1.game;
 
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.grid.GridInitializerFromTxt;
+import it.unicam.cs.giacomopessolano.formula1.player.Move;
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
 import it.unicam.cs.giacomopessolano.formula1.player.PlayerInitializerFromTxt;
 import it.unicam.cs.giacomopessolano.formula1.player.Position;
@@ -31,6 +32,10 @@ public class GameInitializerFromTxt implements GameInitializer {
     @Override
     public List<Player> parseTurns() throws IOException {
         return playerInitializer.parseTurns(filename);
+    }
+
+    public Map<Player, Move> parseFirstMoves() throws IOException {
+        return playerInitializer.parseFirstMoves(filename);
     }
 
     @Override
