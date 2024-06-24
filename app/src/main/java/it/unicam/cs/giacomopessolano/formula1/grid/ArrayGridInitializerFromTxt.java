@@ -64,11 +64,11 @@ public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
     }
 
     private Cell symbolToCell(char symbol) throws IOException {
+        //todo supplier?
         return switch (symbol) {
             case 'R' -> new Cell(CellState.TRACK);
             case 'S' -> new Cell(CellState.START);
             case 'E' -> new Cell(CellState.END);
-            case 'O' -> new Cell(CellState.OILED);
             case 'X' -> new Cell(CellState.OFFTRACK);
             default -> throw new IOException("The symbol " + symbol + " is not valid.");
         };

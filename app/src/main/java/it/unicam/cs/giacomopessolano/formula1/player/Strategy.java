@@ -4,7 +4,7 @@ import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 
 public interface Strategy {
 
-    Direction move(Grid grid, Move lastMove, Position position);
+    Direction makeChoice(Grid grid, Move lastMove, Position position);
 
     String getName();
 

@@ -13,7 +13,7 @@ public class StrategyDumb implements Strategy {
     public static final String DESCRIPTION = "Player moves randomly.";
 
     @Override
-    public Direction move(Grid grid, Move lastMove, Position position) {
+    public Direction makeChoice(Grid grid, Move lastMove, Position position) {
         List<Direction> choices = possibleMoves(grid, lastMove, position);
         if (choices.isEmpty()) {
             throw new IllegalArgumentException("No possible moves");

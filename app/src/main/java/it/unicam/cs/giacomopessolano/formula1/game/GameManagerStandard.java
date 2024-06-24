@@ -1,5 +1,6 @@
 package it.unicam.cs.giacomopessolano.formula1.game;
 
+import it.unicam.cs.giacomopessolano.formula1.grid.CellState;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
 import it.unicam.cs.giacomopessolano.formula1.player.Position;
@@ -8,40 +9,37 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-//todo default access for setters and constructor?
-
 public class GameManagerStandard implements GameManager {
 
-    private final GameInitializer initializer;
+    private final Grid originalGrid;
+    private final List<Player> originalPlayers;
+    private final  Map<Player, Position> originalPositions;
+
     private Grid grid;
-    private Map<Player, Position> positionMap;
     private List<Player> players;
+    private Map<Player, Position> playerPositions;
+    private final TurnManager turnManager;
+    private boolean hasStarted;
+    Player winner;
     private int turn;
-    private boolean gameOver = false;
-    private Player winner = null;
 
-    public GameManagerStandard(GameInitializer initializer) {
-        this.initializer = initializer;
+    public GameManagerStandard(GameInitializer initializer, TurnManager turnManager) throws IOException {
+        this.turnManager = turnManager;
+        this.originalGrid = initializer.parseGrid();
+        this.originalPlayers = initializer.parseTurns();
+        this.originalPositions = initializer.parsePlayers();
     }
 
     @Override
-    public void start() throws IOException {
-        this.grid = initializer.parseGrid();
-        this.positionMap = initializer.parsePlayers();
-        this.players = initializer.parseTurns();
-        this.turn = 0;
-    }
+    public void startGame() {
+        if (hasStarted) return;
 
-    @Override
-    public void reset() throws IOException {
-        gameOver = false;
+        hasStarted = true;
         winner = null;
-        start();
-    }
-
-    @Override
-    public void nextTurn() {
-        turn = (turn + 1) % players.size();
+        turn = 0;
+        grid = originalGrid;
+        players = originalPlayers;
+        playerPositions = originalPositions;
     }
 
     @Override
@@ -50,23 +48,41 @@ public class GameManagerStandard implements GameManager {
     }
 
     @Override
-    public Map<Player, Position> getPlayerPositions() {
-        return positionMap;
-    }
-
-    @Override
-    public Position getPlayerPosition(Player p) {
-        return positionMap.get(p);
-    }
-
-    @Override
     public Player getCurrentPlayer(int turn) {
         return players.get(turn);
     }
 
     @Override
-    public void gameOver(Player player) {
-        gameOver = true;
-        winner = player;
+    public Position getPlayerPosition(Player player) {
+        return playerPositions.get(player);
+    }
+
+    @Override
+    public void nextTurn() {
+        if (!hasStarted) return;
+        Player currentPlayer = getCurrentPlayer(turn);
+
+        if (!currentPlayer.hasCrashed()) {
+            CellState result = turnManager.executeMove(grid, currentPlayer, playerPositions);
+
+            if (result.equals(CellState.OFFTRACK)) currentPlayer.crash();
+
+            if (result.equals(CellState.END)) {
+                winner = currentPlayer;
+                hasStarted = false;
+            }
+
+        }
+
+        turn = (turn + 1) % players.size();
+    }
+
+    @Override
+    public boolean hasGameStarted() {
+        return hasStarted;
+    }
+
+    public Player getWinner() {
+        return winner;
     }
 }

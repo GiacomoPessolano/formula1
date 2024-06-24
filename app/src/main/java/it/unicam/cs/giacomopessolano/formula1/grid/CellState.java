@@ -4,6 +4,5 @@ public enum CellState {
     TRACK,
     OFFTRACK,
     START,
-    END,
-    OILED
+    END
 }

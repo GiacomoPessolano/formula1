@@ -2,9 +2,9 @@ package it.unicam.cs.giacomopessolano.formula1.grid;
 
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
 
-public class Cell {
+public class Cell implements Cloneable {
 
-    private CellState state;
+    private final CellState state;
 
     private Player player;
 
@@ -26,12 +26,6 @@ public class Cell {
 
     public Player getPlayer() {
         return player;
-    }
-
-    public void oil() {
-        if (state.equals(CellState.TRACK)) {
-            state = CellState.OILED;
-        }
     }
 
 }
