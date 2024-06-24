@@ -2,9 +2,15 @@ package it.unicam.cs.giacomopessolano.formula1.player;
 
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 
-@FunctionalInterface
 public interface Strategy {
 
-    Direction move(Move lastMove, Grid grid, Position position);
+    Direction move(Grid grid, Move lastMove, Position position);
+
+    String getName();
+
+    String getDescription();
 
 }
+
+
+//todo: an interactive strategy that uses an input interface somehow

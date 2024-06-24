@@ -82,8 +82,6 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
     private Strategy parseStrategy(String s) throws IOException {
         return switch (s) {
             case "DUMB" -> new StrategyDumb();
-            case "STANDARD" -> new StrategyStandard();
-            case "CHEATER" -> new StrategyCheater();
             default -> throw new IOException("The strategy " + s + " is not supported.");
         };
     }

@@ -29,8 +29,12 @@ public class ValidatorStandard implements Validator {
 
     @Override
     public boolean performAllChecks() {
-        return isStartNumberCorrect() && isEndNumberCorrect() && arePlayerPositionsCorrect()
-                && areStartingPositionsDifferent();
+        return isPlayerNumberCorrect() && isStartNumberCorrect() && isEndNumberCorrect()
+                && arePlayerPositionsCorrect() && areStartingPositionsDifferent();
+    }
+
+    private boolean isPlayerNumberCorrect() {
+        return playerNumber <= 4 && playerNumber > 0;
     }
 
     private boolean isStartNumberCorrect() {
