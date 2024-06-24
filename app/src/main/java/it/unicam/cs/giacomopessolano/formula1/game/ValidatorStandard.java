@@ -19,9 +19,9 @@ public class ValidatorStandard implements Validator {
     private final ArrayList<Cell> startCells;
     private final ArrayList<Cell> endCells;
 
-    public ValidatorStandard(Grid grid, int playerNumber, Map<Player, Position> startingPositions) {
+    public ValidatorStandard(Grid grid, Map<Player, Position> startingPositions) {
         this.grid = grid;
-        this.playerNumber = playerNumber;
+        this.playerNumber = startingPositions.keySet().size();
         this.startingPositions = startingPositions;
         this.startCells = findTypeCells(CellState.START);
         this.endCells = findTypeCells(CellState.END);
@@ -29,11 +29,11 @@ public class ValidatorStandard implements Validator {
 
     @Override
     public boolean performAllChecks() {
-        return isPlayerNumberCorrect() && isStartNumberCorrect() && isEndNumberCorrect()
+        return isPlayerNumberValid() && isStartNumberCorrect() && isEndNumberCorrect()
                 && arePlayerPositionsCorrect() && areStartingPositionsDifferent();
     }
 
-    private boolean isPlayerNumberCorrect() {
+    private boolean isPlayerNumberValid() {
         return playerNumber <= 4 && playerNumber > 0;
     }
 
