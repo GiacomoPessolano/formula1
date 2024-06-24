@@ -12,6 +12,8 @@ public interface GameManager {
 
     Player getCurrentPlayer(int turn);
 
+    int getId(Player player);
+
     Position getPlayerPosition(Player player);
 
     void nextTurn();

@@ -12,6 +12,7 @@ public record Position(int x, int y) implements Cloneable {
         int width = grid.getWidth();
         int height = grid.getHeight();
 
+
         return x >= 0 && x < width && y >= 0 && y < height;
     }
 

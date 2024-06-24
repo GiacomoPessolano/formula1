@@ -54,6 +54,11 @@ public class GameManagerStandard implements GameManager {
     }
 
     @Override
+    public int getId(Player player) {
+        return players.indexOf(player) + 1;
+    }
+
+    @Override
     public Position getPlayerPosition(Player player) {
         return playerPositions.get(player);
     }
