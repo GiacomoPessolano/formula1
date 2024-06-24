@@ -25,8 +25,8 @@ public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
         return this.grid;
     }
 
-    private ArrayList<char[]> generateRows(String filename) throws IOException {
-        ArrayList<char[]> rows = new ArrayList<>();
+    private List<char[]> generateRows(String filename) throws IOException {
+        List<char[]> rows = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line;

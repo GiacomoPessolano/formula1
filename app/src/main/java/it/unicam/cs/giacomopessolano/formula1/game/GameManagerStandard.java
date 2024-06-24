@@ -6,6 +6,8 @@ import it.unicam.cs.giacomopessolano.formula1.player.Player;
 import it.unicam.cs.giacomopessolano.formula1.player.Position;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,8 +18,9 @@ public class GameManagerStandard implements GameManager {
     private final  Map<Player, Position> originalPositions;
 
     private Grid grid;
-    private List<Player> players;
-    private Map<Player, Position> playerPositions;
+    //originals might have different implementations of List and Map; it's unimportant
+    private final List<Player> players = new ArrayList<>();
+    private final Map<Player, Position> playerPositions = new HashMap<>();
     private final TurnManager turnManager;
     private boolean hasStarted;
     Player winner;
@@ -37,9 +40,7 @@ public class GameManagerStandard implements GameManager {
         hasStarted = true;
         winner = null;
         turn = 0;
-        grid = originalGrid;
-        players = originalPlayers;
-        playerPositions = originalPositions;
+        cloneData();
     }
 
     @Override
@@ -84,5 +85,18 @@ public class GameManagerStandard implements GameManager {
 
     public Player getWinner() {
         return winner;
+    }
+
+    private void cloneData() {
+        this.grid = originalGrid.clone();
+
+        players.clear();
+        playerPositions.clear();
+        for (Player player : originalPlayers) {
+            Player clone = player.clone();
+            players.add(clone);
+            playerPositions.put(clone, originalPositions.get(player).clone());
+        }
+
     }
 }

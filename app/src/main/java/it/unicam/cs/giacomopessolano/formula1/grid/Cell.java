@@ -28,4 +28,18 @@ public class Cell implements Cloneable {
         return player;
     }
 
+    @Override
+    public Cell clone() {
+        try {
+            Cell cloned = (Cell) super.clone();
+
+            if (this.player != null) {
+                cloned.player = this.player.clone();
+            }
+            return cloned;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
 }

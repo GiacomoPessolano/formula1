@@ -30,6 +30,23 @@ public class ArrayGrid implements Grid {
         return grid[position.y()][position.x()];
     }
 
+    @Override
+    public ArrayGrid clone() {
+        try {
+            ArrayGrid cloned = (ArrayGrid) super.clone();
+
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    cloned.grid[i][j] = grid[i][j].clone();
+                }
+            }
+
+            return cloned;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
     public Cell[][] getGrid(){
         return grid;
     }

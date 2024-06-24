@@ -55,4 +55,15 @@ public class PlayerBot implements Player {
 
         return false;
     }
+
+    @Override
+    public PlayerBot clone() {
+        try {
+            PlayerBot cloned = (PlayerBot) super.clone();
+            cloned.lastMove = this.lastMove.clone();
+            return cloned;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 }

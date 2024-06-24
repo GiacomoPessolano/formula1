@@ -1,6 +1,6 @@
 package it.unicam.cs.giacomopessolano.formula1.player;
 
-public interface Player {
+public interface Player extends Cloneable {
 
     String getName();
 
@@ -13,4 +13,6 @@ public interface Player {
     void crash();
 
     boolean hasCrashed();
+
+    Player clone();
 }
