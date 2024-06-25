@@ -1,3 +1,28 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2024 Giacomo Pessolano
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
 package it.unicam.cs.giacomopessolano.formula1.game;
 
 import it.unicam.cs.giacomopessolano.formula1.exceptions.UnrecognizedFileException;
@@ -12,14 +37,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Implementation of a user interface from the command line.
+ */
 public class UserInterfaceCLI implements UserInterface {
 
     Scanner scanner;
 
+    /**
+     * Constructs the user interface and opens its input channel.
+     */
     public UserInterfaceCLI() {
         scanner = new Scanner(System.in);
     }
 
+    /**
+     * Lets the user choose a track from a specified directory.
+     *
+     * @param dirName Directory where tracks are located.
+     * @return The chosen track.
+     * @throws UnrecognizedFileException If the track was not found or no tracks were in the directory.
+     */
     @Override
     public String chooseTrack(String dirName) throws IOException {
         List<String> tracks = availableTracks(dirName);
@@ -41,6 +79,11 @@ public class UserInterfaceCLI implements UserInterface {
         }
     }
 
+    /**
+     * Displays a grid as a String of characters.
+     *
+     * @param manager Game whose grid is displayed.
+     */
     @Override
     public void displayGrid(GameManager manager) {
         Grid grid = manager.getGrid();
@@ -55,22 +98,33 @@ public class UserInterfaceCLI implements UserInterface {
             gridToString.append("\n");
         }
 
-        System.out.println(gridToString.toString());
+        System.out.println(gridToString);
 
     }
 
+    /**
+     * Displays a message to indicate the next turn. The message changes if the player has crashed.
+     *
+     * @param manager Game whose turn is displayed.
+     */
     @Override
     public void turnMessage(GameManager manager) {
+        if (!manager.isGameRunning()) return;
         Player player = manager.getCurrentPlayer();
         String name = player.getName();
 
         if (player.hasCrashed()) {
             System.out.println(name + " has crashed.");
         } else {
-            System.out.println("It's " + name + ", " + manager.getId(player) + " , turn.");
+            System.out.println("It's " + name + ", " + manager.getID(player) + " , turn.");
         }
     }
 
+    /**
+     * Displays a message to indicate the end of the game and its winner.
+     *
+     * @param manager Game whose results are displayed.
+     */
     @Override
     public void gameOverMessage(GameManager manager) {
         System.out.println("The game has ended.");
@@ -81,6 +135,12 @@ public class UserInterfaceCLI implements UserInterface {
         }
     }
 
+    /**
+     * Interacts with the user to ask if they want to play again. The letter 'Y' indicates a positive
+     * answer (case is not important).
+     *
+     * @return True if the answer is Y, false otherwise.
+     */
     @Override
     public boolean wantToPlayAgainMessage() {
         System.out.println("Enter Y if you want to play again, anything else to exit.");
@@ -95,8 +155,14 @@ public class UserInterfaceCLI implements UserInterface {
         }
     }
 
+    /**
+     * Displays all the available tracks in a directory.
+     *
+     * @param dirName Directory with the tracks.
+     * @return List of all the tracks in the directory (in this implementation assumed to be .txt files)
+     */
     private List<String> availableTracks(String dirName) {
-        List<String> tracks = new ArrayList<String>();
+        List<String> tracks = new ArrayList<>();
         File dir = new File(dirName);
         File[] files = dir.listFiles();
 
@@ -113,18 +179,26 @@ public class UserInterfaceCLI implements UserInterface {
         return tracks;
     }
 
-    private String parseCellState(GameManager manager, Cell cell) {
-        if (cell.getPlayer() != null) return String.valueOf(manager.getId(cell.getPlayer()));
+    /**
+     * Translates a cell state to a character. If the cell is occupied, the character will be the first
+     * character of the player's ID.
+     *
+     * @param manager Game being played.
+     * @param cell    Cell to examine.
+     * @return Character representing the cell or player on the cell.
+     */
+    private char parseCellState(GameManager manager, Cell cell) {
+        if (cell.getPlayer() != null) return String.valueOf(manager.getID(cell.getPlayer())).charAt(0);
 
         switch (cell.getState()) {
             case END -> {
-                return "@";
+                return '@';
             }
             case OFFTRACK -> {
-                return "X";
+                return 'X';
             }
             default -> {
-                return " ";
+                return ' ';
             }
         }
     }
