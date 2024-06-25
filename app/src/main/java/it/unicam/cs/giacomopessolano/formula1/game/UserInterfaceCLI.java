@@ -67,7 +67,7 @@ public class UserInterfaceCLI implements UserInterface {
         if (player.hasCrashed()) {
             System.out.println(name + " has crashed.");
         } else {
-            System.out.println("It's " + name + " turn.");
+            System.out.println("It's " + name + ", " + manager.getId(player) + " , turn.");
         }
     }
 
