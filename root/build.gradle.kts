@@ -20,10 +20,10 @@ tasks.test {
     useJUnitPlatform()
 }
 
-application {
-    mainClass.set("it.unicam.cs.giacomopessolano.formula1.main.Main")
-}
-
 tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
+}
+
+application {
+    mainClass.set("it.unicam.cs.giacomopessolano.formula1.main.Main")
 }

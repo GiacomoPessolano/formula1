@@ -61,9 +61,9 @@ public class ValidatorStandard implements Validator {
 
     private ArrayList<Cell> findTypeCells(CellState type) {
         ArrayList<Cell> cells = new ArrayList<>();
-        for (int row = 0; row < grid.getHeight(); row++) {
-            for (int col = 0; col < grid.getWidth(); col++) {
-                Cell cell = grid.getCell(new Position(row, col));
+        for (int y = 0; y < grid.getHeight(); y++) {
+            for (int x = 0; x < grid.getWidth(); x++) {
+                Cell cell = grid.getCell(new Position(x, y));
                 if (cell.getState() == type) {
                     cells.add(cell);
                 }

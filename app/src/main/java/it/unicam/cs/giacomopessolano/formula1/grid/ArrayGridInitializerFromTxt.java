@@ -32,7 +32,12 @@ public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
 
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line;
+        boolean hasGridStarted = false;
         while ((line = br.readLine()) != null) {
+            if (!hasGridStarted) {
+                hasGridStarted = line.equals("TRACK");
+                continue;
+            }
             rows.add(line.toCharArray());
         }
 

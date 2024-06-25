@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Made CLI user interface; deleted UI module (will rebuild it later when I understand how to add JavaFX GUI)">
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Retouched UICLI and made Main class; PROBLEM: GRADLE WON'T RUN PROJECT">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterfaceCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterfaceCLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGridInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGridInitializerFromTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/root/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
     </list>
@@ -171,7 +167,7 @@
       <workItem from="1719134974002" duration="23439000" />
       <workItem from="1719223403366" duration="20658000" />
       <workItem from="1719256209056" duration="5127000" />
-      <workItem from="1719302841699" duration="11609000" />
+      <workItem from="1719302841699" duration="13995000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -285,7 +281,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719263210792</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Retouched UICLI and made Main class; PROBLEM: GRADLE WON'T RUN PROJECT">
+      <option name="closed" value="true" />
+      <created>1719317642313</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1719317642313</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Retouched UICLI and made Main class; PROBLEM: GRADLE WON'T RUN PROJECT">
+      <option name="closed" value="true" />
+      <created>1719317656512</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1719317656512</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +318,8 @@
     <MESSAGE value="Reworked game logic (GameManager and TurnManager)" />
     <MESSAGE value="Reworked key interfaces to be cloneable to reset original state in GameManager when needed" />
     <MESSAGE value="Made CLI user interface; deleted UI module (will rebuild it later when I understand how to add JavaFX GUI)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made CLI user interface; deleted UI module (will rebuild it later when I understand how to add JavaFX GUI)" />
+    <MESSAGE value="Retouched UICLI and made Main class; PROBLEM: GRADLE WON'T RUN PROJECT" />
+    <option name="LAST_COMMIT_MESSAGE" value="Retouched UICLI and made Main class; PROBLEM: GRADLE WON'T RUN PROJECT" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

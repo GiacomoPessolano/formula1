@@ -18,6 +18,11 @@ public class Main {
             GameManagerStandard game = getGameManagerStandard(file);
 
             game.startGame();
+
+            ValidatorStandard validator = new ValidatorStandard(game.getGrid(), game.getPlayerPositions());
+            if (!validator.performAllChecks()) throw new IncorrectConfigurationException(
+                    "Configuration failed validation.");
+
             while (game.isGameRunning()) {
                 ui.displayGrid(game);
                 Thread.sleep(5000);
@@ -44,6 +49,9 @@ public class Main {
         } catch (IOException e) {
             System.err.println(e.getMessage());
             System.exit(4);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            System.exit(5);
         }
 
         System.exit(0);
@@ -54,9 +62,6 @@ public class Main {
                 new PlayerBotInitializerFromTxt());
         TurnManagerStandard turnManager = new TurnManagerStandard();
         GameManagerStandard game = new GameManagerStandard(initializer, turnManager);
-        ValidatorStandard validator = new ValidatorStandard(game.getGrid(), game.getPlayerPositions());
-        if (!validator.performAllChecks()) throw new IncorrectConfigurationException(
-                "Configuration failed validation.");
 
         return game;
     }
