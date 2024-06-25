@@ -4,22 +4,16 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Reworked key interfaces to be cloneable to reset original state in GameManager when needed">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Made CLI user interface; deleted UI module (will rebuild it later when I understand how to add JavaFX GUI)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/main/resources/it/unicam/cs/giacomopessolano/formula1/ui/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterfaceCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterfaceCLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGridInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGridInitializerFromTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/root/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +89,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Gradle.ArrayGridFromTxtInitializerTest.executor": "Run",
     "Gradle.Upgrade Gradle wrapper.executor": "Run",
+    "Gradle.formula1:root [:root:Main.main()].executor": "Run",
     "Gradle.gui [:HelloApplication.main()].executor": "Run",
     "Gradle.gui [:gui:HelloApplication.main()].executor": "Run",
     "Gradle.ui [:HelloApplication.main()].executor": "Run",
@@ -123,6 +118,12 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Utente\JavaProjects\formula1\root\src\main\resources" />
+      <recent name="C:\Users\Utente\JavaProjects\formula1\root\src\main\java\it\unicam\cs\giacomopessolano\formula1\main" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="formula1" />
@@ -169,7 +170,8 @@
       <workItem from="1719094253586" duration="11386000" />
       <workItem from="1719134974002" duration="23439000" />
       <workItem from="1719223403366" duration="20658000" />
-      <workItem from="1719256209056" duration="4886000" />
+      <workItem from="1719256209056" duration="5127000" />
+      <workItem from="1719302841699" duration="11609000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -275,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719248554968</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Made CLI user interface; deleted UI module (will rebuild it later when I understand how to add JavaFX GUI)">
+      <option name="closed" value="true" />
+      <created>1719263210792</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1719263210792</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +305,8 @@
     <MESSAGE value="Started adding code to main class; retouched ValidatorStandard slightly" />
     <MESSAGE value="Reworked game logic (GameManager and TurnManager)" />
     <MESSAGE value="Reworked key interfaces to be cloneable to reset original state in GameManager when needed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reworked key interfaces to be cloneable to reset original state in GameManager when needed" />
+    <MESSAGE value="Made CLI user interface; deleted UI module (will rebuild it later when I understand how to add JavaFX GUI)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made CLI user interface; deleted UI module (will rebuild it later when I understand how to add JavaFX GUI)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

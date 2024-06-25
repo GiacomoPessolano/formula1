@@ -1,31 +1,30 @@
 package it.unicam.cs.giacomopessolano.formula1.game;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.UnrecognizedFileException;
 import it.unicam.cs.giacomopessolano.formula1.grid.Cell;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
+import it.unicam.cs.giacomopessolano.formula1.player.Player;
 import it.unicam.cs.giacomopessolano.formula1.player.Position;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterfaceCLI implements UserInterface {
 
-    GameManager manager;
     Scanner scanner;
 
-    public UserInterfaceCLI(GameManager manager) {
-        this.manager = manager;
+    public UserInterfaceCLI() {
         scanner = new Scanner(System.in);
     }
 
     @Override
-    public String chooseTrack(String dirName) throws FileNotFoundException {
+    public String chooseTrack(String dirName) throws IOException {
         List<String> tracks = availableTracks(dirName);
         if (tracks.isEmpty()) {
-            System.out.println("No tracks found.");
-            throw new FileNotFoundException();
+            throw new UnrecognizedFileException("No tracks found.");
         }
 
         for (String track : tracks) {
@@ -38,13 +37,12 @@ public class UserInterfaceCLI implements UserInterface {
             System.out.println("Track chosen: " + trackChosen);
             return trackChosen;
         } else {
-            System.out.println("Track not found.");
-            throw new  FileNotFoundException();
+            throw new UnrecognizedFileException("Track not found.");
         }
     }
 
     @Override
-    public void displayGrid() {
+    public void displayGrid(GameManager manager) {
         Grid grid = manager.getGrid();
         int width = grid.getWidth();
         int height = grid.getHeight();
@@ -52,7 +50,7 @@ public class UserInterfaceCLI implements UserInterface {
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                gridToString.append(parseCellState(grid.getCell(new Position(x, y))));
+                gridToString.append(parseCellState(manager, grid.getCell(new Position(x, y))));
             }
             gridToString.append("\n");
         }
@@ -62,7 +60,19 @@ public class UserInterfaceCLI implements UserInterface {
     }
 
     @Override
-    public void gameOverMessage() {
+    public void turnMessage(GameManager manager) {
+        Player player = manager.getCurrentPlayer();
+        String name = player.getName();
+
+        if (player.hasCrashed()) {
+            System.out.println(name + " has crashed.");
+        } else {
+            System.out.println("It's " + name + " turn.");
+        }
+    }
+
+    @Override
+    public void gameOverMessage(GameManager manager) {
         System.out.println("The game has ended.");
         if (manager.getWinner() == null) {
             System.out.println("Nobody won the game.");
@@ -72,7 +82,7 @@ public class UserInterfaceCLI implements UserInterface {
     }
 
     @Override
-    public boolean wantToPlayAgain() {
+    public boolean wantToPlayAgainMessage() {
         System.out.println("Enter Y if you want to play again, anything else to exit.");
         String playAgain = scanner.nextLine().toUpperCase();
 
@@ -80,6 +90,7 @@ public class UserInterfaceCLI implements UserInterface {
             return true;
         } else {
             scanner.close();
+            System.out.println("Goodbye...");
             return false;
         }
     }
@@ -102,7 +113,7 @@ public class UserInterfaceCLI implements UserInterface {
         return tracks;
     }
 
-    private String parseCellState(Cell cell) {
+    private String parseCellState(GameManager manager, Cell cell) {
         if (cell.getPlayer() != null) return String.valueOf(manager.getId(cell.getPlayer()));
 
         switch (cell.getState()) {

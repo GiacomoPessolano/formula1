@@ -1,12 +1,13 @@
 package it.unicam.cs.giacomopessolano.formula1.player;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.IncorrectConfigurationException;
+import it.unicam.cs.giacomopessolano.formula1.exceptions.UnrecognizedFileException;
+
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //todo supplier for Strategy and Direction, playerFactory?
 
@@ -38,51 +39,50 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
-            List<String> currentPlayerData = new ArrayList<>();
-            while ((line = br.readLine()) != null) {
+            while (!Objects.equals(line = br.readLine(), "TRACK")) {
                 if (line.trim().isEmpty()) {
-                    if (!currentPlayerData.isEmpty()) {
-                        playerData.add(currentPlayerData.toArray(new String[0]));
-                        currentPlayerData.clear();
-                    }
-                } else {
-                    currentPlayerData.add(line.trim());
+                    continue;
                 }
+
+                String[] data = line.split(" ");
+                playerData.add(data);
             }
-            if (!currentPlayerData.isEmpty()) {
-                playerData.add(currentPlayerData.toArray(new String[0]));
-            }
+        } catch (FileNotFoundException e) {
+            throw new UnrecognizedFileException(filename + "is not a valid file.");
+        } catch (IOException e) {
+            throw new UnrecognizedFileException("There was an error reading the file.");
         }
 
         return playerData;
     }
 
     private void findPlayers(List<String[]> playerData) throws IOException {
-        Map<Player, Position> positionMap = new HashMap<>();
-        List<Player> turns = new ArrayList<>();
+        Map<Player, Position> localPositionMap = new HashMap<>();
+        List<Player> localPlayerList = new ArrayList<>();
 
-        for (String[] playerInfo : playerData) {
-            for (String player : playerInfo) {
-                String[] playerAttributes = player.split(" ");
-                String name = playerAttributes[0];
-                int x = Integer.parseInt(playerAttributes[1]);
-                int y = Integer.parseInt(playerAttributes[2]);
-                Strategy strategy = parseStrategy(playerAttributes[3]);
-                Direction startingMove = parseDirection(playerAttributes[4]);
+        try {
+            for (String[] playerInfo : playerData) {
+                String name = playerInfo[0];
+                int x = Integer.parseInt(playerInfo[1]);
+                int y = Integer.parseInt(playerInfo[2]);
+                Strategy strategy = parseStrategy(playerInfo[3]);
+                Direction startingMove = parseDirection(playerInfo[4]);
                 Player newPlayer = new PlayerBot(name, strategy, startingMove);
-                positionMap.put(newPlayer, new Position(x, y));
-                players.add(newPlayer);
+                localPositionMap.put(newPlayer, new Position(x, y));
+                localPlayerList.add(newPlayer);
             }
+        } catch (Exception e) {
+            throw new IncorrectConfigurationException("The file has not been prepared correctly.");
         }
 
-        this.playerPositionMap = positionMap;
-        this.players = turns;
+        this.playerPositionMap = localPositionMap;
+        this.players = localPlayerList;
     }
 
     private Strategy parseStrategy(String s) throws IOException {
         return switch (s) {
             case "DUMB" -> new StrategyDumb();
-            default -> throw new IOException("The strategy " + s + " is not supported.");
+            default -> throw new IncorrectConfigurationException("The strategy " + s + " is not supported.");
         };
     }
 
@@ -92,7 +92,8 @@ public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
             case "DOWN" -> Direction.DOWN;
             case "LEFT" -> Direction.LEFT;
             case "RIGHT" -> Direction.RIGHT;
-            default -> throw new IOException("The starting direction " + s + " is not supported.");
+            default -> throw new IncorrectConfigurationException(
+                    "The starting direction " + s + " is not supported.");
         };
     }
 

@@ -11,6 +11,7 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":app"))
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
@@ -20,5 +21,9 @@ tasks.test {
 }
 
 application {
-    mainClass = "it.unicam.cs.giacomopessolano.formula1.main.Main"
+    mainClass.set("it.unicam.cs.giacomopessolano.formula1.main.Main")
+}
+
+tasks.getByName("run", JavaExec::class) {
+    standardInput = System.`in`
 }

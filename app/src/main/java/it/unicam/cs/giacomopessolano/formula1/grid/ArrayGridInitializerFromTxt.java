@@ -1,5 +1,7 @@
 package it.unicam.cs.giacomopessolano.formula1.grid;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.IncorrectConfigurationException;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -70,7 +72,7 @@ public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
             case 'S' -> new Cell(CellState.START);
             case 'E' -> new Cell(CellState.END);
             case 'X' -> new Cell(CellState.OFFTRACK);
-            default -> throw new IOException("The symbol " + symbol + " is not valid.");
+            default -> throw new IncorrectConfigurationException("The symbol " + symbol + " is not valid.");
         };
 
     }

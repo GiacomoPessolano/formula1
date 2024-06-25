@@ -4,13 +4,17 @@ import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
 import it.unicam.cs.giacomopessolano.formula1.player.Position;
 
+import java.util.Map;
+
 public interface GameManager {
 
     void startGame();
 
     Grid getGrid();
 
-    Player getCurrentPlayer(int turn);
+    Map<Player, Position> getPlayerPositions();
+
+    Player getCurrentPlayer();
 
     int getId(Player player);
 
@@ -18,7 +22,7 @@ public interface GameManager {
 
     void nextTurn();
 
-    boolean hasGameStarted();
+    boolean isGameRunning();
 
     Player getWinner();
 

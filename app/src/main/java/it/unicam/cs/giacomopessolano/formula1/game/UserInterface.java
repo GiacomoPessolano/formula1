@@ -1,14 +1,16 @@
 package it.unicam.cs.giacomopessolano.formula1.game;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public interface UserInterface {
 
-    String chooseTrack(String directory) throws FileNotFoundException;
+    String chooseTrack(String directory) throws IOException;
 
-    void displayGrid();
+    void displayGrid(GameManager manager);
 
-    void gameOverMessage();
+    void turnMessage(GameManager manager);
 
-    boolean wantToPlayAgain();
+    void gameOverMessage(GameManager manager);
+
+    boolean wantToPlayAgainMessage();
 }

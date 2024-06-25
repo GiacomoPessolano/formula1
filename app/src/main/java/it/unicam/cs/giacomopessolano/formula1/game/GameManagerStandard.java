@@ -22,7 +22,8 @@ public class GameManagerStandard implements GameManager {
     private final List<Player> players = new ArrayList<>();
     private final Map<Player, Position> playerPositions = new HashMap<>();
     private final TurnManager turnManager;
-    private boolean hasStarted;
+    private boolean isGameRunning;
+    private int crashedPlayers;
     Player winner;
     private int turn;
 
@@ -35,10 +36,11 @@ public class GameManagerStandard implements GameManager {
 
     @Override
     public void startGame() {
-        if (hasStarted) return;
+        if (isGameRunning) return;
 
-        hasStarted = true;
+        isGameRunning = true;
         winner = null;
+        crashedPlayers = 0;
         turn = 0;
         cloneData();
     }
@@ -49,7 +51,12 @@ public class GameManagerStandard implements GameManager {
     }
 
     @Override
-    public Player getCurrentPlayer(int turn) {
+    public Map<Player, Position> getPlayerPositions() {
+        return playerPositions;
+    }
+
+    @Override
+    public Player getCurrentPlayer() {
         return players.get(turn);
     }
 
@@ -65,17 +72,23 @@ public class GameManagerStandard implements GameManager {
 
     @Override
     public void nextTurn() {
-        if (!hasStarted) return;
-        Player currentPlayer = getCurrentPlayer(turn);
+        if (!isGameRunning) return;
+        Player currentPlayer = getCurrentPlayer();
 
         if (!currentPlayer.hasCrashed()) {
             CellState result = turnManager.executeMove(grid, currentPlayer, playerPositions);
 
-            if (result.equals(CellState.OFFTRACK)) currentPlayer.crash();
+            if (result.equals(CellState.OFFTRACK)) {
+                currentPlayer.crash();
+                crashedPlayers++;
+                if (crashedPlayers == players.size()) {
+                    isGameRunning = false;
+                }
+            }
 
             if (result.equals(CellState.END)) {
                 winner = currentPlayer;
-                hasStarted = false;
+                isGameRunning = false;
             }
 
         }
@@ -84,10 +97,11 @@ public class GameManagerStandard implements GameManager {
     }
 
     @Override
-    public boolean hasGameStarted() {
-        return hasStarted;
+    public boolean isGameRunning() {
+        return isGameRunning;
     }
 
+    @Override
     public Player getWinner() {
         return winner;
     }
