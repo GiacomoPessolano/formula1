@@ -71,22 +71,6 @@ public final class StrategyDumb implements Strategy {
     }
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getDescription() {
-        return DESCRIPTION;
-    }
-
-    /**
      * Gives a list of all available moves. A move is unavailable if the cell is occupied by another player
      * and the resulting new position is within the grid.
      *

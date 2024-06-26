@@ -44,7 +44,8 @@ public class TurnManagerStandard implements TurnManager {
 
     /**
      * Updates the provided data structures based on the player's movement. Using the player's last
-     * move, 'inertia' is applied to the movement.
+     * move, 'inertia' is applied to the movement. If no move is possible, it's considered as if
+     * the player traversed an OFFTRACK cell.
      *
      * @param grid Grid to update.
      * @param player Player that moves on the grid.
@@ -53,11 +54,12 @@ public class TurnManagerStandard implements TurnManager {
      */
     @Override
     public CellState executeMove(Grid grid, Player player, Map<Player, Position> positions) {
+        Position oldPosition = positions.get(player);
 
         Direction choice;
         try {
             choice = player.getStrategy().
-                    makeChoice(grid, player.getLastMove(), positions.get(player));
+                    makeChoice(grid, player.getLastMove(), oldPosition);
         } catch (NoPossibleMoveException e) {
             return CellState.OFFTRACK;
         }
@@ -66,10 +68,10 @@ public class TurnManagerStandard implements TurnManager {
         Move newMove = player.getLastMove();
         Position newPosition = calculateNewPosition(positions.get(player), newMove);
 
-        updateGrid(grid, player, positions.get(player), newPosition);
+        updateGrid(grid, player, oldPosition, newPosition);
         updatePlayerPosition(player, positions, newPosition);
 
-        return moveResult(grid, positions.get(player), newPosition);
+        return moveResult(grid, oldPosition, newPosition);
     }
 
     /**
@@ -112,14 +114,13 @@ public class TurnManagerStandard implements TurnManager {
     /**
      * Returns a CellState based on the traversed cells. The method will check all the cells between
      * the old and new Positions. It will calculate the horizontal movement before the vertical one.
-     * As soon as an END cell is passed it will be returned. If the cell is not END but OFFTRACK it will
-     * be also returned. This way END is given priority.
+     * As soon as an END or OFFTRACK cell is passed it will be returned.
      * If none of the cells traversed are END or OFFTRACK, TRACK will be returned.
      *
      * @param grid Game's grid.
      * @param oldPosition Old position where the movement started.
      * @param newPosition New position where the movement ended.
-     * @return END or OFFTRACK if any cell had their state (with END having priority), TRACK otherwise.
+     * @return END or OFFTRACK if any cell had their state, TRACK otherwise.
      */
     private CellState moveResult(Grid grid, Position oldPosition, Position newPosition) {
         int diffX = newPosition.x() - oldPosition.x();

@@ -25,6 +25,8 @@
 
 package it.unicam.cs.giacomopessolano.formula1.grid;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.IncorrectConfigurationException;
+
 import java.io.IOException;
 
 /**
@@ -51,11 +53,11 @@ public interface GridInitializerFromTxt {
      * Checks whether the given file is a .txt file.
      *
      * @param filename File to check
-     * @throws IOException If the file doesn't use .txt extension.
+     * @throws IncorrectConfigurationException If the file doesn't use .txt extension.
      */
     default void validateFileExtension(String filename) throws IOException {
         if (!filename.endsWith(".txt")) {
-            throw new IOException("File must have a .txt extension.");
+            throw new IncorrectConfigurationException("File must have a .txt extension.");
         }
     }
 }

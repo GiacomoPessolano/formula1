@@ -38,8 +38,11 @@ import java.util.Objects;
 
 /**
  * Implementation of Validator that performs checks on a grid and the players mapped to said grid.
- * The checks concern the number of players allowed, the number of START and END cells on the grid,
- * whether the player's positions are compatible with the grid and are different from each other.
+ * Here's a rundown of all checks performed by the class:
+ * - number of players must be higher than 0 but less than the number of START cells;
+ * - the number of END cells must not be zero;
+ * - the mapping of starting positions must be reflected on the cells of the grid;
+ * - two players cannot have the same starting position;
  */
 public class ValidatorStandard implements Validator {
 

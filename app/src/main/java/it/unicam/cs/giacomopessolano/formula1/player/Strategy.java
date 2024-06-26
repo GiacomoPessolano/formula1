@@ -31,6 +31,7 @@ import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 /**
  * Interface that describes the way a player decides its movements.
  */
+@FunctionalInterface
 public interface Strategy {
 
     /**
@@ -42,20 +43,6 @@ public interface Strategy {
      * @return The choice of Direction made.
      */
     Direction makeChoice(Grid grid, Move lastMove, Position position) throws NoPossibleMoveException;
-
-    /**
-     * Returns the strategy's name.
-     *
-     * @return Strategy's name.
-     */
-    String getName();
-
-    /**
-     * Returns the strategy's description.
-     *
-     * @return Strategy's description.
-     */
-    String getDescription();
 
 }
 

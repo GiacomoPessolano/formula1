@@ -136,25 +136,24 @@ public class PlayerFormula1 implements Player {
      * Compares a Player to another object.
      *
      * @param obj Object to compare the Player to.
-     * @return True if the object is of the PlayerFormula1 class, and it has the same name, strategy and
-     * last movement of the Player, false otherwise.
+     * @return True if the object is of the PlayerFormula1 class, and it has the same name, strategy
+     * of the Player, false otherwise.
      */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof PlayerFormula1 other) {
-            return name.equals(other.name) && strategy.equals(other.strategy)
-                    && lastMove.equals(other.lastMove);
+            return name.equals(other.name) && strategy.equals(other.strategy);
         }
         return false;
     }
 
     /**
-     * Returns hash value calculated on the Player's fields.
+     * Returns hash value calculated on the Player's name and strategy.
      *
      * @return A hash value for this Player.
      */
     @Override
     public int hashCode() {
-        return Objects.hash(name, strategy, lastMove);
+        return Objects.hash(name, strategy);
     }
 }

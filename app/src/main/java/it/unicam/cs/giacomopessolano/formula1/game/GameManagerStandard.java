@@ -169,8 +169,6 @@ public class GameManagerStandard implements GameManager {
         if (!currentPlayer.hasCrashed()) {
             CellState result = turnManager.executeMove(grid, currentPlayer, playerPositions);
 
-            System.out.println(result.toString());
-
             if (result.equals(CellState.OFFTRACK)) {
                 currentPlayer.crash();
                 crashedPlayers++;
