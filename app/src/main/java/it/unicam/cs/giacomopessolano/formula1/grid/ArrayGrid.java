@@ -38,7 +38,7 @@ public class ArrayGrid implements Grid {
 
     /**
      * Constructs an ArrayGrid with the given 2D array of Cell objects. The constructor is given a default
-     * access modifier because ArrayGrid objects should be created by a parser in the same package.
+     * access modifier because ArrayGrid objects should be created by a file parser in the same package.
      *
      * @param grid The 2D array of Cell objects representing the grid.
      */

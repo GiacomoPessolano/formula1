@@ -26,10 +26,9 @@
 package it.unicam.cs.giacomopessolano.formula1.grid;
 
 import it.unicam.cs.giacomopessolano.formula1.exceptions.IncorrectConfigurationException;
+import it.unicam.cs.giacomopessolano.formula1.exceptions.UnrecognizedFileException;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +56,12 @@ public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
     public void initialize(String filename) throws IOException {
         validateFileExtension(filename);
 
-        List<char[]> rows = generateRows(filename);
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filename);
+        if (inputStream == null) {
+            throw new UnrecognizedFileException(filename);
+        }
+
+        List<char[]> rows = generateRows(inputStream);
         int width = findMaxWidth(rows);
 
         this.grid = createGrid(rows, width);
@@ -75,14 +79,14 @@ public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
      * Reads the rows of characters representing the grid from the .txt file.
      * It starts reading from the line "TRACK".
      *
-     * @param filename The name of the .txt file containing grid information.
+     * @param inputStream The name of the .txt file containing grid information.
      * @return A list of character arrays where each array represents a row of the grid.
      * @throws IOException If there is an error while reading the file.
      */
-    private List<char[]> generateRows(String filename) throws IOException {
+    private List<char[]> generateRows(InputStream inputStream) throws IOException {
         List<char[]> rows = new ArrayList<>();
 
-        BufferedReader br = new BufferedReader(new FileReader(filename));
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         String line;
         boolean hasGridStarted = false;
         while ((line = br.readLine()) != null) {
@@ -145,7 +149,6 @@ public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
      * @throws IncorrectConfigurationException If the symbol does not correspond to a valid state.
      */
     private Cell symbolToCell(char symbol) throws IOException {
-        //todo supplier?
         return switch (symbol) {
             case 'R' -> new Cell(CellState.TRACK);
             case 'S' -> new Cell(CellState.START);

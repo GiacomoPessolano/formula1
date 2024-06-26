@@ -1,2 +1,5 @@
+PLAYERS
+Giacomo DUMB 1 2
+
 TRACK
 CAMERINO

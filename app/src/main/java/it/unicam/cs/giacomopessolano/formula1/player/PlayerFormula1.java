@@ -38,7 +38,7 @@ public class PlayerFormula1 implements Player {
     /**
      * Constructs a Formula 1 player with the given name, strategy, and initial movement direction.
      * The constructor is given a default access modifier because PlayerFormula1 objects should be created
-     * by a parser in the same package.
+     * by a file parser in the same package.
      *
      * @param name     The name of the player.
      * @param strategy The strategy used by the player.

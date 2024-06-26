@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="ALL" />
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Added javadocs and license to all classes">
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Fixed a couple bugs, will begin full-blown testing soon">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/TurnManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/TurnManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/TurnManagerStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/TurnManagerStandard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Strategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Strategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyDumb.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyDumb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterfaceCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterfaceCLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGridInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGridInitializerFromTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1InitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1InitializerFromTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerInitializerFromTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/small.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/resources/small.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/wrong.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/resources/wrong.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/root/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/src/main/resources/donut.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/resources/donut.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +94,8 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Gradle.ArrayGridFromTxtInitializerTest.executor": "Run",
+    "Gradle.PlayerFormula1InitializerFromTxtTest.executor": "Run",
+    "Gradle.PlayerFormula1Test.executor": "Run",
     "Gradle.Upgrade Gradle wrapper.executor": "Run",
     "Gradle.formula1:root [:root:Main.main()].executor": "Run",
     "Gradle.gui [:HelloApplication.main()].executor": "Run",
@@ -119,6 +129,9 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Utente\JavaProjects\formula1\root\src\main\resources" />
+      <recent name="C:\Users\Utente\JavaProjects\formula1\root\src\main\resources\tracks" />
+      <recent name="C:\Users\Utente\JavaProjects\formula1\app\src\test\resources" />
+      <recent name="C:\Users\Utente\JavaProjects\formula1\app\src\test\resources\test_tracks" />
       <recent name="C:\Users\Utente\JavaProjects\formula1\root\src\main\java\it\unicam\cs\giacomopessolano\formula1\main" />
     </key>
   </component>
@@ -171,7 +184,8 @@
       <workItem from="1719256209056" duration="5127000" />
       <workItem from="1719302841699" duration="15390000" />
       <workItem from="1719322243068" duration="19262000" />
-      <workItem from="1719393284008" duration="5418000" />
+      <workItem from="1719393284008" duration="5478000" />
+      <workItem from="1719402749573" duration="11817000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -325,7 +339,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719343247578</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Fixed a couple bugs, will begin full-blown testing soon">
+      <option name="closed" value="true" />
+      <created>1719398785799</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1719398785799</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +372,8 @@
     <MESSAGE value="Temporarily gave absolute path of track; BEGIN WRITING TESTS" />
     <MESSAGE value="Mixed parameters" />
     <MESSAGE value="Added javadocs and license to all classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added javadocs and license to all classes" />
+    <MESSAGE value="Fixed a couple bugs, will begin full-blown testing soon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a couple bugs, will begin full-blown testing soon" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

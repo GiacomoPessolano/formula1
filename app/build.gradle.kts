@@ -17,3 +17,26 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+sourceSets {
+    main {
+        java {
+            srcDirs("src/main/java")
+        }
+        resources {
+            srcDirs("src/main/resources")
+        }
+    }
+    test {
+        java {
+            srcDirs("src/test/java")
+        }
+        resources {
+            srcDirs("src/test/resources")
+        }
+    }
+}
+
+tasks.processTestResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}

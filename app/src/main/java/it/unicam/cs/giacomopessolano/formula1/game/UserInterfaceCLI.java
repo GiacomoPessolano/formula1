@@ -52,31 +52,18 @@ public class UserInterfaceCLI implements UserInterface {
     }
 
     /**
-     * Lets the user choose a track from a specified directory.
-     *
-     * @param dirName Directory where tracks are located.
-     * @return The chosen track.
-     * @throws UnrecognizedFileException If the track was not found or no tracks were in the directory.
+     * {@inheritDoc}
      */
     @Override
-    public String chooseTrack(String dirName) throws IOException {
-        List<String> tracks = availableTracks(dirName);
-        if (tracks.isEmpty()) {
-            throw new UnrecognizedFileException("No tracks found.");
-        }
+    public String chooseTrack(String dir) {
+        System.out.println("Choose your track. Available tracks are in the " + dir + " folder.");
+        System.out.println("To add a track, put it in said folder.");
+        return scanner.nextLine();
+    }
 
-        for (String track : tracks) {
-            System.out.println(track);
-        }
-
-        System.out.println("Choose your track.");
-        String trackChosen = scanner.nextLine();
-        if (tracks.contains(trackChosen)) {
-            System.out.println("Track chosen: " + trackChosen);
-            return trackChosen;
-        } else {
-            throw new UnrecognizedFileException("Track not found.");
-        }
+    @Override
+    public void trackNotFoundMessage() {
+        System.out.println("The track could not be found.");
     }
 
     /**
@@ -153,30 +140,6 @@ public class UserInterfaceCLI implements UserInterface {
             System.out.println("Goodbye...");
             return false;
         }
-    }
-
-    /**
-     * Displays all the available tracks in a directory.
-     *
-     * @param dirName Directory with the tracks.
-     * @return List of all the tracks in the directory (in this implementation assumed to be .txt files)
-     */
-    private List<String> availableTracks(String dirName) {
-        List<String> tracks = new ArrayList<>();
-        File dir = new File(dirName);
-        File[] files = dir.listFiles();
-
-        if (files == null) {
-            return tracks;
-        }
-
-        for (File file : files) {
-            if (file.getName().endsWith(".txt")) {
-                tracks.add(file.getName());
-            }
-        }
-
-        return tracks;
     }
 
     /**

@@ -27,3 +27,26 @@ tasks.getByName("run", JavaExec::class) {
 application {
     mainClass.set("it.unicam.cs.giacomopessolano.formula1.main.Main")
 }
+
+sourceSets {
+    main {
+        java {
+            srcDirs("src/main/java")
+        }
+        resources {
+            srcDirs("src/main/resources")
+        }
+    }
+    test {
+        java {
+            srcDirs("src/test/java")
+        }
+        resources {
+            srcDirs("src/test/resources")
+        }
+    }
+}
+
+tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}

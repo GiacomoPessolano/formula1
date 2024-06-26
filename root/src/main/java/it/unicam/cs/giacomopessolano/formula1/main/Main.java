@@ -41,7 +41,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             UserInterfaceCLI ui = new UserInterfaceCLI();
-            String file = "C:\\Users\\Utente\\JavaProjects\\formula1\\root\\src\\main\\resources\\donut.txt";
+            String file = ui.chooseTrack("root/src/main/resources");
 
             GameManager game = getGameManagerStandard(file);
 

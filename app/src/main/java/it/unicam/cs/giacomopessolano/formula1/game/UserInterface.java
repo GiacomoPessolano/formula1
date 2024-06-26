@@ -33,13 +33,18 @@ import java.io.IOException;
 public interface UserInterface {
 
     /**
-     * Lets the user choose a track from a specified directory.
+     * Lets the user choose a track.
      *
-     * @param directory Directory where tracks are located.
+     * @param dir The directory where tracks are located.
      * @return The chosen track.
      * @throws IOException If something goes wrong while choosing a track.
      */
-    String chooseTrack(String directory) throws IOException;
+    String chooseTrack(String dir) throws IOException;
+
+    /**
+     * Displays a message when the track wasn't found between the available ones.
+     */
+    void trackNotFoundMessage();
 
     /**
      * Displays a game's grid.
