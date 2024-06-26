@@ -34,6 +34,7 @@ import it.unicam.cs.giacomopessolano.formula1.player.Position;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Implementation of Validator that performs checks on a grid and the players mapped to said grid.
@@ -42,10 +43,25 @@ import java.util.Map;
  */
 public class ValidatorStandard implements Validator {
 
+    /**
+     * Grid to validate.
+     */
     private final Grid grid;
+    /**
+     * Positions to validate.
+     */
     private final Map<Player, Position> startingPositions;
+    /**
+     * Number of players.
+     */
     private final int playerNumber;
+    /**
+     * Cells with CellState.START type.
+     */
     private final ArrayList<Cell> startCells;
+    /**
+     * Cells with CellState.END type.
+     */
     private final ArrayList<Cell> endCells;
 
     /**
@@ -132,5 +148,29 @@ public class ValidatorStandard implements Validator {
             }
         }
         return cells;
+    }
+
+    /**
+     * Compares a ValidatorStandard to another object.
+     *
+     * @param obj Object to compare the validator to.
+     * @return True if the object validates the same data structures, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof ValidatorStandard other) {
+            return grid.equals(other.grid) && startingPositions.equals(other.startingPositions);
+        }
+        return false;
+    }
+
+    /**
+     * Returns hash value calculated on a ValidatorStandard data structures.
+     *
+     * @return A hash value for this validator.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(grid, startingPositions);
     }
 }

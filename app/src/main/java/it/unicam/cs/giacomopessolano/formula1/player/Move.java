@@ -25,6 +25,8 @@
 
 package it.unicam.cs.giacomopessolano.formula1.player;
 
+import java.util.Objects;
+
 /**
  * Record that represents a movement in a two-dimensional space, storing horizontal and vertical components.
  * The components can be negative to indicate movement in the opposite direction.
@@ -56,6 +58,16 @@ public record Move(int x, int y) {
             return m.x() == x() && m.y() == y;
         }
         return false;
+    }
+
+    /**
+     * Returns hash value calculated on the Move's x and y values.
+     *
+     * @return A hash value for this Move.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
 }

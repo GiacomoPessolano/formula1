@@ -25,14 +25,28 @@
 
 package it.unicam.cs.giacomopessolano.formula1.player;
 
+import java.util.Objects;
+
 /**
  * Represents a Formula 1 player with a name, strategy and last movement.
  */
 public class PlayerFormula1 implements Player {
 
+    /**
+     * Player's name.
+     */
     private final String name;
+    /**
+     * Player's strategy.
+     */
     private final Strategy strategy;
+    /**
+     * Player's last move.
+     */
     private Move lastMove;
+    /**
+     * States if the Player crashed.
+     */
     private boolean hasCrashed;
 
     /**
@@ -105,22 +119,6 @@ public class PlayerFormula1 implements Player {
     }
 
     /**
-     * Compares a player to another object.
-     *
-     * @param obj Object to compare the player to.
-     * @return True if the object is of the PlayerFormula1 class, and it has the same name, strategy and
-     * last movement of the player, false otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof PlayerFormula1 other) {
-            return name.equals(other.name) && strategy.equals(other.strategy)
-                    && lastMove.equals(other.lastMove);
-        }
-        return false;
-    }
-
-    /**
      * Creates a copy of this player object.
      *
      * @return A copy of this player.
@@ -132,5 +130,31 @@ public class PlayerFormula1 implements Player {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    /**
+     * Compares a Player to another object.
+     *
+     * @param obj Object to compare the Player to.
+     * @return True if the object is of the PlayerFormula1 class, and it has the same name, strategy and
+     * last movement of the Player, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof PlayerFormula1 other) {
+            return name.equals(other.name) && strategy.equals(other.strategy)
+                    && lastMove.equals(other.lastMove);
+        }
+        return false;
+    }
+
+    /**
+     * Returns hash value calculated on the Player's fields.
+     *
+     * @return A hash value for this Player.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, strategy, lastMove);
     }
 }

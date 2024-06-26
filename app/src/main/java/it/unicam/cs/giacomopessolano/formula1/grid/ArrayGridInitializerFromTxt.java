@@ -31,6 +31,7 @@ import it.unicam.cs.giacomopessolano.formula1.exceptions.UnrecognizedFileExcepti
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Implementation GridInitializerFromTxt that reads information from a .txt file and
@@ -43,6 +44,9 @@ import java.util.List;
  */
 public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
 
+    /**
+     * Parsed grid.
+     */
     private Grid grid;
 
     /**
@@ -157,5 +161,29 @@ public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
             default -> throw new IncorrectConfigurationException("The symbol " + symbol + " is not valid.");
         };
 
+    }
+
+    /**
+     * Compares a GridInitializerFromTxt to another object.
+     *
+     * @param obj Object to compare the initializer to.
+     * @return True if the object has the same grid, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof ArrayGridInitializerFromTxt other) {
+            return this.grid.equals(other.grid);
+        }
+        return false;
+    }
+
+    /**
+     * Returns hash value calculated on a GridInitializerFromTxt's data structures.
+     *
+     * @return A hash value for this initializer.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(grid);
     }
 }

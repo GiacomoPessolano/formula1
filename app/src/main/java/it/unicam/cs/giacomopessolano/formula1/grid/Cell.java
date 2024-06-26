@@ -27,6 +27,8 @@ package it.unicam.cs.giacomopessolano.formula1.grid;
 
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
 
+import java.util.Objects;
+
 /**
  * Class representing a Cell of the playing Grid. Each cell has a state and can optionally contain a player.
  */
@@ -95,29 +97,6 @@ public class Cell implements Cloneable {
     }
 
     /**
-     * Compares a cell to another object.
-     *
-     * @param o Object to compare the cell to.
-     * @return True if the object has the same state and player, false otherwise.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Cell cell)) return false;
-
-        if (!state.equals(cell.state)) return false;
-
-
-        if (getPlayer() == null && cell.getPlayer() == null) {
-            return true;
-        } else if (getPlayer() == null || cell.getPlayer() == null) {
-            // One player is null, the other is not
-            return false;
-        } else {
-            return getPlayer().equals(cell.getPlayer());
-        }
-    }
-
-    /**
      * Creates a deep copy of the cell, including its state and occupied player (if any).
      *
      * @return A cloned Cell object with the same state and player (if occupied).
@@ -135,5 +114,38 @@ public class Cell implements Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    /**
+     * Compares a cell to another object.
+     *
+     * @param obj Object to compare the cell to.
+     * @return True if the object has the same state and player, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Cell cell)) return false;
+
+        if (!state.equals(cell.state)) return false;
+
+
+        if (getPlayer() == null && cell.getPlayer() == null) {
+            return true;
+        } else if (getPlayer() == null || cell.getPlayer() == null) {
+            // One player is null, the other is not
+            return false;
+        } else {
+            return getPlayer().equals(cell.getPlayer());
+        }
+    }
+
+    /**
+     * Returns hash value calculated on the cell's state and optional player.
+     *
+     * @return A hash value for the cell.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(state, player);
     }
 }

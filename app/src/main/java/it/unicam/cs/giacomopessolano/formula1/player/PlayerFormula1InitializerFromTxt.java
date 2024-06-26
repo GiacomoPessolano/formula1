@@ -22,7 +22,13 @@ import java.util.*;
  */
 public class PlayerFormula1InitializerFromTxt implements PlayerInitializerFromTxt {
 
+    /**
+     * Parsed map of players to a Position.
+     */
     private Map<Player, Position> playerPositionMap;
+    /**
+     * Parsed list of players.
+     */
     private List<Player> players;
 
     /**
@@ -152,5 +158,29 @@ public class PlayerFormula1InitializerFromTxt implements PlayerInitializerFromTx
             case "RIGHT" -> Direction.RIGHT;
             default -> throw new IncorrectConfigurationException("The starting direction " + s + " is not supported.");
         };
+    }
+
+    /**
+     * Compares a PlayerFormula1InitializerFromTxt to another object.
+     *
+     * @param obj Object to compare the initializer to.
+     * @return True if the object has the same data structures, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof PlayerFormula1InitializerFromTxt other) {
+            return this.playerPositionMap.equals(other.playerPositionMap) && this.players.equals(other.players);
+        }
+        return false;
+    }
+
+    /**
+     * Returns hash value calculated on a PlayerFormula1InitializerFromTxt's data structures.
+     *
+     * @return A hash value for this initializer.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(playerPositionMap, players);
     }
 }

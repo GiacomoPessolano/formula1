@@ -25,16 +25,11 @@
 
 package it.unicam.cs.giacomopessolano.formula1.game;
 
-import it.unicam.cs.giacomopessolano.formula1.exceptions.UnrecognizedFileException;
 import it.unicam.cs.giacomopessolano.formula1.grid.Cell;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
 import it.unicam.cs.giacomopessolano.formula1.player.Position;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -42,6 +37,9 @@ import java.util.Scanner;
  */
 public class UserInterfaceCLI implements UserInterface {
 
+    /**
+     * Class used for taking user input.
+     */
     Scanner scanner;
 
     /**

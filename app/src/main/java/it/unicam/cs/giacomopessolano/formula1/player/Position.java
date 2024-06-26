@@ -27,6 +27,8 @@ package it.unicam.cs.giacomopessolano.formula1.player;
 
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 
+import java.util.Objects;
+
 /**
  * Record to stores x and y coordinates on a grid.
  *
@@ -60,7 +62,10 @@ public record Position(int x, int y) {
     }
 
     /**
-     * {@inheritDoc}
+     * Compares a Position to another object.
+     *
+     * @param obj Object to compare the Position to.
+     * @return True if the object has the same coordinates, false otherwise.
      */
     @Override
     public boolean equals(Object obj) {
@@ -68,5 +73,15 @@ public record Position(int x, int y) {
             return x == p.x() && y == p.y();
         }
         return false;
+    }
+
+    /**
+     * Returns hash value calculated on a Position's coordinates.
+     *
+     * @return A hash value for this Position.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

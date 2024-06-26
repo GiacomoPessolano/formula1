@@ -35,10 +35,19 @@ import java.util.Random;
 /**
  * Implementation of Strategy that uses random chance to make its choice.
  */
-public class StrategyDumb implements Strategy {
+public final class StrategyDumb implements Strategy {
 
+    /**
+     * Random number generator.
+     */
     Random rand = new Random();
+    /**
+     * Name of the strategy.
+     */
     public static final String NAME = "DUMB";
+    /**
+     * Description of the strategy.
+     */
     public static final String DESCRIPTION = "Player moves randomly.";
 
     /**

@@ -34,6 +34,7 @@ import it.unicam.cs.giacomopessolano.formula1.player.Position;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Implementation of GameInitializer that works by uniting a GridInitializer and PlayerInitializer to
@@ -42,7 +43,13 @@ import java.util.Map;
  */
 public class GameInitializerFromTxt implements GameInitializer {
 
+    /**
+     * Initializer responsible for the grid.
+     */
     private final GridInitializerFromTxt gridInitializer;
+    /**
+     * Initializer responsible for the players.
+     */
     private final PlayerInitializerFromTxt playerInitializer;
 
     /**
@@ -84,5 +91,29 @@ public class GameInitializerFromTxt implements GameInitializer {
     @Override
     public Grid parseGrid() {
         return gridInitializer.getGrid();
+    }
+
+    /**
+     * Compares a GameInitializerFromTxt to another object.
+     *
+     * @param obj Object to compare the initializer to.
+     * @return True if the object has the same initializers.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof GameInitializerFromTxt other) {
+            return gridInitializer.equals(other.gridInitializer) && playerInitializer.equals(other.playerInitializer);
+        }
+        return false;
+    }
+
+    /**
+     * Returns hash value calculated on a GameInitializerFromTxt's two initializers.
+     *
+     * @return A hash value for this initializer.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(gridInitializer, playerInitializer);
     }
 }

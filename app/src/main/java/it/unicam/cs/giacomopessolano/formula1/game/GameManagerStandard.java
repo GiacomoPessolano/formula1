@@ -30,10 +30,7 @@ import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
 import it.unicam.cs.giacomopessolano.formula1.player.Position;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Implementation of GameManager that uses the grid and players of an initializer and stores their changes
@@ -41,18 +38,49 @@ import java.util.Map;
  */
 public class GameManagerStandard implements GameManager {
 
+    /**
+     * The original grid from the initializer.
+     */
     private final Grid originalGrid;
+    /**
+     * The original positions from the initializer.
+     */
     private final List<Player> originalPlayers;
+    /**
+     * The original player list from the initializer.
+     */
     private final  Map<Player, Position> originalPositions;
-
+    /**
+     * Game's grid.
+     */
     private Grid grid;
-    //originals might have different implementations of List and Map; it's unimportant
+    /**
+     * Game's players. Might have a different implementation than the original, but it's unimportant.
+     */
     private final List<Player> players = new ArrayList<>();
+    /**
+     * Game's positions. Might have a different implementation than the original, but it's unimportant.
+     */
     private final Map<Player, Position> playerPositions = new HashMap<>();
+    /**
+     * Game's turn manager responsible for updating the game state each turn.
+     */
     private final TurnManager turnManager;
+    /**
+     * States if the game is still running.
+     */
     private boolean isGameRunning;
+    /**
+     * Number of players who have crashed.
+     */
     private int crashedPlayers;
+    /**
+     * Winner of the game (null if game is running).
+     */
     Player winner;
+    /**
+     * Game's current turn.
+     */
     private int turn;
 
     /**
@@ -202,5 +230,32 @@ public class GameManagerStandard implements GameManager {
             grid.getCell(getPlayerPosition(player)).occupy(player);
         }
 
+    }
+
+    /**
+     * Compares a GameManager to another object. Comparison is based not on the game's result but on
+     * its original initialization.
+     *
+     * @param obj Object to compare the game to.
+     * @return True if the object has the same original data structures and turn manager, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof GameManagerStandard other) {
+            return originalGrid.equals(other.originalGrid) && originalPlayers.equals(other.originalPlayers)
+                    && originalPositions.equals(other.originalPositions) && turnManager == other.turnManager;
+        }
+        return false;
+    }
+
+    /**
+     * Returns a hash value calculated on a GameManager's original data structures and its turn manager.
+     * Calculations are based not on the game's result but on its original initialization.
+     *
+     * @return A hash value for this game.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(originalGrid, originalPlayers, originalPositions, turnManager);
     }
 }

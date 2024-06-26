@@ -27,13 +27,25 @@ package it.unicam.cs.giacomopessolano.formula1.grid;
 
 import it.unicam.cs.giacomopessolano.formula1.player.Position;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Implementation of the Grid interface using a 2D array of Cell objects.
  */
 public class ArrayGrid implements Grid {
 
+    /**
+     * 2D array of cells composing the grid.
+     */
     private final Cell[][] grid;
+    /**
+     * Grid's width.
+     */
     private final int width;
+    /**
+     * Grid's height.
+     */
     private final int height;
 
     /**
@@ -72,6 +84,15 @@ public class ArrayGrid implements Grid {
     }
 
     /**
+     * Returns the 2D array of Cells that composes the grid.
+     *
+     * @return 2D array of Cells.
+     */
+    public Cell[][] getGrid(){
+        return grid;
+    }
+
+    /**
      * Creates a deep copy (clone) of the ArrayGrid object, including its grid of cells.
      *
      * @return A cloned ArrayGrid object with an independent copy of the grid.
@@ -90,11 +111,26 @@ public class ArrayGrid implements Grid {
     }
 
     /**
-     * Returns the 2D array of Cells that composes the grid.
+     * Compares an ArrayGrid to another object.
      *
-     * @return 2D array of Cells.
+     * @param obj Object to compare the ArrayGrid to.
+     * @return True if the object has the same grid, false otherwise.
      */
-    public Cell[][] getGrid(){
-        return grid;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof ArrayGrid other) {
+            return Arrays.deepEquals(grid, other.grid);
+        }
+        return false;
+    }
+
+    /**
+     * Returns hash value calculated on a ArrayGrid's data structures.
+     *
+     * @return A hash value for this grid.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(Arrays.deepHashCode(grid), width, height);
     }
 }
