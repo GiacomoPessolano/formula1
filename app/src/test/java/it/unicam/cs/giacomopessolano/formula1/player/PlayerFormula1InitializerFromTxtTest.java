@@ -26,25 +26,26 @@ class PlayerFormula1InitializerFromTxtTest {
         String filename = "small.txt";
         try {
             initializer.initialize(filename);
-            // Check that players and positions are initialized correctly
+
             List<Player> players = initializer.getPlayers();
             Map<Player, Position> positions = initializer.getPositions();
 
             assertNotNull(players);
             assertNotNull(positions);
-            assertEquals(2, players.size()); // Adjust based on your test file content
-            assertEquals(2, positions.size()); // Adjust based on your test file content
+            assertEquals(2, players.size());
+            assertEquals(2, positions.size());
 
-            // Verify specific player details if needed
             Player firstPlayer = players.get(0);
             Player secondPlayer = players.get(1);
 
             assertEquals("Zorro", firstPlayer.getName());
             assertEquals("Giacomo", secondPlayer.getName());
 
-            // Verify positions
             Position firstPosition = positions.get(firstPlayer);
             Position secondPosition = positions.get(secondPlayer);
+
+            assertEquals(new Move(0, 1), firstPlayer.getLastMove());
+            assertEquals(new Move(0, -1), secondPlayer.getLastMove());
 
             assertEquals(1, firstPosition.x());
             assertEquals(1, firstPosition.y());

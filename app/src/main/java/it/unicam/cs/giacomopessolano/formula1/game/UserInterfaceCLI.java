@@ -151,7 +151,7 @@ public class UserInterfaceCLI implements UserInterface {
      * @return Character representing the cell or player on the cell.
      */
     private char parseCellState(GameManager manager, Cell cell) {
-        if (cell.getPlayer() != null) return String.valueOf(manager.getID(cell.getPlayer())).charAt(0);
+        if (cell.isOccupied()) return String.valueOf(manager.getID(cell.getPlayer())).charAt(0);
 
         switch (cell.getState()) {
             case END -> {

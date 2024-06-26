@@ -37,14 +37,12 @@ public class PlayerFormula1 implements Player {
 
     /**
      * Constructs a Formula 1 player with the given name, strategy, and initial movement direction.
-     * The constructor is given a default access modifier because PlayerFormula1 objects should be created
-     * by a file parser in the same package.
      *
      * @param name     The name of the player.
      * @param strategy The strategy used by the player.
      * @param choice   The initial movement direction chosen.
      */
-    PlayerFormula1(String name, Strategy strategy, Direction choice) {
+    public PlayerFormula1(String name, Strategy strategy, Direction choice) {
         this.name = name;
         this.strategy = strategy;
         lastMove = firstMove(choice);

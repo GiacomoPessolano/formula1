@@ -37,12 +37,11 @@ public class ArrayGrid implements Grid {
     private final int height;
 
     /**
-     * Constructs an ArrayGrid with the given 2D array of Cell objects. The constructor is given a default
-     * access modifier because ArrayGrid objects should be created by a file parser in the same package.
+     * Constructs an ArrayGrid with the given 2D array of Cell objects.
      *
      * @param grid The 2D array of Cell objects representing the grid.
      */
-    ArrayGrid(Cell[][] grid) {
+    public ArrayGrid(Cell[][] grid) {
         this.grid = grid;
         this.width = grid[0].length;
         this.height = grid.length;
@@ -79,19 +78,15 @@ public class ArrayGrid implements Grid {
      */
     @Override
     public ArrayGrid clone() {
-        try {
-            ArrayGrid cloned = (ArrayGrid) super.clone();
+        Cell[][] newGrid = new Cell[height][width];
 
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    cloned.grid[i][j] = grid[i][j].clone();
-                }
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                newGrid[i][j] = grid[i][j].clone();
             }
-
-            return cloned;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
         }
+
+        return new ArrayGrid(newGrid);
     }
 
     /**

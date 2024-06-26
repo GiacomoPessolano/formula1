@@ -70,6 +70,15 @@ public class Cell implements Cloneable {
     }
 
     /**
+     * Checks if the cell is occupied.
+     *
+     * @return True if the player is null, false otherwise.
+     */
+    public boolean isOccupied() {
+        return player != null;
+    }
+
+    /**
      * Removes the player from the cell, making it empty.
      */
     public void flushPlayer() {
@@ -83,6 +92,29 @@ public class Cell implements Cloneable {
      */
     public Player getPlayer() {
         return player;
+    }
+
+    /**
+     * Compares a cell to another object.
+     *
+     * @param o Object to compare the cell to.
+     * @return True if the object has the same state and player, false otherwise.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Cell cell)) return false;
+
+        if (!state.equals(cell.state)) return false;
+
+
+        if (getPlayer() == null && cell.getPlayer() == null) {
+            return true;
+        } else if (getPlayer() == null || cell.getPlayer() == null) {
+            // One player is null, the other is not
+            return false;
+        } else {
+            return getPlayer().equals(cell.getPlayer());
+        }
     }
 
     /**

@@ -42,12 +42,13 @@ public class StrategyDumb implements Strategy {
     public static final String DESCRIPTION = "Player moves randomly.";
 
     /**
-     * Returns a random movement choice as a Direction. If no move is available, it returns null.
+     * Returns a random movement choice as a Direction.
      *
      * @param grid Grid where the movement takes place.
      * @param lastMove The last move executed by a player.
      * @param position The current position of a player on the grid.
      * @return The choice of Direction made.
+     * @throws NoPossibleMoveException If there is no possible move to perform.
      */
     @Override
     public Direction makeChoice(Grid grid, Move lastMove, Position position) throws NoPossibleMoveException {
@@ -92,7 +93,7 @@ public class StrategyDumb implements Strategy {
         for (Direction direction : Direction.values()) {
             Position newPosition = center.neighbour(direction);
             if (newPosition.isValid(grid) &&
-                    grid.getCell(newPosition).getPlayer() == null) {
+                    !grid.getCell(newPosition).isOccupied()) {
                 choices.add(direction);
             }
         }

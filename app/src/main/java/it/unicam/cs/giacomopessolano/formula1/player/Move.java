@@ -44,4 +44,18 @@ public record Move(int x, int y) {
         return new Move(x + choice.x(), y + choice.y());
     }
 
+    /**
+     * Compares Move to another object.
+     *
+     * @param o   the reference object with which to compare.
+     * @return True if they have the same x and y values, false otherwise.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Move m) {
+            return m.x() == x() && m.y() == y;
+        }
+        return false;
+    }
+
 }
