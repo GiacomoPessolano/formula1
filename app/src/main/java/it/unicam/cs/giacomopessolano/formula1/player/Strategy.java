@@ -25,6 +25,7 @@
 
 package it.unicam.cs.giacomopessolano.formula1.player;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.NoPossibleMoveException;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 
 /**
@@ -40,7 +41,7 @@ public interface Strategy {
      * @param position The current position of a player on the grid.
      * @return The choice of Direction made.
      */
-    Direction makeChoice(Grid grid, Move lastMove, Position position);
+    Direction makeChoice(Grid grid, Move lastMove, Position position) throws NoPossibleMoveException;
 
     /**
      * Returns the strategy's name.

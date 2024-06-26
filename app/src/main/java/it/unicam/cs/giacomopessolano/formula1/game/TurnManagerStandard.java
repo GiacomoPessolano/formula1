@@ -25,6 +25,7 @@
 
 package it.unicam.cs.giacomopessolano.formula1.game;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.NoPossibleMoveException;
 import it.unicam.cs.giacomopessolano.formula1.grid.CellState;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.player.Direction;
@@ -52,8 +53,14 @@ public class TurnManagerStandard implements TurnManager {
      */
     @Override
     public CellState executeMove(Grid grid, Player player, Map<Player, Position> positions) {
-        Direction choice = player.getStrategy().
-                makeChoice(grid, player.getLastMove(), positions.get(player));
+
+        Direction choice;
+        try {
+            choice = player.getStrategy().
+                    makeChoice(grid, player.getLastMove(), positions.get(player));
+        } catch (NoPossibleMoveException e) {
+            return CellState.OFFTRACK;
+        }
 
         player.updateLastMove(choice);
         Move newMove = player.getLastMove();

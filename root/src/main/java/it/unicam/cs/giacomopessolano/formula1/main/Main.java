@@ -38,7 +38,7 @@ import java.io.IOException;
  */
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         try {
             UserInterfaceCLI ui = new UserInterfaceCLI();
             String file = "C:\\Users\\Utente\\JavaProjects\\formula1\\root\\src\\main\\resources\\donut.txt";
@@ -51,13 +51,13 @@ public class Main {
             if (!validator.performAllChecks()) throw new IncorrectConfigurationException(
                     "Configuration failed validation.");
 
+            ui.displayGrid(game);
             while (game.isGameRunning()) {
-                ui.displayGrid(game);
                 Thread.sleep(5000);
                 ui.turnMessage(game);
                 Thread.sleep(1000);
                 game.nextTurn();
-
+                ui.displayGrid(game);
                 if (!game.isGameRunning()) {
                     ui.gameOverMessage(game);
                     if (ui.wantToPlayAgainMessage()) {
@@ -86,7 +86,7 @@ public class Main {
     }
 
     /**
-     * Returns a GameManager from a .txt file.
+     * Returns a GameManagerStandard from a .txt file.
      *
      * @param file Name of the file.
      * @return Game manager with TurnManagerStandard and GameInitializerFromTxt classes.

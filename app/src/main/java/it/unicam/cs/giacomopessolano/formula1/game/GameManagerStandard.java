@@ -81,6 +81,8 @@ public class GameManagerStandard implements GameManager {
         crashedPlayers = 0;
         turn = 0;
         cloneData();
+
+        putStartingPositions();
     }
 
     /**
@@ -139,6 +141,8 @@ public class GameManagerStandard implements GameManager {
         if (!currentPlayer.hasCrashed()) {
             CellState result = turnManager.executeMove(grid, currentPlayer, playerPositions);
 
+            System.out.println(result.toString());
+
             if (result.equals(CellState.OFFTRACK)) {
                 currentPlayer.crash();
                 crashedPlayers++;
@@ -185,6 +189,17 @@ public class GameManagerStandard implements GameManager {
             Player clone = player.clone();
             players.add(clone);
             playerPositions.put(clone, originalPositions.get(player));
+        }
+
+    }
+
+    /**
+     * Updates cells to put players in the positions where they're mapped.
+     */
+    private void putStartingPositions() {
+
+        for (Player player : players) {
+            grid.getCell(getPlayerPosition(player)).occupy(player);
         }
 
     }

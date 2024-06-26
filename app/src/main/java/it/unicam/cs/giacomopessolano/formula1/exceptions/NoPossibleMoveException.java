@@ -23,28 +23,20 @@
  *
  */
 
-package it.unicam.cs.giacomopessolano.formula1.game;
-
-import it.unicam.cs.giacomopessolano.formula1.grid.CellState;
-import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
-import it.unicam.cs.giacomopessolano.formula1.player.Player;
-import it.unicam.cs.giacomopessolano.formula1.player.Position;
-
-import java.util.Map;
+package it.unicam.cs.giacomopessolano.formula1.exceptions;
 
 /**
- * Interface that handles the game's logic for movements by updating the data structure correctly.
+ * Exception to signal the player cannot make any legal move.
  */
-public interface TurnManager {
+public class NoPossibleMoveException extends Exception {
 
     /**
-     * Updates the provided data structures based on the player's movement.
+     * Constructs an NoPossibleMoveException with the specified detail message.
      *
-     * @param grid Grid to update.
-     * @param player Player that moves on the grid.
-     * @param positions Map of players to their positions.
-     * @return CellState indicating the move's result.
+     * @param message The detail message (which is saved for later retrieval by the getMessage() method).
      */
-    CellState executeMove(Grid grid, Player player, Map<Player, Position> positions);
+    public NoPossibleMoveException(String message) {
+        super(message);
+    }
 
 }
