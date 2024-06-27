@@ -59,7 +59,8 @@ public class Main extends Application {
                 game = new GameManagerStandard(initializer, turnManager);
 
                 game.startGame();
-                Validator validator = new ValidatorStandard(game.getGrid(), game.getPlayerPositions());
+                Validator validator = new ValidatorStandard(game.getGrid(), game.getPlayerPositions(),
+                        120, 120);
                 if (validator.performAllChecks()) {
                     ui.displayGrid(game);
                     break;
@@ -70,7 +71,7 @@ public class Main extends Application {
                 ui.errorMessage("The track was not recognized; check if you put it in the right folder.");
             } catch (IncorrectConfigurationException e) {
                 ui.errorMessage("The track was formatted incorrectly; check instructions");
-            } catch (IOException e) {
+            } catch (Exception e) {
                 ui.errorMessage("Something went wrong, please try again.");
             }
         }

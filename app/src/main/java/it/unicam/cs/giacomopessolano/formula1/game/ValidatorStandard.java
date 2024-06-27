@@ -39,6 +39,7 @@ import java.util.Objects;
 /**
  * Implementation of Validator that performs checks on a grid and the players mapped to said grid.
  * Here's a rundown of all checks performed by the class:
+ * - grid size must not exceed the values put in the constructor;
  * - number of players must be higher than 0 but less than the number of START cells;
  * - the number of END cells must not be zero;
  * - the mapping of starting positions must be reflected on the cells of the grid;
@@ -54,6 +55,14 @@ public class ValidatorStandard implements Validator {
      * Positions to validate.
      */
     private final Map<Player, Position> startingPositions;
+    /**
+     * Max grid width allowed.
+     */
+    private final int maxWidth;
+    /**
+     * Max grid height allowed.
+     */
+    private final int maxHeight;
     /**
      * Number of players.
      */
@@ -73,12 +82,15 @@ public class ValidatorStandard implements Validator {
      * @param grid Grid to check.
      * @param startingPositions Player positions to check.
      */
-    public ValidatorStandard(Grid grid, Map<Player, Position> startingPositions) {
+    public ValidatorStandard(Grid grid, Map<Player, Position> startingPositions, int maxWidth, int maxHeight) {
         this.grid = grid;
         this.playerNumber = startingPositions.keySet().size();
         this.startingPositions = startingPositions;
+        this.maxWidth = maxWidth;
+        this.maxHeight = maxHeight;
         this.startCells = findTypeCells(CellState.START);
         this.endCells = findTypeCells(CellState.END);
+
     }
 
     /**
@@ -86,8 +98,8 @@ public class ValidatorStandard implements Validator {
      */
     @Override
     public boolean performAllChecks() {
-        return isPlayerNumberValid() && isEndNumberCorrect() && arePlayerPositionsCorrect()
-                && areStartingPositionsDifferent();
+        return isGridSizeAcceptable(maxWidth, maxHeight) && isPlayerNumberValid() && isEndNumberCorrect()
+                && arePlayerPositionsCorrect() && areStartingPositionsDifferent();
     }
 
     /**
@@ -97,6 +109,17 @@ public class ValidatorStandard implements Validator {
      */
     private boolean isPlayerNumberValid() {
         return playerNumber <= startCells.size() && playerNumber > 0;
+    }
+
+    /**
+     * Checks whether the grid size is of an acceptable size.
+     *
+     * @param maxWidth Maximum allowed width.
+     * @param maxHeight Maximum allowed height.
+     * @return True if grid height and width are less than the given values;
+     */
+    private boolean isGridSizeAcceptable(int maxWidth, int maxHeight) {
+        return grid.getHeight() <= maxHeight && grid.getWidth() <= maxWidth;
     }
 
     /**
