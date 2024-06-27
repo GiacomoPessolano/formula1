@@ -118,10 +118,12 @@ public class UserInterfaceCLI implements UserInterface {
     @Override
     public void gameOverMessage(GameManager manager) {
         System.out.println("The game has ended.");
-        if (manager.getWinner() == null) {
+        Player winner = manager.getWinner();
+
+        if (winner == null) {
             System.out.println("Nobody won the game.");
         } else {
-            System.out.println("The winner is " + manager.getWinner() + "!");
+            System.out.println("The winner is " + winner.getName() + "!");
         }
     }
 

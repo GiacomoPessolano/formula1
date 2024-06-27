@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Edited git ignore, added CENTER as starting position in initializer classes">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Started working on JavaFX GUI; added ui module and dependencies needed for root module; generated a UI similar to the CLI implementation, but it needs a revamp. Made it so the app can start with gradle run">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterfaceCLI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/root/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceCLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,47 +81,47 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Gradle.ArrayGridFromTxtInitializerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ArrayGridInitializerFromTxtTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ArrayGridTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.PlayerFormula1InitializerFromTxtTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.PlayerFormula1Test.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StrategyDumbTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.TurnManagerStandardTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ValidatorStandardTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.formula1:root [:root:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.gui [:HelloApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.gui [:gui:HelloApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ui [:HelloApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;java21&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Utente/JavaProjects/formula1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Gradle.ArrayGridFromTxtInitializerTest.executor": "Run",
+    "Gradle.ArrayGridInitializerFromTxtTest.executor": "Run",
+    "Gradle.ArrayGridTest.executor": "Run",
+    "Gradle.PlayerFormula1InitializerFromTxtTest.executor": "Run",
+    "Gradle.PlayerFormula1Test.executor": "Run",
+    "Gradle.StrategyDumbTest.executor": "Run",
+    "Gradle.TurnManagerStandardTest.executor": "Run",
+    "Gradle.Upgrade Gradle wrapper.executor": "Run",
+    "Gradle.ValidatorStandardTest.executor": "Run",
+    "Gradle.formula1:root [:root:Main.main()].executor": "Run",
+    "Gradle.gui [:HelloApplication.main()].executor": "Run",
+    "Gradle.gui [:gui:HelloApplication.main()].executor": "Run",
+    "Gradle.ui [:HelloApplication.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "java21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Program Files/JavaFX/javafx-sdk-22.0.1/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.build.tools.auto.reload": "ALL",
+    "settings.editor.selected.configurable": "build.tools",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;,
-      &quot;module&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory",
+      "module"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Utente\JavaProjects\formula1\root\src\main\resources" />
@@ -187,7 +183,8 @@
       <workItem from="1719393284008" duration="5478000" />
       <workItem from="1719402749573" duration="12281000" />
       <workItem from="1719420213574" duration="18111000" />
-      <workItem from="1719477309617" duration="12816000" />
+      <workItem from="1719477309617" duration="13182000" />
+      <workItem from="1719495504235" duration="8196000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -397,14 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719488107516</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Started working on JavaFX GUI; added ui module and dependencies needed for root module; generated a UI similar to the CLI implementation, but it needs a revamp. Made it so the app can start with gradle run">
+      <option name="closed" value="true" />
+      <created>1719495490300</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1719495490300</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed project structure. Created Grid and its Initializer classes." />
     <MESSAGE value="New Grid implementation. Added Position record. Fixes." />
     <MESSAGE value="Added interfaces and incomplete implementations for players and their strategies." />
     <MESSAGE value="Restarted" />
@@ -429,7 +433,8 @@
     <MESSAGE value="Test classes and bug fixes;" />
     <MESSAGE value="Touches to Main and CLI ui. Project's first version is now completed." />
     <MESSAGE value="Edited git ignore, added CENTER as starting position in initializer classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited git ignore, added CENTER as starting position in initializer classes" />
+    <MESSAGE value="Started working on JavaFX GUI; added ui module and dependencies needed for root module; generated a UI similar to the CLI implementation, but it needs a revamp. Made it so the app can start with gradle run" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started working on JavaFX GUI; added ui module and dependencies needed for root module; generated a UI similar to the CLI implementation, but it needs a revamp. Made it so the app can start with gradle run" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
