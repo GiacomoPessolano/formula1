@@ -25,6 +25,7 @@
 
 package it.unicam.cs.giacomopessolano.formula1.main;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.GameOverException;
 import it.unicam.cs.giacomopessolano.formula1.exceptions.IncorrectConfigurationException;
 import it.unicam.cs.giacomopessolano.formula1.exceptions.UnrecognizedFileException;
 import it.unicam.cs.giacomopessolano.formula1.game.*;
@@ -102,6 +103,8 @@ public class Main extends Application {
                         break;
                     }
                 }
+            } catch (GameOverException e) {
+                System.exit(0);
             } catch (Exception e) {
                 ui.errorMessage("Something unexpected went wrong; " + e.getMessage());
                 System.exit(-1);

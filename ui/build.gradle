@@ -49,3 +49,8 @@ jlink {
 jlinkZip {
   group = 'distribution'
 }
+
+//hacky solution, ui shouldn't run like an application
+tasks.named('run') {
+    enabled = false
+}

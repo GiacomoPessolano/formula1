@@ -25,6 +25,7 @@
 
 package it.unicam.cs.giacomopessolano.formula1.ui;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.GameOverException;
 import it.unicam.cs.giacomopessolano.formula1.game.GameManager;
 import it.unicam.cs.giacomopessolano.formula1.grid.Cell;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
@@ -120,10 +121,10 @@ public class UserInterfaceCLI implements UserInterface {
         System.out.println("The game has ended.");
         Player winner = manager.getWinner();
 
-        if (winner == null) {
+        if (manager.getWinner() == null) {
             System.out.println("Nobody won the game.");
         } else {
-            System.out.println("The winner is " + winner.getName() + "!");
+            System.out.println("The winner is " + manager.getWinner().getName() + "!");
         }
     }
 
@@ -134,7 +135,7 @@ public class UserInterfaceCLI implements UserInterface {
      * @return True if the answer is Y, false otherwise.
      */
     @Override
-    public boolean wantToPlayAgainMessage() {
+    public boolean wantToPlayAgainMessage() throws GameOverException {
         System.out.println("Enter Y if you want to play again, anything else to exit.");
         String playAgain = scanner.nextLine().toUpperCase();
 
@@ -143,7 +144,7 @@ public class UserInterfaceCLI implements UserInterface {
         } else {
             scanner.close();
             System.out.println("Goodbye...");
-            return false;
+            throw new GameOverException("");
         }
     }
 

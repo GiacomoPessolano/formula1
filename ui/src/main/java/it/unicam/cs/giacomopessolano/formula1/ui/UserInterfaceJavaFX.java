@@ -25,13 +25,14 @@
 
 package it.unicam.cs.giacomopessolano.formula1.ui;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.GameOverException;
 import it.unicam.cs.giacomopessolano.formula1.game.GameManager;
 import it.unicam.cs.giacomopessolano.formula1.grid.Cell;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
 import  it.unicam.cs.giacomopessolano.formula1.player.Position;
 
-import javafx.geometry.Pos;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -45,29 +46,27 @@ import java.util.Optional;
 
 public class UserInterfaceJavaFX implements UserInterface {
 
-    private static final int CELL_SIZE = 20;
+    private static final int CELL_SIZE = 15;
 
     private final Stage primaryStage;
-    private final Label messageLabel = new Label();;
-    private final GridPane grid = new GridPane();;
+    private Label messageLabel = new Label();
+    private GridPane gridPane = new GridPane();
     //private final Object pauseLock = new Object();
     boolean isPaused = false;
 
     public UserInterfaceJavaFX(Stage stage) {
         this.primaryStage = stage;
-        primaryStage.setTitle("Formula 1 Game");
 
-        Button nextTurnButton = new Button("Next Turn");
+        messageLabel.setText("");
 
-        //nextTurnButton.setOnAction(e -> unpauseGame());
+        Button unpauseButton = new Button();
+        unpauseButton.setText("Next Turn");
 
         BorderPane root = new BorderPane();
         root.setTop(messageLabel);
-        root.setBottom(nextTurnButton);
-
-        Scene scene = new Scene(root, 800, 600);
+        root.setCenter(gridPane);
+        Scene scene = new Scene(root, 800, 800);
         primaryStage.setScene(scene);
-        primaryStage.show();
     }
 
     @Override
@@ -84,67 +83,14 @@ public class UserInterfaceJavaFX implements UserInterface {
 
     @Override
     public void displayGrid(GameManager manager) {
-        Grid grid = manager.getGrid();
-        int width = grid.getWidth();
-        int height = grid.getHeight();
-
-        GridPane gridPane = new GridPane();
-
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                StackPane cellStack = new StackPane();
-                Rectangle cell = new Rectangle(CELL_SIZE, CELL_SIZE);
-                Position position = new Position(x, y);
-
-                if (grid.getCell(position).isOccupied()) {
-                    Label playerIdLabel = new Label();
-                    playerIdLabel.setText(String.valueOf(
-                            manager.getID(grid.getCell(position).getPlayer()).charAt(0)));
-                    playerIdLabel.setTextFill(Color.BLACK);
-                    playerIdLabel.setAlignment(Pos.CENTER);
-                    cellStack.getChildren().add(playerIdLabel);
-                }
-                cellStack.getChildren().add(cell);
-                cell.setFill(parseCellState(grid.getCell(position)));
-
-                gridPane.add(cellStack, x, y);
-            }
-        }
-
-        Scene scene = new Scene(gridPane, width * CELL_SIZE, height * CELL_SIZE);
-        primaryStage.setScene(scene);
     }
 
     @Override
     public void turnMessage(GameManager manager) {
-        if (!manager.isGameRunning()) return;
-        Player player = manager.getCurrentPlayer();
-        String name = player.getName();
-
-        if (player.hasCrashed()) {
-            messageLabel.setText(name + " has crashed.");
-        } else {
-            messageLabel.setText("It's " + name + ", " + manager.getID(player) + " , turn.");
-        }
     }
 
     @Override
     public void pause() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            return;
-        }
-        /*synchronized (pauseLock) {
-            isPaused = true;
-            while (isPaused) {
-                try {
-                    pauseLock.wait();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-        }*/
     }
 
     @Override
@@ -152,7 +98,7 @@ public class UserInterfaceJavaFX implements UserInterface {
         if (manager.isGameRunning()) return;
 
         Player winner = manager.getWinner();
-        String title = "Winner";
+        String title = "Game Over";
        if (winner != null) {
            showAlert(title, "The winner is " + winner.getName() + "!");
        } else {
@@ -161,7 +107,7 @@ public class UserInterfaceJavaFX implements UserInterface {
     }
 
     @Override
-    public boolean wantToPlayAgainMessage() {
+    public boolean wantToPlayAgainMessage() throws GameOverException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Play Again?");
         alert.setHeaderText(null);
@@ -172,7 +118,7 @@ public class UserInterfaceJavaFX implements UserInterface {
             return true;
         } else {
             primaryStage.close();
-            return false;
+            throw new GameOverException("");
         }
     }
 

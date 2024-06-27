@@ -25,6 +25,7 @@
 
 package it.unicam.cs.giacomopessolano.formula1.ui;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.GameOverException;
 import it.unicam.cs.giacomopessolano.formula1.game.GameManager;
 
 import java.io.IOException;
@@ -74,7 +75,7 @@ public interface UserInterface {
      *
      * @return True if the answer is positive, false otherwise.
      */
-    boolean wantToPlayAgainMessage();
+    boolean wantToPlayAgainMessage() throws GameOverException;
 
     /**
      * Generic error message.
