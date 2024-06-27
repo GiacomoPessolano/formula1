@@ -1,6 +1,9 @@
 plugins {
     id("java")
     id("application")
+    id("org.openjfx.javafxplugin") version "0.0.13"
+
+    id("org.beryx.jlink") version "2.25.0"
 }
 
 group = "it.unicam.cs.giacomopessolano.formula1"
@@ -12,6 +15,9 @@ repositories {
 
 dependencies {
     implementation(project(":app"))
+    implementation(project(":ui"))
+    implementation("org.openjfx:javafx-controls:10.0")
+    implementation("org.openjfx:javafx-fxml:10.0")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
@@ -26,6 +32,11 @@ tasks.getByName("run", JavaExec::class) {
 
 application {
     mainClass.set("it.unicam.cs.giacomopessolano.formula1.main.Main")
+}
+
+javafx {
+    version = "21"
+    modules = listOf("javafx.controls", "javafx.graphics")
 }
 
 sourceSets {

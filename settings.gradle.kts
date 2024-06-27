@@ -13,3 +13,4 @@ plugins {
 rootProject.name = "it.unicam.cs.giacomopessolano.formula1"
 include("root")
 include("app")
+include("ui")

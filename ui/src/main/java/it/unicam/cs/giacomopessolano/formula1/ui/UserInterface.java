@@ -23,7 +23,9 @@
  *
  */
 
-package it.unicam.cs.giacomopessolano.formula1.game;
+package it.unicam.cs.giacomopessolano.formula1.ui;
+
+import it.unicam.cs.giacomopessolano.formula1.game.GameManager;
 
 import java.io.IOException;
 

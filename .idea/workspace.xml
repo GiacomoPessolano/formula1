@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Touches to Main and CLI ui. Project's first version is now completed.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Edited git ignore, added CENTER as starting position in initializer classes">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1InitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1InitializerFromTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterfaceCLI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/root/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +71,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -180,7 +187,7 @@
       <workItem from="1719393284008" duration="5478000" />
       <workItem from="1719402749573" duration="12281000" />
       <workItem from="1719420213574" duration="18111000" />
-      <workItem from="1719477309617" duration="6243000" />
+      <workItem from="1719477309617" duration="12816000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -382,7 +389,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719482561943</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Edited git ignore, added CENTER as starting position in initializer classes">
+      <option name="closed" value="true" />
+      <created>1719488107516</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1719488107516</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +428,8 @@
     <MESSAGE value="Made equals and hash code for all classes were applicable; added javadoc to fields" />
     <MESSAGE value="Test classes and bug fixes;" />
     <MESSAGE value="Touches to Main and CLI ui. Project's first version is now completed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Touches to Main and CLI ui. Project's first version is now completed." />
+    <MESSAGE value="Edited git ignore, added CENTER as starting position in initializer classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited git ignore, added CENTER as starting position in initializer classes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

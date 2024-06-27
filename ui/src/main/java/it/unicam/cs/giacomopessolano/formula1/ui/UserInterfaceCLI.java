@@ -23,8 +23,9 @@
  *
  */
 
-package it.unicam.cs.giacomopessolano.formula1.game;
+package it.unicam.cs.giacomopessolano.formula1.ui;
 
+import it.unicam.cs.giacomopessolano.formula1.game.GameManager;
 import it.unicam.cs.giacomopessolano.formula1.grid.Cell;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
@@ -176,3 +177,4 @@ public class UserInterfaceCLI implements UserInterface {
         }
     }
 }
+

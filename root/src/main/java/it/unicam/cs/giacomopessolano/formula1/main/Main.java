@@ -30,62 +30,62 @@ import it.unicam.cs.giacomopessolano.formula1.exceptions.UnrecognizedFileExcepti
 import it.unicam.cs.giacomopessolano.formula1.game.*;
 import it.unicam.cs.giacomopessolano.formula1.grid.*;
 import it.unicam.cs.giacomopessolano.formula1.player.*;
+import it.unicam.cs.giacomopessolano.formula1.ui.*;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 /**
  * Main class of the application.
  */
-public class Main {
+public class Main extends Application {
 
-    public static void main(String[] args) {
-        GameManager game;
-        TurnManager turnManager;
-        GameInitializer initializer;
-        GridInitializerFromTxt gridInitializer;
-        PlayerInitializerFromTxt playerInitializer;
-        UserInterface ui = new UserInterfaceCLI();
+    private GameManager game;
+    private UserInterface ui;
+
+    @Override
+    public void start(Stage stage) {
+        ui = new UserInterfaceJavaFX(stage);
 
         while (true) {
             try {
                 String trackName = ui.chooseTrack("root/src/main/resources");
-                gridInitializer = new ArrayGridInitializerFromTxt();
-                playerInitializer = new PlayerFormula1InitializerFromTxt();
-                initializer = new GameInitializerFromTxt(trackName, gridInitializer, playerInitializer);
-                turnManager = new TurnManagerStandard();
+                GridInitializerFromTxt gridInitializer = new ArrayGridInitializerFromTxt();
+                PlayerInitializerFromTxt playerInitializer = new PlayerFormula1InitializerFromTxt();
+                GameInitializer initializer = new GameInitializerFromTxt(trackName, gridInitializer, playerInitializer);
+                TurnManager turnManager = new TurnManagerStandard();
                 game = new GameManagerStandard(initializer, turnManager);
 
                 game.startGame();
-                ui.displayGrid(game);
-                break;
+                Validator validator = new ValidatorStandard(game.getGrid(), game.getPlayerPositions());
+                if (validator.performAllChecks()) {
+                    ui.displayGrid(game);
+                    break;
+                } else {
+                    throw new IncorrectConfigurationException("");
+                }
             } catch (UnrecognizedFileException e) {
-            ui.errorMessage("The track was not recognized; check if you put it in the right folder.");
+                ui.errorMessage("The track was not recognized; check if you put it in the right folder.");
             } catch (IncorrectConfigurationException e) {
-            ui.errorMessage("The track was formatted incorrectly; check instructions");
+                ui.errorMessage("The track was formatted incorrectly; check instructions");
             } catch (IOException e) {
-            ui.errorMessage("Something went wrong, please try again.");
+                ui.errorMessage("Something went wrong, please try again.");
             }
         }
 
-        gameLoop(game, ui);
-
-        System.exit(0);
-
+        gameLoop();
     }
 
     /**
      * The game's standard loop. Displays each turn the game's current state and waits for the user to unpause
      * the simulation. When the game is over, asks the user if they want to play again on the same settings.
-     *
-     * @param game Game settings.
-     * @param ui User interface.
      */
-    private static void gameLoop(GameManager game, UserInterface ui) {
+    private void gameLoop() {
         while (true) {
             try {
                 ui.pause();
                 ui.turnMessage(game);
-                //nextTurn updates the value of currentPlayer, so it must be checked before the turn logic
                 if (game.getCurrentPlayer().hasCrashed()) {
                     game.nextTurn();
                 } else {
@@ -104,9 +104,12 @@ public class Main {
                 }
             } catch (Exception e) {
                 ui.errorMessage("Something unexpected went wrong; " + e.getMessage());
-
                 System.exit(-1);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
