@@ -39,64 +39,74 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
-        try {
-            UserInterfaceCLI ui = new UserInterfaceCLI();
-            String file = ui.chooseTrack("root/src/main/resources");
+        GameManager game;
+        TurnManager turnManager;
+        GameInitializer initializer;
+        GridInitializerFromTxt gridInitializer;
+        PlayerInitializerFromTxt playerInitializer;
+        UserInterface ui = new UserInterfaceCLI();
 
-            GameManager game = getGameManagerStandard(file);
+        while (true) {
+            try {
+                String trackName = ui.chooseTrack("root/src/main/resources");
+                gridInitializer = new ArrayGridInitializerFromTxt();
+                playerInitializer = new PlayerFormula1InitializerFromTxt();
+                initializer = new GameInitializerFromTxt(trackName, gridInitializer, playerInitializer);
+                turnManager = new TurnManagerStandard();
+                game = new GameManagerStandard(initializer, turnManager);
 
-            game.startGame();
-
-            ValidatorStandard validator = new ValidatorStandard(game.getGrid(), game.getPlayerPositions());
-            if (!validator.performAllChecks()) throw new IncorrectConfigurationException(
-                    "Configuration failed validation.");
-
-            ui.displayGrid(game);
-            while (game.isGameRunning()) {
-                Thread.sleep(5000);
-                ui.turnMessage(game);
-                Thread.sleep(1000);
-                game.nextTurn();
+                game.startGame();
                 ui.displayGrid(game);
+                break;
+            } catch (UnrecognizedFileException e) {
+            ui.errorMessage("The track was not recognized; check if you put it in the right folder.");
+            } catch (IncorrectConfigurationException e) {
+            ui.errorMessage("The track was formatted incorrectly; check instructions");
+            } catch (IOException e) {
+            ui.errorMessage("Something went wrong, please try again.");
+            }
+        }
+
+        gameLoop(game, ui);
+
+        System.exit(0);
+
+    }
+
+    /**
+     * The game's standard loop. Displays each turn the game's current state and waits for the user to unpause
+     * the simulation. When the game is over, asks the user if they want to play again on the same settings.
+     *
+     * @param game Game settings.
+     * @param ui User interface.
+     */
+    private static void gameLoop(GameManager game, UserInterface ui) {
+        while (true) {
+            try {
+                ui.pause();
+                ui.turnMessage(game);
+                //nextTurn updates the value of currentPlayer, so it must be checked before the turn logic
+                if (game.getCurrentPlayer().hasCrashed()) {
+                    game.nextTurn();
+                } else {
+                    game.nextTurn();
+                    ui.displayGrid(game);
+                }
+
                 if (!game.isGameRunning()) {
                     ui.gameOverMessage(game);
                     if (ui.wantToPlayAgainMessage()) {
                         game.startGame();
+                        ui.displayGrid(game);
+                    } else {
+                        break;
                     }
                 }
+            } catch (Exception e) {
+                ui.errorMessage("Something unexpected went wrong; " + e.getMessage());
+
+                System.exit(-1);
             }
-        } catch (IncorrectConfigurationException e) {
-            System.err.println(e.getMessage());
-            System.exit(1);
-        } catch (UnrecognizedFileException e) {
-            System.err.println(e.getMessage());
-            System.exit(2);
-        } catch (InterruptedException e) {
-            System.err.println(e.getMessage());
-            System.exit(3);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-            System.exit(4);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            System.exit(5);
         }
-
-        System.exit(0);
-    }
-
-    /**
-     * Returns a GameManagerStandard from a .txt file.
-     *
-     * @param file Name of the file.
-     * @return Game manager with TurnManagerStandard and GameInitializerFromTxt classes.
-     * @throws IOException If there are errors while initializing the file.
-     */
-    private static GameManager getGameManagerStandard(String file) throws IOException {
-        GameInitializerFromTxt initializer = new GameInitializerFromTxt(file, new ArrayGridInitializerFromTxt(),
-                new PlayerFormula1InitializerFromTxt());
-        TurnManager turnManager = new TurnManagerStandard();
-
-        return new GameManagerStandard(initializer, turnManager);
     }
 }

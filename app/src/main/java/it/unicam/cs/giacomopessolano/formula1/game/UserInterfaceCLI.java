@@ -59,11 +59,6 @@ public class UserInterfaceCLI implements UserInterface {
         return scanner.nextLine();
     }
 
-    @Override
-    public void trackNotFoundMessage() {
-        System.out.println("The track could not be found.");
-    }
-
     /**
      * Displays a grid as a String of characters.
      *
@@ -106,6 +101,15 @@ public class UserInterfaceCLI implements UserInterface {
     }
 
     /**
+     * Stops the game until the user inputs anything.
+     */
+    @Override
+    public void pause() {
+        System.out.println("Enter any key to continue...");
+        scanner.nextLine();
+    }
+
+    /**
      * Displays a message to indicate the end of the game and its winner.
      *
      * @param manager Game whose results are displayed.
@@ -138,6 +142,14 @@ public class UserInterfaceCLI implements UserInterface {
             System.out.println("Goodbye...");
             return false;
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void errorMessage(String message) {
+        System.out.println(message);
     }
 
     /**

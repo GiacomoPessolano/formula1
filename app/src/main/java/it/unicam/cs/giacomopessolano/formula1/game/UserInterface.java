@@ -42,12 +42,8 @@ public interface UserInterface {
     String chooseTrack(String dir) throws IOException;
 
     /**
-     * Displays a message when the track wasn't found between the available ones.
-     */
-    void trackNotFoundMessage();
-
-    /**
      * Displays a game's grid.
+     *
      * @param manager Game whose grid is displayed.
      */
     void displayGrid(GameManager manager);
@@ -58,6 +54,11 @@ public interface UserInterface {
      * @param manager Game whose turn is displayed.
      */
     void turnMessage(GameManager manager);
+
+    /**
+     * Pauses the game.
+     */
+    void pause();
 
     /**
      * Displays a message to indicate the end of the game.
@@ -72,4 +73,11 @@ public interface UserInterface {
      * @return True if the answer is positive, false otherwise.
      */
     boolean wantToPlayAgainMessage();
+
+    /**
+     * Generic error message.
+     *
+     * @param message Message displayed.
+     */
+    void errorMessage(String message);
 }
