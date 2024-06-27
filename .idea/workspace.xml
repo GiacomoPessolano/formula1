@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Test classes and bug fixes;">
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Touches to Main and CLI ui. Project's first version is now completed.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterfaceCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/UserInterfaceCLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1InitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1InitializerFromTxt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +180,7 @@
       <workItem from="1719393284008" duration="5478000" />
       <workItem from="1719402749573" duration="12281000" />
       <workItem from="1719420213574" duration="18111000" />
-      <workItem from="1719477309617" duration="4732000" />
+      <workItem from="1719477309617" duration="6243000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -375,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719439930332</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Touches to Main and CLI ui. Project's first version is now completed.">
+      <option name="closed" value="true" />
+      <created>1719482561943</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1719482561943</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,7 +412,8 @@
     <MESSAGE value="Testing of player and grid classes; small retouches" />
     <MESSAGE value="Made equals and hash code for all classes were applicable; added javadoc to fields" />
     <MESSAGE value="Test classes and bug fixes;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test classes and bug fixes;" />
+    <MESSAGE value="Touches to Main and CLI ui. Project's first version is now completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Touches to Main and CLI ui. Project's first version is now completed." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -18,7 +18,7 @@ import java.util.*;
  * and its end by an empty line; each player's attributes (NAME X-AXIS-POSITION Y-AXIS-POSITION
  * STRATEGY FIRST-MOVE) are specified on the same line, separated by spaces or tabs.
  * The permitted Strategies are DUMB;
- * the permitted First-Moves are UP, DOWN, LEFT, RIGHT.
+ * the permitted First-Moves are UP, DOWN, LEFT, RIGHT, CENTER.
  */
 public class PlayerFormula1InitializerFromTxt implements PlayerInitializerFromTxt {
 
@@ -156,6 +156,7 @@ public class PlayerFormula1InitializerFromTxt implements PlayerInitializerFromTx
             case "DOWN" -> Direction.DOWN;
             case "LEFT" -> Direction.LEFT;
             case "RIGHT" -> Direction.RIGHT;
+            case "CENTER" -> Direction.CENTER;
             default -> throw new IncorrectConfigurationException("The starting direction " + s + " is not supported.");
         };
     }
