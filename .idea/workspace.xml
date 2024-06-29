@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Fixed some bugs; must rework key UIJavaFX methods in future">
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Implemented methods to display grid and turn in JavaFX; edited ValidatorStandard to check for the grid's size">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_06_2024_22_25_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_06_2024_22_25__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/src/main/resources/for_dummies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/resources/for_dummies.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceCLI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,36 +61,7 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="it.unicam.cs.giacomopessolano.formula1" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="it.unicam.cs.giacomopessolano.formula1" type="f1a62948:ProjectNode" />
-                <item name="root" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="it.unicam.cs.giacomopessolano.formula1" type="f1a62948:ProjectNode" />
-                <item name="root" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="it.unicam.cs.giacomopessolano.formula1" type="f1a62948:ProjectNode" />
-                <item name="ui" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="it.unicam.cs.giacomopessolano.formula1" type="f1a62948:ProjectNode" />
-                <item name="ui" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="it.unicam.cs.giacomopessolano.formula1" type="f1a62948:ProjectNode" />
-                <item name="ui" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -149,7 +124,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Global Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.build.tools.auto.reload": "ALL",
@@ -225,7 +200,9 @@
       <workItem from="1719402749573" duration="12281000" />
       <workItem from="1719420213574" duration="18111000" />
       <workItem from="1719477309617" duration="13182000" />
-      <workItem from="1719495504235" duration="21654000" />
+      <workItem from="1719495504235" duration="21773000" />
+      <workItem from="1719586062705" duration="9746000" />
+      <workItem from="1719656841536" duration="5839000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -459,14 +436,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719521786121</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Implemented methods to display grid and turn in JavaFX; edited ValidatorStandard to check for the grid's size">
+      <option name="closed" value="true" />
+      <created>1719527964504</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1719527964504</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Restarted" />
     <MESSAGE value="Added GameLogic and GameManager; performance improved for PlayerBotInitializerFromTxt" />
     <MESSAGE value="Added variables; small changes" />
     <MESSAGE value="Refactored way lastTurns are memorized; added interfaces to calculate movement and their result" />
@@ -491,7 +475,8 @@
     <MESSAGE value="Started working on JavaFX GUI; added ui module and dependencies needed for root module; generated a UI similar to the CLI implementation, but it needs a revamp. Made it so the app can start with gradle run" />
     <MESSAGE value="Tried to apply JavaFX gui, needs work" />
     <MESSAGE value="Fixed some bugs; must rework key UIJavaFX methods in future" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs; must rework key UIJavaFX methods in future" />
+    <MESSAGE value="Implemented methods to display grid and turn in JavaFX; edited ValidatorStandard to check for the grid's size" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented methods to display grid and turn in JavaFX; edited ValidatorStandard to check for the grid's size" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

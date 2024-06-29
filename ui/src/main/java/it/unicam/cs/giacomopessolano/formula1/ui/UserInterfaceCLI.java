@@ -25,7 +25,6 @@
 
 package it.unicam.cs.giacomopessolano.formula1.ui;
 
-import it.unicam.cs.giacomopessolano.formula1.exceptions.GameOverException;
 import it.unicam.cs.giacomopessolano.formula1.game.GameManager;
 import it.unicam.cs.giacomopessolano.formula1.grid.Cell;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
@@ -125,26 +124,6 @@ public class UserInterfaceCLI implements UserInterface {
             System.out.println("Nobody won the game.");
         } else {
             System.out.println("The winner is " + manager.getWinner().getName() + "!");
-        }
-    }
-
-    /**
-     * Interacts with the user to ask if they want to play again. The letter 'Y' indicates a positive
-     * answer (case is not important).
-     *
-     * @return True if the answer is Y, false otherwise.
-     */
-    @Override
-    public boolean wantToPlayAgainMessage() throws GameOverException {
-        System.out.println("Enter Y if you want to play again, anything else to exit.");
-        String playAgain = scanner.nextLine().toUpperCase();
-
-        if (playAgain.equals("Y")) {
-            return true;
-        } else {
-            scanner.close();
-            System.out.println("Goodbye...");
-            throw new GameOverException("");
         }
     }
 

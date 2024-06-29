@@ -25,7 +25,6 @@
 
 package it.unicam.cs.giacomopessolano.formula1.ui;
 
-import it.unicam.cs.giacomopessolano.formula1.exceptions.GameOverException;
 import it.unicam.cs.giacomopessolano.formula1.game.GameManager;
 import it.unicam.cs.giacomopessolano.formula1.grid.Cell;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
@@ -51,9 +50,28 @@ public class UserInterfaceJavaFX implements UserInterface {
     private final Stage primaryStage;
     private GridPane gridPane = new GridPane();
     private Label message = new Label();
+    private final Button unpauseButton = new Button("Play next turn.");
+    private final Object pauseLock = new Object();
+    private boolean isGamePaused = false;
 
     public UserInterfaceJavaFX(Stage stage) {
         this.primaryStage = stage;
+
+        unpauseButton.setOnAction(press -> {
+            synchronized (pauseLock) {
+                isGamePaused = false;
+                pauseLock.notify();
+            }
+        });
+
+        // Initialize UI components
+        BorderPane root = new BorderPane();
+        root.setTop(message);
+        root.setCenter(gridPane);
+        root.setBottom(unpauseButton);
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Formula 1 Game");
     }
 
     @Override
@@ -71,7 +89,9 @@ public class UserInterfaceJavaFX implements UserInterface {
     @Override
     public void displayGrid(GameManager manager) {
         Grid gameGrid = manager.getGrid();
-        GridPane newGridPane = new GridPane();
+
+        // Update grid pane
+        gridPane.getChildren().clear(); // Clear previous grid cells
 
         for (int x = 0; x < gameGrid.getWidth(); x++) {
             for (int y = 0; y < gameGrid.getHeight(); y++) {
@@ -82,43 +102,48 @@ public class UserInterfaceJavaFX implements UserInterface {
 
                 Text text = new Text("");
                 if (gameCell.isOccupied()) {
-                    text = new Text(manager.getID(gameCell.getPlayer()).substring(0, 1));
+                    text.setText(manager.getID(gameCell.getPlayer()).substring(0, 1));
                 }
                 rectangle.setOpacity(0.5);
 
                 StackPane stack = new StackPane();
                 stack.getChildren().addAll(rectangle, text);
 
-                newGridPane.add(stack, x, y);
+                gridPane.add(stack, x, y);
             }
         }
-        this.gridPane = newGridPane;
 
-        displayChange(gridPane, message);
+        primaryStage.show();
     }
 
     @Override
     public void turnMessage(GameManager manager) {
         if (!manager.isGameRunning()) return;
         Player player = manager.getCurrentPlayer();
-        String message;
+        String messageText;
 
         if (player.hasCrashed()) {
-            message = player.getName() + " has crashed.";
+            messageText = player.getName() + " has crashed.";
         } else {
-            message = "It's " + player.getName() + ", " + manager.getID(player) + " , turn.";
+            messageText = "It's " + player.getName() + ", " + manager.getID(player) + ", turn.";
         }
-        Label label = new Label(message);
-        displayChange(gridPane, label);
 
+        // Update message label
+        message.setText(messageText);
     }
 
     @Override
     public void pause() {
-        //todo maybe
         try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
+            synchronized (pauseLock) {
+                isGamePaused = true;
+                {
+                    while (isGamePaused) {
+                        pauseLock.wait();
+                    }
+                }
+            }
+        } catch (InterruptedException e ) {
             return;
         }
     }
@@ -128,28 +153,13 @@ public class UserInterfaceJavaFX implements UserInterface {
         if (manager.isGameRunning()) return;
 
         Player winner = manager.getWinner();
-        String title = "Game Over";
        if (winner != null) {
-           showAlert(title, "The winner is " + winner.getName() + "!");
+           message.setText("The winner is " + winner.getName() + "!");
        } else {
-           showAlert(title, "Nobody won the game.");
+           message.setText("Nobody won the game.");
        }
-    }
 
-    @Override
-    public boolean wantToPlayAgainMessage() throws GameOverException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Play Again?");
-        alert.setHeaderText(null);
-        alert.setContentText("Press OK if you want to play again.");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            return true;
-        } else {
-            primaryStage.close();
-            throw new GameOverException("");
-        }
+       unpauseButton.setText("Exit Game");
     }
 
     @Override
@@ -164,7 +174,7 @@ public class UserInterfaceJavaFX implements UserInterface {
         alert.setContentText(content);
         alert.showAndWait();
     }
-
+    /*
     private void displayChange(GridPane newGridPane, Label newMessage) {
         BorderPane root = new BorderPane();
         this.gridPane = newGridPane;
@@ -172,11 +182,12 @@ public class UserInterfaceJavaFX implements UserInterface {
 
         root.setTop(newMessage);
         root.setCenter(newGridPane);
+        root.setBottom(unpauseButton);
         Scene scene = new Scene(root, CELL_SIZE * gridPane.getMaxWidth(),
                 CELL_SIZE * gridPane.getMaxHeight());
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
+    }*/
 
     private Color parseCellState(Cell cell) {
         if (cell.isOccupied()) {

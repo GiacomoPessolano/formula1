@@ -25,7 +25,6 @@
 
 package it.unicam.cs.giacomopessolano.formula1.main;
 
-import it.unicam.cs.giacomopessolano.formula1.exceptions.GameOverException;
 import it.unicam.cs.giacomopessolano.formula1.exceptions.IncorrectConfigurationException;
 import it.unicam.cs.giacomopessolano.formula1.exceptions.UnrecognizedFileException;
 import it.unicam.cs.giacomopessolano.formula1.game.*;
@@ -33,9 +32,11 @@ import it.unicam.cs.giacomopessolano.formula1.grid.*;
 import it.unicam.cs.giacomopessolano.formula1.player.*;
 import it.unicam.cs.giacomopessolano.formula1.ui.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Main class of the application.
@@ -47,7 +48,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        ui = new UserInterfaceJavaFX(stage);
+        ui = new UserInterfaceCLI();
 
         while (true) {
             try {
@@ -84,34 +85,28 @@ public class Main extends Application {
      * the simulation. When the game is over, asks the user if they want to play again on the same settings.
      */
     private void gameLoop() {
-        while (true) {
-            try {
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            boolean keepGoing = true;
+            while (keepGoing) {
                 ui.pause();
-                ui.turnMessage(game);
-                if (game.getCurrentPlayer().hasCrashed()) {
-                    game.nextTurn();
-                } else {
-                    game.nextTurn();
-                    ui.displayGrid(game);
-                }
+                Platform.runLater(() -> ui.turnMessage(game));
+                game.nextTurn();
+                Platform.runLater(() -> ui.displayGrid(game));
 
                 if (!game.isGameRunning()) {
-                    ui.gameOverMessage(game);
-                    if (ui.wantToPlayAgainMessage()) {
-                        game.startGame();
-                        ui.displayGrid(game);
-                    } else {
-                        break;
-                    }
+                    Platform.runLater(() -> ui.gameOverMessage(game));
+                    ui.pause();
+                    keepGoing = false;
                 }
-            } catch (GameOverException e) {
-                System.exit(0);
-            } catch (Exception e) {
-                ui.errorMessage("Something unexpected went wrong; " + e.getMessage());
-                System.exit(-1);
             }
-        }
+            executor.shutdown();
+            System.exit(0);
+        });
+
     }
+
 
     public static void main(String[] args) {
         launch(args);
