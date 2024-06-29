@@ -47,12 +47,31 @@ public class Main extends Application {
     private UserInterface ui;
 
     @Override
-    public void start(Stage stage) {
-        ui = new UserInterfaceCLI();
+    public void start(Stage primaryStage) {
+        ui = new UserInterfaceJavaFX(primaryStage);
+        primaryStage.setOnCloseRequest(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
 
+        initializeGame();
+        gameLoop();
+    }
+
+    @Override
+    public void stop() {
+        Platform.exit();
+        System.exit(0);
+    }
+
+    private void initializeGame() {
         while (true) {
             try {
                 String trackName = ui.chooseTrack("root/src/main/resources");
+                if (trackName.isEmpty()) {
+                    stop();
+                    break;
+                }
                 GridInitializerFromTxt gridInitializer = new ArrayGridInitializerFromTxt();
                 PlayerInitializerFromTxt playerInitializer = new PlayerFormula1InitializerFromTxt();
                 GameInitializer initializer = new GameInitializerFromTxt(trackName, gridInitializer, playerInitializer);
@@ -73,16 +92,14 @@ public class Main extends Application {
             } catch (IncorrectConfigurationException e) {
                 ui.errorMessage("The track was formatted incorrectly; check instructions");
             } catch (Exception e) {
-                ui.errorMessage("Something went wrong, please try again.");
+                ui.errorMessage("Something went wrong.");
             }
         }
-
-        gameLoop();
     }
 
     /**
      * The game's standard loop. Displays each turn the game's current state and waits for the user to unpause
-     * the simulation. When the game is over, asks the user if they want to play again on the same settings.
+     * the simulation until the game is over.
      */
     private void gameLoop() {
 
@@ -106,7 +123,6 @@ public class Main extends Application {
         });
 
     }
-
 
     public static void main(String[] args) {
         launch(args);

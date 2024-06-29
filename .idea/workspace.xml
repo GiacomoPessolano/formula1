@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Implemented methods to display grid and turn in JavaFX; edited ValidatorStandard to check for the grid's size">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_06_2024_22_25_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_06_2024_22_25__Changes_.xml" beforeDir="false" />
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Made JavaFX functional with an executor. Cut off playAgain method from the UserInterface.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/src/main/resources/for_dummies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/resources/for_dummies.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceCLI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +197,7 @@
       <workItem from="1719477309617" duration="13182000" />
       <workItem from="1719495504235" duration="21773000" />
       <workItem from="1719586062705" duration="9746000" />
-      <workItem from="1719656841536" duration="5839000" />
+      <workItem from="1719656841536" duration="8980000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -444,14 +439,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719527964504</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Made JavaFX functional with an executor. Cut off playAgain method from the UserInterface.">
+      <option name="closed" value="true" />
+      <created>1719662970845</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1719662970845</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added GameLogic and GameManager; performance improved for PlayerBotInitializerFromTxt" />
     <MESSAGE value="Added variables; small changes" />
     <MESSAGE value="Refactored way lastTurns are memorized; added interfaces to calculate movement and their result" />
     <MESSAGE value="Reworked initializers" />
@@ -476,7 +478,8 @@
     <MESSAGE value="Tried to apply JavaFX gui, needs work" />
     <MESSAGE value="Fixed some bugs; must rework key UIJavaFX methods in future" />
     <MESSAGE value="Implemented methods to display grid and turn in JavaFX; edited ValidatorStandard to check for the grid's size" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented methods to display grid and turn in JavaFX; edited ValidatorStandard to check for the grid's size" />
+    <MESSAGE value="Made JavaFX functional with an executor. Cut off playAgain method from the UserInterface." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made JavaFX functional with an executor. Cut off playAgain method from the UserInterface." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

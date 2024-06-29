@@ -48,8 +48,8 @@ public class UserInterfaceJavaFX implements UserInterface {
     private static final int CELL_SIZE = 15;
 
     private final Stage primaryStage;
-    private GridPane gridPane = new GridPane();
-    private Label message = new Label();
+    private final GridPane gridPane = new GridPane();
+    private final Label message = new Label();
     private final Button unpauseButton = new Button("Play next turn.");
     private final Object pauseLock = new Object();
     private boolean isGamePaused = false;
