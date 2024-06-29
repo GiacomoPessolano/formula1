@@ -28,7 +28,6 @@ package it.unicam.cs.giacomopessolano.formula1.player;
 import it.unicam.cs.giacomopessolano.formula1.exceptions.NoPossibleMoveException;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -56,7 +55,7 @@ public final class StrategyDumb implements Strategy {
      * @param grid Grid where the movement takes place.
      * @param lastMove The last move executed by a player.
      * @param position The current position of a player on the grid.
-     * @return The choice of Direction made.
+     * @return The chosen Direction.
      * @throws NoPossibleMoveException If there is no possible move to perform.
      */
     @Override
