@@ -84,9 +84,7 @@ public class Main extends Application {
             ui = new UserInterfaceCLI();
         } else {
             ui = new UserInterfaceJavaFX(primaryStage);
-            primaryStage.setOnCloseRequest(event -> {
-                stop();
-            });
+            primaryStage.setOnCloseRequest(event -> stop());
         }
 
         turnManager = new TurnManagerStandard();

@@ -43,17 +43,47 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
+/**
+ * Implementation of a simple user interface using JavaFX.
+ */
 public class UserInterfaceJavaFX implements UserInterface {
 
+    /**
+     * Size of the grid's cells in the graphical display.
+     */
     private static final int CELL_SIZE = 15;
-
+    /**
+     * UI's primary stage.
+     */
     private final Stage primaryStage;
+    /**
+     * GridPane used to represent a game's grid.
+     */
     private final GridPane gridPane = new GridPane();
+    /**
+     * Label with a message on the game's current state.
+     */
     private final Label message = new Label();
+    /**
+     * Button for unpausing the simulation.
+     */
     private final Button unpauseButton = new Button("Play next turn.");
+    /**
+     * Lock for pausing the game.
+     */
     private final Object pauseLock = new Object();
+    /**
+     * Checks if the game is paused.
+     */
     private boolean isGamePaused = false;
 
+    /**
+     * Constructs an UserInterfaceJavaFX by initializing its primary stage and components.
+     * Creates a scene with the message on top, the grid in the center and the button at the bottom.
+     * The scene's elements start as empty.
+     *
+     * @param stage The primary stage of the graphical interface.
+     */
     public UserInterfaceJavaFX(Stage stage) {
         this.primaryStage = stage;
 
@@ -64,7 +94,6 @@ public class UserInterfaceJavaFX implements UserInterface {
             }
         });
 
-        // Initialize UI components
         BorderPane root = new BorderPane();
         root.setTop(message);
         root.setCenter(gridPane);
@@ -74,6 +103,12 @@ public class UserInterfaceJavaFX implements UserInterface {
         primaryStage.setTitle("Formula 1 Game");
     }
 
+    /**
+     * Lets the user enter a track name.
+     *
+     * @param dir The directory where tracks are located.
+     * @return The track's name if the user pressed OK, empty string otherwise.
+     */
     @Override
     public String chooseTrack(String dir) {
         TextInputDialog dialog = new TextInputDialog();
@@ -86,20 +121,27 @@ public class UserInterfaceJavaFX implements UserInterface {
         return result.orElse("");
     }
 
+    /**
+     * Replaces the grid with the GameManager's current grid. The stage is displayed when the grid has been
+     * replaced.
+     *
+     * @param manager Game to take the grid from.
+     */
     @Override
     public void displayGrid(GameManager manager) {
         Grid gameGrid = manager.getGrid();
 
-        // Update grid pane
-        gridPane.getChildren().clear(); // Clear previous grid cells
+        gridPane.getChildren().clear();
 
         for (int x = 0; x < gameGrid.getWidth(); x++) {
             for (int y = 0; y < gameGrid.getHeight(); y++) {
+                //puts a rectangle at each cell with a color based on its state
                 Position position = new Position(x, y);
                 Cell gameCell = gameGrid.getCell(position);
                 Rectangle rectangle = new Rectangle(CELL_SIZE, CELL_SIZE);
                 rectangle.setFill(parseCellState(gameCell));
 
+                //adds player ID on top of the rectangle, if there is a player on the cell
                 Text text = new Text("");
                 if (gameCell.isOccupied()) {
                     text.setText(manager.getID(gameCell.getPlayer()).substring(0, 1));
@@ -116,6 +158,11 @@ public class UserInterfaceJavaFX implements UserInterface {
         primaryStage.show();
     }
 
+    /**
+     * Updates the message label with the game's current turn.
+     *
+     * @param manager Game to take the turn from.
+     */
     @Override
     public void turnMessage(GameManager manager) {
         if (!manager.isGameRunning()) return;
@@ -132,6 +179,9 @@ public class UserInterfaceJavaFX implements UserInterface {
         message.setText(messageText);
     }
 
+    /**
+     * Pauses the game until the unpause button is pressed.
+     */
     @Override
     public void pause() {
         try {
@@ -143,11 +193,16 @@ public class UserInterfaceJavaFX implements UserInterface {
                     }
                 }
             }
-        } catch (InterruptedException e ) {
-            return;
+        } catch (InterruptedException ignored) {
+
         }
     }
 
+    /**
+     * Updates the message label with a game over message.
+     *
+     * @param manager Game to take the results from.
+     */
     @Override
     public void gameOverMessage(GameManager manager) {
         if (manager.isGameRunning()) return;
@@ -162,11 +217,22 @@ public class UserInterfaceJavaFX implements UserInterface {
        unpauseButton.setText("Exit Game");
     }
 
+    /**
+     * Displays an error message as an alert.
+     *
+     * @param message Message displayed.
+     */
     @Override
     public void errorMessage(String message) {
         showAlert("Error", message);
     }
 
+    /**
+     * Creates an alert.
+     *
+     * @param title Alert's title.
+     * @param content Alert's content,
+     */
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -174,21 +240,13 @@ public class UserInterfaceJavaFX implements UserInterface {
         alert.setContentText(content);
         alert.showAndWait();
     }
-    /*
-    private void displayChange(GridPane newGridPane, Label newMessage) {
-        BorderPane root = new BorderPane();
-        this.gridPane = newGridPane;
-        this.message = newMessage;
 
-        root.setTop(newMessage);
-        root.setCenter(newGridPane);
-        root.setBottom(unpauseButton);
-        Scene scene = new Scene(root, CELL_SIZE * gridPane.getMaxWidth(),
-                CELL_SIZE * gridPane.getMaxHeight());
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }*/
-
+    /**
+     * Translates a cell state to a color.
+     *
+     * @param cell Cell to examine.
+     * @return Color representing the cell's state.
+     */
     private Color parseCellState(Cell cell) {
         if (cell.isOccupied()) {
             return Color.RED;

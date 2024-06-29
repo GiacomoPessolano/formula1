@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="JavaFX UI now closes correctly">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/root/build.gradle.kts" afterDir="false" />
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Now JavaFX and CLI can be called at will with gradle run -Pcli. Added some missing tests.&#10;Second version of the project should now be complete.">
       <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -198,7 +195,7 @@
       <workItem from="1719477309617" duration="13182000" />
       <workItem from="1719495504235" duration="21773000" />
       <workItem from="1719586062705" duration="9746000" />
-      <workItem from="1719656841536" duration="11989000" />
+      <workItem from="1719656841536" duration="12331000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -456,14 +453,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719666244719</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Now JavaFX and CLI can be called at will with gradle run -Pcli. Added some missing tests.&#10;Second version of the project should now be complete.">
+      <option name="closed" value="true" />
+      <created>1719669252093</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1719669252093</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored way lastTurns are memorized; added interfaces to calculate movement and their result" />
     <MESSAGE value="Reworked initializers" />
     <MESSAGE value="(naive) turn handling" />
     <MESSAGE value="Developed DumbStrategy; refactored Direction enum; (will refactor game classes later)" />
@@ -488,7 +492,8 @@
     <MESSAGE value="Implemented methods to display grid and turn in JavaFX; edited ValidatorStandard to check for the grid's size" />
     <MESSAGE value="Made JavaFX functional with an executor. Cut off playAgain method from the UserInterface." />
     <MESSAGE value="JavaFX UI now closes correctly" />
-    <option name="LAST_COMMIT_MESSAGE" value="JavaFX UI now closes correctly" />
+    <MESSAGE value="Now JavaFX and CLI can be called at will with gradle run -Pcli. Added some missing tests.&#10;Second version of the project should now be complete." />
+    <option name="LAST_COMMIT_MESSAGE" value="Now JavaFX and CLI can be called at will with gradle run -Pcli. Added some missing tests.&#10;Second version of the project should now be complete." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
