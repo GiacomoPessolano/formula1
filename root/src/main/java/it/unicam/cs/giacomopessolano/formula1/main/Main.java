@@ -178,16 +178,22 @@ public class Main extends Application {
      * it's best suited for this implementation. JavaFX, on the hand, requires the executor.
      */
     private void gameLoopSequential() {
-        while (game.isGameRunning()) {
-            ui.pause();
-            ui.turnMessage(game);
-            game.nextTurn();
-            ui.displayGrid(game);
+        try {
+            while (game.isGameRunning()) {
+                ui.pause();
+                ui.turnMessage(game);
+                game.nextTurn();
+                ui.displayGrid(game);
 
-            if (!game.isGameRunning()) {
-                ui.gameOverMessage(game);
-                break;
+                if (!game.isGameRunning()) {
+                    ui.gameOverMessage(game);
+                    stop();
+                    break;
+                }
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.exit(-1);
         }
     }
 }

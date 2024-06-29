@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Started work on Interactive Players; added new strategy and input handler; update app module to use javafx">
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Javadoc added for interactive classes.&#10;Third and last part of the project is now complete.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerCLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerJavaFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerJavaFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/src/main/resources/donut.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/resources/donut.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +82,7 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -199,7 +199,7 @@
       <workItem from="1719477309617" duration="13182000" />
       <workItem from="1719495504235" duration="21773000" />
       <workItem from="1719586062705" duration="9746000" />
-      <workItem from="1719656841536" duration="22630000" />
+      <workItem from="1719656841536" duration="26170000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -481,15 +481,29 @@
       <option name="project" value="LOCAL" />
       <updated>1719688588811</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Completed implementation of interactive classes; edited Main class to better support cli ui.">
+      <option name="closed" value="true" />
+      <created>1719692118150</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1719692118150</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Javadoc added for interactive classes.&#10;Third and last part of the project is now complete.">
+      <option name="closed" value="true" />
+      <created>1719694138192</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1719694138192</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Developed DumbStrategy; refactored Direction enum; (will refactor game classes later)" />
-    <MESSAGE value="Started adding code to main class; retouched ValidatorStandard slightly" />
     <MESSAGE value="Reworked game logic (GameManager and TurnManager)" />
     <MESSAGE value="Reworked key interfaces to be cloneable to reset original state in GameManager when needed" />
     <MESSAGE value="Made CLI user interface; deleted UI module (will rebuild it later when I understand how to add JavaFX GUI)" />
@@ -513,7 +527,9 @@
     <MESSAGE value="Now JavaFX and CLI can be called at will with gradle run -Pcli. Added some missing tests.&#10;Second version of the project should now be complete." />
     <MESSAGE value="Wrote javadocs for new classes" />
     <MESSAGE value="Started work on Interactive Players; added new strategy and input handler; update app module to use javafx" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started work on Interactive Players; added new strategy and input handler; update app module to use javafx" />
+    <MESSAGE value="Completed implementation of interactive classes; edited Main class to better support cli ui." />
+    <MESSAGE value="Javadoc added for interactive classes.&#10;Third and last part of the project is now complete." />
+    <option name="LAST_COMMIT_MESSAGE" value="Javadoc added for interactive classes.&#10;Third and last part of the project is now complete." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

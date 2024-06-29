@@ -51,7 +51,6 @@ public class InteractionHandlerCLI implements InteractionHandler {
                 input = scanner.nextLine().toUpperCase();
                 Direction direction = Direction.valueOf(input);
                 if (possibleDirections.contains(direction)) {
-                    scanner.close();
                     return direction;
                 } else {
                     System.out.println("The direction " + input + " is not possible. Try again.");
