@@ -9,11 +9,11 @@ public class InteractionHandlerCLI implements InteractionHandler {
     public Direction takeInput(List<Direction> possibleDirections) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Possible directions: " + possibleDirections);
-        System.out.println("Enter direction: ");
-        String input = scanner.nextLine().toUpperCase();
+        String input = "";
 
         while (true) {
             try {
+                input = scanner.nextLine().toUpperCase();
                 Direction direction = Direction.valueOf(input);
                 if (possibleDirections.contains(direction)) {
                     return direction;
@@ -21,7 +21,7 @@ public class InteractionHandlerCLI implements InteractionHandler {
                     System.out.println("The direction " + input + " is not possible. Try again.");
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println("Invalid input: " + input+ ". Try again.");
+                System.out.println("Invalid input: " + input + ". Try again.");
             }
         }
     }

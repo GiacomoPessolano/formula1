@@ -31,7 +31,6 @@ public class InteractionHandlerJavaFX implements InteractionHandler {
                 } else {
                     throw new IllegalArgumentException("No direction entered.");
                 }
-
             } catch (IllegalArgumentException e) {
                 impossibleDirectionAlert();
             }

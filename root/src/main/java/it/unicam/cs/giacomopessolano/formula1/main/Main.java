@@ -74,25 +74,34 @@ public class Main extends Application {
 
     /**
      * Starts the game by assigning variables, initializing the game and then starting the game loop.
+     * Using -Pcli as a parameter in gradle run you can play in the CLI version of the app.
      *
      * @param primaryStage App's graphical display. Unused in the CLI version of the game.
      */
     @Override
     public void start(Stage primaryStage) {
         String mode = System.getProperty("ui.mode", "javafx");
+        //the handler will define how interactive users input their moves.
+        InteractionHandler interactionHandler;
         if (mode.equalsIgnoreCase("cli")) {
             ui = new UserInterfaceCLI();
+            interactionHandler = new InteractionHandlerCLI();
         } else {
             ui = new UserInterfaceJavaFX(primaryStage);
             primaryStage.setOnCloseRequest(event -> stop());
+            interactionHandler = new InteractionHandlerJavaFX();
         }
 
         turnManager = new TurnManagerStandard();
+        playerInitializer = new PlayerBotInteractiveInitializerFromTxt(interactionHandler);
         gridInitializer = new ArrayGridInitializerFromTxt();
-        playerInitializer = new PlayerBotInitializerFromTxt();
-
         initializeGame();
-        gameLoop();
+        //the two game loops do the same thing but the CLI UI is best suited for the sequential version
+        if (mode.equalsIgnoreCase("cli")) {
+            gameLoopSequential();
+        } else {
+            gameLoop();
+        }
     }
 
     /**
@@ -149,7 +158,7 @@ public class Main extends Application {
             while (keepGoing) {
                 ui.pause();
                 Platform.runLater(() -> ui.turnMessage(game));
-                game.nextTurn();
+                Platform.runLater(() -> game.nextTurn());
                 Platform.runLater(() -> ui.displayGrid(game));
 
                 if (!game.isGameRunning()) {
@@ -162,5 +171,23 @@ public class Main extends Application {
             stop();
         });
 
+    }
+
+    /**
+     * A sequential implementation of the game's loop. Though the CLI version can work with the executor,
+     * it's best suited for this implementation. JavaFX, on the hand, requires the executor.
+     */
+    private void gameLoopSequential() {
+        while (game.isGameRunning()) {
+            ui.pause();
+            ui.turnMessage(game);
+            game.nextTurn();
+            ui.displayGrid(game);
+
+            if (!game.isGameRunning()) {
+                ui.gameOverMessage(game);
+                break;
+            }
+        }
     }
 }

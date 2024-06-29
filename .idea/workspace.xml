@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Wrote javadocs for new classes">
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Started work on Interactive Players; added new strategy and input handler; update app module to use javafx">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1InitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Strategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Strategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyDumb.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyDumb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1InitializerFromTxtTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxtTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerCLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerJavaFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerJavaFX.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/src/main/resources/donut.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/resources/donut.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +199,7 @@
       <workItem from="1719477309617" duration="13182000" />
       <workItem from="1719495504235" duration="21773000" />
       <workItem from="1719586062705" duration="9746000" />
-      <workItem from="1719656841536" duration="19573000" />
+      <workItem from="1719656841536" duration="22630000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -475,14 +473,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719670890032</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Started work on Interactive Players; added new strategy and input handler; update app module to use javafx">
+      <option name="closed" value="true" />
+      <created>1719688588811</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1719688588811</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="(naive) turn handling" />
     <MESSAGE value="Developed DumbStrategy; refactored Direction enum; (will refactor game classes later)" />
     <MESSAGE value="Started adding code to main class; retouched ValidatorStandard slightly" />
     <MESSAGE value="Reworked game logic (GameManager and TurnManager)" />
@@ -507,7 +512,8 @@
     <MESSAGE value="JavaFX UI now closes correctly" />
     <MESSAGE value="Now JavaFX and CLI can be called at will with gradle run -Pcli. Added some missing tests.&#10;Second version of the project should now be complete." />
     <MESSAGE value="Wrote javadocs for new classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Wrote javadocs for new classes" />
+    <MESSAGE value="Started work on Interactive Players; added new strategy and input handler; update app module to use javafx" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started work on Interactive Players; added new strategy and input handler; update app module to use javafx" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
