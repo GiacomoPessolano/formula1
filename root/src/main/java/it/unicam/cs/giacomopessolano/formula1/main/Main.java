@@ -43,27 +43,72 @@ import java.util.concurrent.Executors;
  */
 public class Main extends Application {
 
+    /**
+     * Class that keeps the game's state.
+     */
     private GameManager game;
+    /**
+     * Class that displays the game as it progresses.
+     */
     private UserInterface ui;
+    /**
+     * Class that updates the game.
+     */
+    private TurnManager turnManager;
+    /**
+     * Class that parses the grid.
+     */
+    GridInitializerFromTxt gridInitializer;
+    /**
+     * Class that parses player info.
+     */
+    PlayerInitializerFromTxt playerInitializer;
+    /**
+     * Class that initializes a game's grid and players from a file.
+     */
+    GameInitializer initializer;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    /**
+     * Starts the game by assigning variables, initializing the game and then starting the game loop.
+     *
+     * @param primaryStage App's graphical display. Unused in the CLI version of the game.
+     */
     @Override
     public void start(Stage primaryStage) {
-        ui = new UserInterfaceJavaFX(primaryStage);
-        primaryStage.setOnCloseRequest(event -> {
-            Platform.exit();
-            System.exit(0);
-        });
+        String mode = System.getProperty("ui.mode", "javafx");
+        if (mode.equalsIgnoreCase("cli")) {
+            ui = new UserInterfaceCLI();
+        } else {
+            ui = new UserInterfaceJavaFX(primaryStage);
+            primaryStage.setOnCloseRequest(event -> {
+                stop();
+            });
+        }
+
+        turnManager = new TurnManagerStandard();
+        gridInitializer = new ArrayGridInitializerFromTxt();
+        playerInitializer = new PlayerFormula1InitializerFromTxt();
 
         initializeGame();
         gameLoop();
     }
 
+    /**
+     * Stops the game.
+     */
     @Override
     public void stop() {
         Platform.exit();
         System.exit(0);
     }
 
+    /**
+     * Initializes the game from a .txt file. Performs checks with a Validator class.
+     */
     private void initializeGame() {
         while (true) {
             try {
@@ -72,10 +117,7 @@ public class Main extends Application {
                     stop();
                     break;
                 }
-                GridInitializerFromTxt gridInitializer = new ArrayGridInitializerFromTxt();
-                PlayerInitializerFromTxt playerInitializer = new PlayerFormula1InitializerFromTxt();
-                GameInitializer initializer = new GameInitializerFromTxt(trackName, gridInitializer, playerInitializer);
-                TurnManager turnManager = new TurnManagerStandard();
+                initializer = new GameInitializerFromTxt(trackName, gridInitializer, playerInitializer);
                 game = new GameManagerStandard(initializer, turnManager);
 
                 game.startGame();
@@ -119,12 +161,8 @@ public class Main extends Application {
                 }
             }
             executor.shutdown();
-            System.exit(0);
+            stop();
         });
 
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

@@ -1,3 +1,5 @@
+import org.gradle.internal.classpath.Instrumented.systemProperty
+
 plugins {
     id("java")
     id("application")
@@ -28,6 +30,10 @@ tasks.test {
 
 tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
+
+    if (project.hasProperty("cli")) {
+        systemProperty("ui.mode", "cli")
+    }
 }
 
 application {

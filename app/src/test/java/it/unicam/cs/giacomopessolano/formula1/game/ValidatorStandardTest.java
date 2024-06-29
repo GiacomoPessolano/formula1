@@ -42,6 +42,7 @@ class ValidatorStandardTest {
     private Player player1;
     private Player player2;
     private Player player3;
+    private int maxSize = 120;
 
     @BeforeEach
     void setUp() {
@@ -66,7 +67,7 @@ class ValidatorStandardTest {
     void testPerformAllChecks_Valid() {
         startingPositions.put(player1, new Position(0, 0));
         startingPositions.put(player2, new Position(1, 0));
-        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions);
+        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions, maxSize, maxSize);
 
         assertTrue(validator.performAllChecks());
     }
@@ -76,7 +77,7 @@ class ValidatorStandardTest {
         startingPositions.put(player1, new Position(0, 0));
         startingPositions.put(player2, new Position(1, 0));
         startingPositions.put(player3, new Position(1, 1));
-        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions);
+        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions, maxSize, maxSize);
 
         //there are more players than START cells
         assertFalse(validator.performAllChecks());
@@ -96,7 +97,7 @@ class ValidatorStandardTest {
 
         startingPositions.put(player1, new Position(0, 0));
         startingPositions.put(player2, new Position(1, 0));
-        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions);
+        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions, maxSize, maxSize);
 
         assertFalse(validator.performAllChecks());
     }
@@ -105,7 +106,7 @@ class ValidatorStandardTest {
     void testPerformAllChecks_InvalidPlayerPositions() {
         startingPositions.put(player1, new Position(1, 0));
         startingPositions.put(player2, new Position(0, 1));
-        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions);
+        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions, maxSize, maxSize);
 
         assertFalse(validator.performAllChecks());
     }
@@ -114,7 +115,16 @@ class ValidatorStandardTest {
     void testPerformAllChecks_DuplicateStartingPositions() {
         startingPositions.put(player1, new Position(0, 0));
         startingPositions.put(player2, new Position(0, 0));
-        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions);
+        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions, maxSize, maxSize);
+
+        assertFalse(validator.performAllChecks());
+    }
+
+    @Test
+    void testPerformAllChecks_MaxSize() {
+        maxSize = 0;
+        startingPositions.put(player1, new Position(0, 0));
+        ValidatorStandard validator = new ValidatorStandard(grid, startingPositions, maxSize, maxSize);
 
         assertFalse(validator.performAllChecks());
     }
