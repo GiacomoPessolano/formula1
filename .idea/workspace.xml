@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Now JavaFX and CLI can be called at will with gradle run -Pcli. Added some missing tests.&#10;Second version of the project should now be complete.">
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Wrote javadocs for new classes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1InitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Strategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/Strategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyDumb.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyDumb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1InitializerFromTxtTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxtTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +84,7 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -195,7 +201,7 @@
       <workItem from="1719477309617" duration="13182000" />
       <workItem from="1719495504235" duration="21773000" />
       <workItem from="1719586062705" duration="9746000" />
-      <workItem from="1719656841536" duration="12331000" />
+      <workItem from="1719656841536" duration="19573000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -461,14 +467,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719669252093</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Wrote javadocs for new classes">
+      <option name="closed" value="true" />
+      <created>1719670890032</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1719670890032</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reworked initializers" />
     <MESSAGE value="(naive) turn handling" />
     <MESSAGE value="Developed DumbStrategy; refactored Direction enum; (will refactor game classes later)" />
     <MESSAGE value="Started adding code to main class; retouched ValidatorStandard slightly" />
@@ -493,7 +506,8 @@
     <MESSAGE value="Made JavaFX functional with an executor. Cut off playAgain method from the UserInterface." />
     <MESSAGE value="JavaFX UI now closes correctly" />
     <MESSAGE value="Now JavaFX and CLI can be called at will with gradle run -Pcli. Added some missing tests.&#10;Second version of the project should now be complete." />
-    <option name="LAST_COMMIT_MESSAGE" value="Now JavaFX and CLI can be called at will with gradle run -Pcli. Added some missing tests.&#10;Second version of the project should now be complete." />
+    <MESSAGE value="Wrote javadocs for new classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wrote javadocs for new classes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

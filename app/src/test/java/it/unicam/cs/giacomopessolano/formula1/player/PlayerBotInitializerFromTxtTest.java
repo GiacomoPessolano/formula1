@@ -36,13 +36,13 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PlayerFormula1InitializerFromTxtTest {
+class PlayerBotInitializerFromTxtTest {
 
     private PlayerInitializerFromTxt initializer;
 
     @BeforeEach
     void setUp() {
-        initializer = new PlayerFormula1InitializerFromTxt();
+        initializer = new PlayerBotInitializerFromTxt();
     }
 
 

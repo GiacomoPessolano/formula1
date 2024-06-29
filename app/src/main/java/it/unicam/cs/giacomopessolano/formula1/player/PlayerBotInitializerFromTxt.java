@@ -20,7 +20,7 @@ import java.util.*;
  * The permitted Strategies are DUMB;
  * the permitted First-Moves are UP, DOWN, LEFT, RIGHT, CENTER.
  */
-public class PlayerFormula1InitializerFromTxt implements PlayerInitializerFromTxt {
+public class PlayerBotInitializerFromTxt implements PlayerInitializerFromTxt {
 
     /**
      * Parsed map of players to a Position.
@@ -136,7 +136,7 @@ public class PlayerFormula1InitializerFromTxt implements PlayerInitializerFromTx
      * @return A Strategy object corresponding to the parsed string.
      * @throws IncorrectConfigurationException If the strategy string is not recognized or supported.
      */
-    private Strategy parseStrategy(String s) throws IOException {
+    protected Strategy parseStrategy(String s) throws IOException {
         return switch (s) {
             case "DUMB" -> new StrategyDumb();
             default -> throw new IncorrectConfigurationException("The strategy " + s + " is not supported.");
@@ -169,7 +169,7 @@ public class PlayerFormula1InitializerFromTxt implements PlayerInitializerFromTx
      */
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof PlayerFormula1InitializerFromTxt other) {
+        if (obj instanceof PlayerBotInitializerFromTxt other) {
             return this.playerPositionMap.equals(other.playerPositionMap) && this.players.equals(other.players);
         }
         return false;

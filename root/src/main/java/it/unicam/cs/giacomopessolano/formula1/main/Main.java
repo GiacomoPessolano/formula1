@@ -89,7 +89,7 @@ public class Main extends Application {
 
         turnManager = new TurnManagerStandard();
         gridInitializer = new ArrayGridInitializerFromTxt();
-        playerInitializer = new PlayerFormula1InitializerFromTxt();
+        playerInitializer = new PlayerBotInitializerFromTxt();
 
         initializeGame();
         gameLoop();

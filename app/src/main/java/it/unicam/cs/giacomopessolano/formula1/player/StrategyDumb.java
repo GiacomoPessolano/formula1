@@ -61,7 +61,7 @@ public final class StrategyDumb implements Strategy {
      */
     @Override
     public Direction makeChoice(Grid grid, Move lastMove, Position position) throws NoPossibleMoveException {
-        List<Direction> choices = possibleMoves(grid, lastMove, position);
+        List<Direction> choices = Strategy.possibleMoves(grid, lastMove, position);
         if (choices.isEmpty()) {
             throw new NoPossibleMoveException("There are no more possible moves.");
         }
@@ -70,40 +70,4 @@ public final class StrategyDumb implements Strategy {
         return choices.get(index);
     }
 
-    /**
-     * Gives a list of all available moves. A move is unavailable if the cell is occupied by another player
-     * and the resulting new position is within the grid.
-     *
-     * @param grid Grid where the movement takes place.
-     * @param lastMove The last move executed by a player.
-     * @param position The current position of a player on the grid.
-     * @return List of available moves.
-     */
-    private List<Direction> possibleMoves(Grid grid, Move lastMove, Position position) {
-        List<Direction> choices = new ArrayList<>();
-        Position center = getCenter(lastMove, position);
-
-        for (Direction direction : Direction.values()) {
-            Position newPosition = center.neighbour(direction);
-            if (newPosition.isValid(grid) &&
-                    !grid.getCell(newPosition).isOccupied()) {
-                choices.add(direction);
-            }
-        }
-
-        return choices;
-    }
-
-    /**
-     * Gets the center of the eight possible Positions. It is determined by adding the player's last
-     * move's x and y values to the player's current coordinates.
-     *
-     * @param lastMove The last move executed by a player.
-     * @param position The current position of a player on the grid.
-     * @return Center of the possible moves.
-     */
-    private Position getCenter(Move lastMove, Position position) {
-        return new Position(position.x() + lastMove.x(),
-                position.y() + lastMove.y());
-    }
 }
