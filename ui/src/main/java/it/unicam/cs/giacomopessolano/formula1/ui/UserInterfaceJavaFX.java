@@ -249,7 +249,12 @@ public class UserInterfaceJavaFX implements UserInterface {
      */
     private Color parseCellState(Cell cell) {
         if (cell.isOccupied()) {
-            return Color.RED;
+            Player player = cell.getPlayer();
+            if (player.hasCrashed()) {
+                return Color.RED;
+            } else {
+                return Color.BLUE;
+            }
         }
 
         return switch (cell.getState()) {
