@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Changed color of crashed and active players">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Refactored Validator usage">
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyInteractive.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyInteractive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +198,7 @@
       <workItem from="1719656841536" duration="26215000" />
       <workItem from="1719747562046" duration="3090000" />
       <workItem from="1719844521599" duration="87000" />
-      <workItem from="1719861622580" duration="342000" />
+      <workItem from="1719861622580" duration="670000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -516,14 +512,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719753421994</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Refactored Validator usage">
+      <option name="closed" value="true" />
+      <created>1719862141345</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1719862141345</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made CLI user interface; deleted UI module (will rebuild it later when I understand how to add JavaFX GUI)" />
     <MESSAGE value="Retouched UICLI and made Main class; PROBLEM: GRADLE WON'T RUN PROJECT" />
     <MESSAGE value="Temporarily gave absolute path of track; BEGIN WRITING TESTS" />
     <MESSAGE value="Mixed parameters" />
@@ -548,7 +551,8 @@
     <MESSAGE value="Javadoc added for interactive classes.&#10;Third and last part of the project is now complete." />
     <MESSAGE value="Fixed CLI bug" />
     <MESSAGE value="Changed color of crashed and active players" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed color of crashed and active players" />
+    <MESSAGE value="Refactored Validator usage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored Validator usage" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -68,10 +68,6 @@ public class GameManagerStandard implements GameManager {
      */
     private final TurnManager turnManager;
     /**
-     * Validator to perform some checks on the data structures given by initializers.
-     */
-    private final Validator validator;
-    /**
      * States if the game is still running.
      */
     private boolean isGameRunning;
@@ -101,7 +97,6 @@ public class GameManagerStandard implements GameManager {
         this.originalGrid = initializer.parseGrid();
         this.originalPlayers = initializer.parseTurns();
         this.originalPositions = initializer.parsePlayers();
-        this.validator = validator;
 
         if (!validator.performAllChecks()) throw new IncorrectConfigurationException(
                 "I dati inseriti non sono validi.");
