@@ -25,6 +25,7 @@
 
 package it.unicam.cs.giacomopessolano.formula1.game;
 
+import it.unicam.cs.giacomopessolano.formula1.exceptions.IncorrectConfigurationException;
 import it.unicam.cs.giacomopessolano.formula1.grid.CellState;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
@@ -67,6 +68,10 @@ public class GameManagerStandard implements GameManager {
      */
     private final TurnManager turnManager;
     /**
+     * Validator to perform some checks on the data structures given by initializers.
+     */
+    private final Validator validator;
+    /**
      * States if the game is still running.
      */
     private boolean isGameRunning;
@@ -90,11 +95,16 @@ public class GameManagerStandard implements GameManager {
      * @param initializer Initializer to retrieve the grid and the players.
      * @param turnManager TurnManager to handle the game's logic.
      */
-    public GameManagerStandard(GameInitializer initializer, TurnManager turnManager) {
+    public GameManagerStandard(GameInitializer initializer, TurnManager turnManager, Validator validator)
+            throws IncorrectConfigurationException {
         this.turnManager = turnManager;
         this.originalGrid = initializer.parseGrid();
         this.originalPlayers = initializer.parseTurns();
         this.originalPositions = initializer.parsePlayers();
+        this.validator = validator;
+
+        if (!validator.performAllChecks()) throw new IncorrectConfigurationException(
+                "I dati inseriti non sono validi.");
     }
 
     /**

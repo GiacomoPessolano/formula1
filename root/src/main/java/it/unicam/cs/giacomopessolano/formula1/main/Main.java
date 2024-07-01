@@ -67,6 +67,10 @@ public class Main extends Application {
      * Class that initializes a game's grid and players from a file.
      */
     GameInitializer initializer;
+    /**
+     * Validator to perform various checks on the data extracted from the configuration file.
+     */
+    Validator validator;
 
     public static void main(String[] args) {
         launch(args);
@@ -124,18 +128,13 @@ public class Main extends Application {
                     stop();
                     break;
                 }
+                validator = new ValidatorStandard(game.getGrid(), game.getPlayerPositions(),
+                        120, 120);
                 initializer = new GameInitializerFromTxt(trackName, gridInitializer, playerInitializer);
-                game = new GameManagerStandard(initializer, turnManager);
+                game = new GameManagerStandard(initializer, turnManager, validator);
 
                 game.startGame();
-                Validator validator = new ValidatorStandard(game.getGrid(), game.getPlayerPositions(),
-                        120, 120);
-                if (validator.performAllChecks()) {
-                    ui.displayGrid(game);
-                    break;
-                } else {
-                    throw new IncorrectConfigurationException("");
-                }
+                ui.displayGrid(game);
             } catch (UnrecognizedFileException e) {
                 ui.errorMessage("The track was not recognized; check if you put it in the right folder.");
             } catch (IncorrectConfigurationException e) {

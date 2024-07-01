@@ -175,7 +175,6 @@ public class UserInterfaceJavaFX implements UserInterface {
             messageText = "It's " + player.getName() + ", " + manager.getID(player) + ", turn.";
         }
 
-        // Update message label
         message.setText(messageText);
     }
 

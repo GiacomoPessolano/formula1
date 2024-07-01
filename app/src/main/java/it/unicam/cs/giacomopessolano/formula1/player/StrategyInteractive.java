@@ -39,6 +39,14 @@ public class StrategyInteractive implements Strategy {
      * Class for defining the channel for user input.
      */
     InteractionHandler interactionHandler;
+    /**
+     * Name of the strategy.
+     */
+    public static final String NAME = "INTERACTIVE";
+    /**
+     * Description of the strategy.
+     */
+    public static final String DESCRIPTION = "Player moves are chosen by the user.";
 
     /**
      * Constructs a StrategyInteractive with an InteractionHandler.
