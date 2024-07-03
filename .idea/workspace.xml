@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Refactored Validator usage">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameInitializerFromTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/TurnManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/TurnManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/TurnManagerStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/TurnManagerStandard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerCLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerJavaFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerJavaFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerFormula1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyDumb.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyDumb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyInteractive.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyInteractive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyDumbTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/player/StrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceCLI.java" afterDir="false" />
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Asserts added, fixed concurrency bug in JavaFX, refactore minor names and test code">
       <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -217,7 +201,7 @@
       <workItem from="1719747562046" duration="3090000" />
       <workItem from="1719844521599" duration="87000" />
       <workItem from="1719861622580" duration="1858000" />
-      <workItem from="1719986372387" duration="6100000" />
+      <workItem from="1719986372387" duration="6424000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -547,14 +531,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719862403426</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Asserts added, fixed concurrency bug in JavaFX, refactore minor names and test code">
+      <option name="closed" value="true" />
+      <created>1720000205520</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1720000205520</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Retouched UICLI and made Main class; PROBLEM: GRADLE WON'T RUN PROJECT" />
     <MESSAGE value="Temporarily gave absolute path of track; BEGIN WRITING TESTS" />
     <MESSAGE value="Mixed parameters" />
     <MESSAGE value="Added javadocs and license to all classes" />
@@ -579,7 +570,8 @@
     <MESSAGE value="Fixed CLI bug" />
     <MESSAGE value="Changed color of crashed and active players" />
     <MESSAGE value="Refactored Validator usage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored Validator usage" />
+    <MESSAGE value="Asserts added, fixed concurrency bug in JavaFX, refactore minor names and test code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Asserts added, fixed concurrency bug in JavaFX, refactore minor names and test code" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

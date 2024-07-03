@@ -197,7 +197,7 @@ public class UserInterfaceJavaFX implements UserInterface {
                 }
             }
         } catch (InterruptedException ignored) {
-
+            //if there is an exception it's better to ignore the pause
         }
     }
 
