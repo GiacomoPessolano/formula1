@@ -28,6 +28,7 @@ package it.unicam.cs.giacomopessolano.formula1.player;
 import it.unicam.cs.giacomopessolano.formula1.exceptions.NoPossibleMoveException;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -60,9 +61,12 @@ public final class StrategyDumb implements Strategy {
      */
     @Override
     public Direction makeChoice(Grid grid, Move lastMove, Position position) throws NoPossibleMoveException {
+        assert grid != null;
+        assert lastMove != null;
+        assert position != null;
         List<Direction> choices = Strategy.possibleMoves(grid, lastMove, position);
         if (choices.isEmpty()) {
-            throw new NoPossibleMoveException("There are no more possible moves.");
+            throw new NoPossibleMoveException("No possible moves.");
         }
 
         int index = rand.nextInt(choices.size());

@@ -45,6 +45,9 @@ public class InteractionHandlerJavaFX implements InteractionHandler {
      */
     @Override
     public Direction takeInput(List<Direction> possibleDirections) {
+        assert possibleDirections != null;
+        assert !possibleDirections.isEmpty();
+
         while (true) {
             try {
                 String directions = listOfDirections(possibleDirections);

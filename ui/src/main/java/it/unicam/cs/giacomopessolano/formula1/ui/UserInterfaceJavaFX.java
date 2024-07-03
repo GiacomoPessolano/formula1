@@ -85,6 +85,7 @@ public class UserInterfaceJavaFX implements UserInterface {
      * @param stage The primary stage of the graphical interface.
      */
     public UserInterfaceJavaFX(Stage stage) {
+        assert stage != null;
         this.primaryStage = stage;
 
         unpauseButton.setOnAction(press -> {
@@ -111,6 +112,7 @@ public class UserInterfaceJavaFX implements UserInterface {
      */
     @Override
     public String chooseTrack(String dir) {
+        assert dir != null;
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Choose Track");
         dialog.setHeaderText("Choose your track. Available tracks are in the " + dir + " folder. " +
@@ -129,6 +131,7 @@ public class UserInterfaceJavaFX implements UserInterface {
      */
     @Override
     public void displayGrid(GameManager manager) {
+        assert manager != null;
         Grid gameGrid = manager.getGrid();
 
         gridPane.getChildren().clear();
@@ -165,6 +168,7 @@ public class UserInterfaceJavaFX implements UserInterface {
      */
     @Override
     public void turnMessage(GameManager manager) {
+        assert manager != null;
         if (!manager.isGameRunning()) return;
         Player player = manager.getCurrentPlayer();
         String messageText;
@@ -204,6 +208,7 @@ public class UserInterfaceJavaFX implements UserInterface {
      */
     @Override
     public void gameOverMessage(GameManager manager) {
+        assert manager != null;
         if (manager.isGameRunning()) return;
 
         Player winner = manager.getWinner();
@@ -223,6 +228,9 @@ public class UserInterfaceJavaFX implements UserInterface {
      */
     @Override
     public void errorMessage(String message) {
+        if (message != null) {
+            message = "";
+        }
         showAlert("Error", message);
     }
 

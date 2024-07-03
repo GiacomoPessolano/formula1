@@ -57,6 +57,10 @@ public class PlayerFormula1 implements Player {
      * @param choice   The initial movement direction chosen.
      */
     public PlayerFormula1(String name, Strategy strategy, Direction choice) {
+        assert name != null;
+        assert strategy != null;
+        assert choice != null;
+
         this.name = name;
         this.strategy = strategy;
         lastMove = firstMove(choice);
@@ -105,6 +109,7 @@ public class PlayerFormula1 implements Player {
      * {@inheritDoc}
      */
     public void updateLastMove(Direction choice) {
+        assert choice != null;
         this.lastMove = lastMove.update(choice);
     }
 
@@ -115,6 +120,7 @@ public class PlayerFormula1 implements Player {
      * @return The initial movement based on the chosen direction.
      */
     private Move firstMove(Direction choice) {
+        assert choice != null;
         return new Move(0, 0).update(choice);
     }
 

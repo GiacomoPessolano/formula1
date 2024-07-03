@@ -55,6 +55,8 @@ public class UserInterfaceCLI implements UserInterface {
      */
     @Override
     public String chooseTrack(String dir) {
+        assert dir != null;
+
         System.out.println("Choose your track. Available tracks are in the " + dir + " folder.");
         System.out.println("To add a track, put it in said folder.");
         return scanner.nextLine();
@@ -67,6 +69,7 @@ public class UserInterfaceCLI implements UserInterface {
      */
     @Override
     public void displayGrid(GameManager manager) {
+        assert manager != null;
         Grid grid = manager.getGrid();
         int width = grid.getWidth();
         int height = grid.getHeight();
@@ -90,6 +93,7 @@ public class UserInterfaceCLI implements UserInterface {
      */
     @Override
     public void turnMessage(GameManager manager) {
+        assert manager != null;
         if (!manager.isGameRunning()) return;
         Player player = manager.getCurrentPlayer();
         String name = player.getName();
@@ -117,6 +121,7 @@ public class UserInterfaceCLI implements UserInterface {
      */
     @Override
     public void gameOverMessage(GameManager manager) {
+        assert manager != null;
         System.out.println("The game has ended.");
         Player winner = manager.getWinner();
 
@@ -132,6 +137,7 @@ public class UserInterfaceCLI implements UserInterface {
      */
     @Override
     public void errorMessage(String message) {
+        assert message != null;
         System.out.println(message);
     }
 

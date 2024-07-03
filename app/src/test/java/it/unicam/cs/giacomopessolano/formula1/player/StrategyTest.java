@@ -35,7 +35,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StrategyDumbTest {
+public class StrategyTest {
 
     private Grid grid;
     private StrategyDumb strategy;
@@ -56,7 +56,7 @@ public class StrategyDumbTest {
     void testMakeChoiceOneMoveAvailable() {
         Cell[][] cells = new Cell[2][1];
         cells[0][0] = new Cell(CellState.TRACK);
-        cells[0][0].occupy(new PlayerFormula1("", null, Direction.CENTER));
+        cells[0][0].occupy(new PlayerFormula1("", strategy, Direction.CENTER));
         cells[1][0] = new Cell(CellState.TRACK);
         ArrayGrid grid = new ArrayGrid(cells);
 
@@ -74,18 +74,18 @@ public class StrategyDumbTest {
     @Test
     void testMakeChoiceNoMoves() {
         try {
-            //Grid should have no possible moves, so every cell gets occupied
+            //grid should have no possible moves, so every cell gets occupied
             for (int i = 0; i < grid.getWidth(); i++) {
                 for (int j = 0; j < grid.getHeight(); j++) {
                     grid.getCell(new Position(i, j)).occupy(new PlayerFormula1(
-                            "", null, Direction.CENTER));
+                            "", strategy, Direction.CENTER));
                 }
             }
 
             Direction direction = strategy.makeChoice(grid, new Move(0, 0), new Position(0, 0));
             fail("Expected NoPossibleMoveException, but got direction: " + direction);
         } catch (NoPossibleMoveException e) {
-            //Expected exception, test passes
+            //expected exception, test passes
         }
     }
 }

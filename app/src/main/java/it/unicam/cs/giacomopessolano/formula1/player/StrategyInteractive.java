@@ -54,6 +54,7 @@ public class StrategyInteractive implements Strategy {
      * @param interactionHandler Interaction handler
      */
     public StrategyInteractive(InteractionHandler interactionHandler) {
+        assert interactionHandler != null;
         this.interactionHandler = interactionHandler;
     }
 
@@ -69,9 +70,12 @@ public class StrategyInteractive implements Strategy {
      */
     @Override
     public Direction makeChoice(Grid grid, Move lastMove, Position position) throws NoPossibleMoveException {
+        assert grid != null;
+        assert lastMove != null;
+        assert position != null;
         List<Direction> choices = Strategy.possibleMoves(grid, lastMove, position);
         if (choices.isEmpty()) {
-            throw new NoPossibleMoveException("There are no more possible moves.");
+            throw new NoPossibleMoveException("No possible moves.");
         }
 
         return interactionHandler.takeInput(choices);

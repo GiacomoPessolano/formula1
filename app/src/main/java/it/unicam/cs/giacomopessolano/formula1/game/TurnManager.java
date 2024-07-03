@@ -35,6 +35,7 @@ import java.util.Map;
 /**
  * Interface that handles the game's logic for movements by updating the data structure correctly.
  */
+@FunctionalInterface
 public interface TurnManager {
 
     /**

@@ -63,6 +63,10 @@ public class GameInitializerFromTxt implements GameInitializer {
      */
     public GameInitializerFromTxt(String filename, GridInitializerFromTxt gridInitializer,
                                   PlayerInitializerFromTxt playerInitializer) throws IOException {
+        assert filename != null;
+        assert gridInitializer != null;
+        assert playerInitializer != null;
+
         this.gridInitializer = gridInitializer;
         gridInitializer.initialize(filename);
         this.playerInitializer = playerInitializer;

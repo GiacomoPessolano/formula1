@@ -42,6 +42,9 @@ public class InteractionHandlerCLI implements InteractionHandler {
      */
     @Override
     public Direction takeInput(List<Direction> possibleDirections) {
+        assert possibleDirections != null;
+        assert !possibleDirections.isEmpty();
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Possible directions: " + possibleDirections);
         String input = "";

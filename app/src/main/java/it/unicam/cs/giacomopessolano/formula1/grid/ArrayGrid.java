@@ -54,6 +54,8 @@ public class ArrayGrid implements Grid {
      * @param grid The 2D array of Cell objects representing the grid.
      */
     public ArrayGrid(Cell[][] grid) {
+        assert grid != null;
+
         this.grid = grid;
         this.width = grid[0].length;
         this.height = grid.length;
@@ -64,6 +66,10 @@ public class ArrayGrid implements Grid {
      */
     @Override
     public Cell getCell(Position position) {
+        assert position != null;
+        assert position.x() >= 0 && position.x() < grid[0].length;
+        assert position.y() >= 0 && position.y() < height;
+
         return grid[position.y()][position.x()];
     }
 

@@ -93,6 +93,10 @@ public class GameManagerStandard implements GameManager {
      */
     public GameManagerStandard(GameInitializer initializer, TurnManager turnManager, Validator validator)
             throws IncorrectConfigurationException {
+        assert initializer != null;
+        assert turnManager != null;
+        assert validator != null;
+
         this.turnManager = turnManager;
         this.originalGrid = initializer.parseGrid();
         this.originalPlayers = initializer.parseTurns();

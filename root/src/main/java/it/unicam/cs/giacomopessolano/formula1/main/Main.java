@@ -58,19 +58,19 @@ public class Main extends Application {
     /**
      * Class that parses the grid.
      */
-    GridInitializerFromTxt gridInitializer;
+    private GridInitializerFromTxt gridInitializer;
     /**
      * Class that parses player info.
      */
-    PlayerInitializerFromTxt playerInitializer;
+    private PlayerInitializerFromTxt playerInitializer;
     /**
      * Class that initializes a game's grid and players from a file.
      */
-    GameInitializer initializer;
+    private GameInitializer initializer;
     /**
      * Validator to perform various checks on the data extracted from the configuration file.
      */
-    Validator validator;
+    private Validator validator;
 
     public static void main(String[] args) {
         launch(args);
@@ -85,7 +85,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         String mode = System.getProperty("ui.mode", "javafx");
-        //the handler will define how interactive users input their moves.
+        //the handler will define how interactive users input their moves. It should coincide with the UI
         InteractionHandler interactionHandler;
         if (mode.equalsIgnoreCase("cli")) {
             ui = new UserInterfaceCLI();
@@ -128,19 +128,20 @@ public class Main extends Application {
                     stop();
                     break;
                 }
-                validator = new ValidatorStandard(game.getGrid(), game.getPlayerPositions(),
-                        120, 120);
                 initializer = new GameInitializerFromTxt(trackName, gridInitializer, playerInitializer);
+                validator = new ValidatorStandard(initializer.parseGrid(), initializer.parsePlayers(),
+                        120, 120);
                 game = new GameManagerStandard(initializer, turnManager, validator);
 
                 game.startGame();
                 ui.displayGrid(game);
+                break;
             } catch (UnrecognizedFileException e) {
                 ui.errorMessage("The track was not recognized; check if you put it in the right folder.");
             } catch (IncorrectConfigurationException e) {
                 ui.errorMessage("The track was formatted incorrectly; check instructions");
             } catch (Exception e) {
-                ui.errorMessage("Something went wrong.");
+                ui.errorMessage("Something went wrong: " + e.getMessage());
             }
         }
     }
@@ -156,9 +157,11 @@ public class Main extends Application {
             boolean keepGoing = true;
             while (keepGoing) {
                 ui.pause();
-                Platform.runLater(() -> ui.turnMessage(game));
-                Platform.runLater(() -> game.nextTurn());
-                Platform.runLater(() -> ui.displayGrid(game));
+                Platform.runLater(() -> {
+                    ui.turnMessage(game);
+                    game.nextTurn();
+                    ui.displayGrid(game);
+                });
 
                 if (!game.isGameRunning()) {
                     Platform.runLater(() -> ui.gameOverMessage(game));

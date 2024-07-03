@@ -83,6 +83,10 @@ public class ValidatorStandard implements Validator {
      * @param startingPositions Player positions to check.
      */
     public ValidatorStandard(Grid grid, Map<Player, Position> startingPositions, int maxWidth, int maxHeight) {
+        assert maxWidth > 0 && maxHeight > 0;
+        assert grid != null;
+        assert startingPositions != null;
+
         this.grid = grid;
         this.playerNumber = startingPositions.keySet().size();
         this.startingPositions = startingPositions;

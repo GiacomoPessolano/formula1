@@ -54,6 +54,10 @@ public class TurnManagerStandard implements TurnManager {
      */
     @Override
     public CellState executeMove(Grid grid, Player player, Map<Player, Position> positions) {
+        assert grid != null;
+        assert player != null;
+        assert positions != null;
+
         Position oldPosition = positions.get(player);
 
         Direction choice;

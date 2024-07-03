@@ -58,9 +58,10 @@ class ValidatorStandardTest {
         grid = new ArrayGrid(cells);
 
         startingPositions = new HashMap<>();
-        player1 = new PlayerFormula1("Player1", null, Direction.CENTER);
-        player2 = new PlayerFormula1("Player2", null, Direction.CENTER);
-        player3 = new PlayerFormula1("Player3", null, Direction.CENTER);
+        Strategy strat = new StrategyDumb();
+        player1 = new PlayerFormula1("Player1", strat, Direction.CENTER);
+        player2 = new PlayerFormula1("Player2", strat, Direction.CENTER);
+        player3 = new PlayerFormula1("Player3", strat, Direction.CENTER);
     }
 
     @Test
@@ -122,7 +123,7 @@ class ValidatorStandardTest {
 
     @Test
     void testPerformAllChecks_MaxSize() {
-        maxSize = 0;
+        maxSize = 1;
         startingPositions.put(player1, new Position(0, 0));
         ValidatorStandard validator = new ValidatorStandard(grid, startingPositions, maxSize, maxSize);
 
