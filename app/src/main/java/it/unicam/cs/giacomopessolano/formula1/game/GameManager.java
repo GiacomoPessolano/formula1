@@ -83,7 +83,7 @@ public interface GameManager {
      * Executes a turn and checks for the win condition. The player's movement and the updates to
      * the data structures are not the interface's responsibility.
      */
-    void nextTurn();
+    void nextTurn(TurnManager turnManager);
 
     /**
      * Checks whether the game is running.

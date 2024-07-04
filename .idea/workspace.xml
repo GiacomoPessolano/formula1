@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Asserts added, fixed concurrency bug in JavaFX, refactore minor names and test code">
-      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceJavaFX.java" afterDir="false" />
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Comment added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,49 +93,49 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Gradle.ArrayGridFromTxtInitializerTest.executor": "Run",
-    "Gradle.ArrayGridInitializerFromTxtTest.executor": "Run",
-    "Gradle.ArrayGridTest.executor": "Run",
-    "Gradle.PlayerFormula1InitializerFromTxtTest.executor": "Run",
-    "Gradle.PlayerFormula1Test.executor": "Run",
-    "Gradle.StrategyDumbTest.executor": "Run",
-    "Gradle.StrategyTest.executor": "Run",
-    "Gradle.TurnManagerStandardTest.executor": "Run",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "Gradle.ValidatorStandardTest.executor": "Run",
-    "Gradle.formula1:root [:root:Main.main()].executor": "Run",
-    "Gradle.gui [:HelloApplication.main()].executor": "Run",
-    "Gradle.gui [:gui:HelloApplication.main()].executor": "Run",
-    "Gradle.ui [:HelloApplication.main()].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "java21",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Program Files/JavaFX/javafx-sdk-22.0.1/lib",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Global Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "build.tools",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.ArrayGridFromTxtInitializerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ArrayGridInitializerFromTxtTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ArrayGridTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PlayerFormula1InitializerFromTxtTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PlayerFormula1Test.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StrategyDumbTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StrategyTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TurnManagerStandardTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ValidatorStandardTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.formula1:root [:root:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gui [:HelloApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gui [:gui:HelloApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ui [:HelloApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;java21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/JavaFX/javafx-sdk-22.0.1/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "directory",
-      "module"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Utente\JavaProjects\formula1\root\src\main\resources" />
@@ -201,7 +204,8 @@
       <workItem from="1719747562046" duration="3090000" />
       <workItem from="1719844521599" duration="87000" />
       <workItem from="1719861622580" duration="1858000" />
-      <workItem from="1719986372387" duration="6424000" />
+      <workItem from="1719986372387" duration="6519000" />
+      <workItem from="1720121623057" duration="4248000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -539,14 +543,21 @@
       <option name="project" value="LOCAL" />
       <updated>1720000205520</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Comment added">
+      <option name="closed" value="true" />
+      <created>1720000393478</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1720000393478</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Temporarily gave absolute path of track; BEGIN WRITING TESTS" />
     <MESSAGE value="Mixed parameters" />
     <MESSAGE value="Added javadocs and license to all classes" />
     <MESSAGE value="Fixed a couple bugs, will begin full-blown testing soon" />
@@ -571,7 +582,8 @@
     <MESSAGE value="Changed color of crashed and active players" />
     <MESSAGE value="Refactored Validator usage" />
     <MESSAGE value="Asserts added, fixed concurrency bug in JavaFX, refactore minor names and test code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Asserts added, fixed concurrency bug in JavaFX, refactore minor names and test code" />
+    <MESSAGE value="Comment added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

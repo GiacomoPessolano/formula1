@@ -25,7 +25,7 @@
 
 package it.unicam.cs.giacomopessolano.formula1.game;
 
-import it.unicam.cs.giacomopessolano.formula1.exceptions.IncorrectConfigurationException;
+import it.unicam.cs.giacomopessolano.formula1.exceptions.ValidationFailedException;
 import it.unicam.cs.giacomopessolano.formula1.grid.CellState;
 import it.unicam.cs.giacomopessolano.formula1.grid.Grid;
 import it.unicam.cs.giacomopessolano.formula1.player.Player;
@@ -64,10 +64,6 @@ public class GameManagerStandard implements GameManager {
      */
     private final Map<Player, Position> playerPositions = new HashMap<>();
     /**
-     * Game's turn manager responsible for updating the game state each turn.
-     */
-    private final TurnManager turnManager;
-    /**
      * States if the game is still running.
      */
     private boolean isGameRunning;
@@ -89,20 +85,17 @@ public class GameManagerStandard implements GameManager {
      * immutable copies of the grid and players but doesn't start the game on its own.
      *
      * @param initializer Initializer to retrieve the grid and the players.
-     * @param turnManager TurnManager to handle the game's logic.
      */
-    public GameManagerStandard(GameInitializer initializer, TurnManager turnManager, Validator validator)
-            throws IncorrectConfigurationException {
+    public GameManagerStandard(GameInitializer initializer, Validator validator)
+            throws ValidationFailedException {
         assert initializer != null;
-        assert turnManager != null;
         assert validator != null;
 
-        this.turnManager = turnManager;
         this.originalGrid = initializer.parseGrid();
         this.originalPlayers = initializer.parseTurns();
         this.originalPositions = initializer.parsePlayers();
 
-        if (!validator.performAllChecks()) throw new IncorrectConfigurationException(
+        if (!validator.performAllChecks()) throw new ValidationFailedException(
                 "I dati inseriti non sono validi.");
     }
 
@@ -171,7 +164,7 @@ public class GameManagerStandard implements GameManager {
      * The game ends when someone reaches the finish line or everyone has crashed.
      */
     @Override
-    public void nextTurn() {
+    public void nextTurn(TurnManager turnManager) {
         if (!isGameRunning) return;
         Player currentPlayer = getCurrentPlayer();
 
@@ -250,7 +243,7 @@ public class GameManagerStandard implements GameManager {
     public boolean equals(Object obj) {
         if (obj instanceof GameManagerStandard other) {
             return originalGrid.equals(other.originalGrid) && originalPlayers.equals(other.originalPlayers)
-                    && originalPositions.equals(other.originalPositions) && turnManager == other.turnManager;
+                    && originalPositions.equals(other.originalPositions);
         }
         return false;
     }
@@ -263,6 +256,6 @@ public class GameManagerStandard implements GameManager {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(originalGrid, originalPlayers, originalPositions, turnManager);
+        return Objects.hash(originalGrid, originalPlayers, originalPositions);
     }
 }

@@ -27,6 +27,7 @@ package it.unicam.cs.giacomopessolano.formula1.main;
 
 import it.unicam.cs.giacomopessolano.formula1.exceptions.IncorrectConfigurationException;
 import it.unicam.cs.giacomopessolano.formula1.exceptions.UnrecognizedFileException;
+import it.unicam.cs.giacomopessolano.formula1.exceptions.ValidationFailedException;
 import it.unicam.cs.giacomopessolano.formula1.game.*;
 import it.unicam.cs.giacomopessolano.formula1.grid.*;
 import it.unicam.cs.giacomopessolano.formula1.player.*;
@@ -131,7 +132,7 @@ public class Main extends Application {
                 initializer = new GameInitializerFromTxt(trackName, gridInitializer, playerInitializer);
                 validator = new ValidatorStandard(initializer.parseGrid(), initializer.parsePlayers(),
                         120, 120);
-                game = new GameManagerStandard(initializer, turnManager, validator);
+                game = new GameManagerStandard(initializer, validator);
 
                 game.startGame();
                 ui.displayGrid(game);
@@ -140,6 +141,8 @@ public class Main extends Application {
                 ui.errorMessage("The track was not recognized; check if you put it in the right folder.");
             } catch (IncorrectConfigurationException e) {
                 ui.errorMessage("The track was formatted incorrectly; check instructions");
+            } catch (ValidationFailedException e) {
+                ui.errorMessage("The track failed validation checks.");
             } catch (Exception e) {
                 ui.errorMessage("Something went wrong: " + e.getMessage());
             }
@@ -159,7 +162,7 @@ public class Main extends Application {
                 ui.pause();
                 Platform.runLater(() -> {
                     ui.turnMessage(game);
-                    game.nextTurn();
+                    game.nextTurn(turnManager);
                     ui.displayGrid(game);
                 });
 
@@ -184,7 +187,7 @@ public class Main extends Application {
             while (game.isGameRunning()) {
                 ui.pause();
                 ui.turnMessage(game);
-                game.nextTurn();
+                game.nextTurn(turnManager);
                 ui.displayGrid(game);
 
                 if (!game.isGameRunning()) {
