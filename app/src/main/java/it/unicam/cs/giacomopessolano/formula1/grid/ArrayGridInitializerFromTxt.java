@@ -62,7 +62,7 @@ public class ArrayGridInitializerFromTxt implements GridInitializerFromTxt {
 
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filename);
         if (inputStream == null) {
-            throw new UnrecognizedFileException(filename);
+            throw new UnrecognizedFileException(filename + " not found.");
         }
 
         List<char[]> rows = generateRows(inputStream);

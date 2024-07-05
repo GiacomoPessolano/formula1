@@ -82,6 +82,8 @@ public interface GameManager {
     /**
      * Executes a turn and checks for the win condition. The player's movement and the updates to
      * the data structures are not the interface's responsibility.
+     *
+     * @param turnManager The TurnManager responsible for the game's logic.
      */
     void nextTurn(TurnManager turnManager);
 

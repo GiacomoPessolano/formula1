@@ -81,6 +81,8 @@ public class ValidatorStandard implements Validator {
      *
      * @param grid Grid to check.
      * @param startingPositions Player positions to check.
+     * @param maxWidth The maximum width allowed. Must be higher than 0.
+     * @param maxHeight The maximum height allowed. Must be higher than 0.
      */
     public ValidatorStandard(Grid grid, Map<Player, Position> startingPositions, int maxWidth, int maxHeight) {
         assert maxWidth > 0 && maxHeight > 0;

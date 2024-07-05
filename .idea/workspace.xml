@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Refactored GameManager, added new exception when file fails validation">
+    <list default="true" id="5c97fbf3-c631-4d5a-8a9e-5177007b62db" name="Changes" comment="Tests for GameManager">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/game/ValidatorStandard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGridInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/grid/ArrayGridInitializerFromTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerJavaFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/InteractionHandlerJavaFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/unicam/cs/giacomopessolano/formula1/player/PlayerBotInitializerFromTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/it/unicam/cs/giacomopessolano/formula1/game/GameManagerStandardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/main/java/it/unicam/cs/giacomopessolano/formula1/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/it/unicam/cs/giacomopessolano/formula1/ui/UserInterfaceCLI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +106,7 @@
     "Gradle.ArrayGridFromTxtInitializerTest.executor": "Run",
     "Gradle.ArrayGridInitializerFromTxtTest.executor": "Run",
     "Gradle.ArrayGridTest.executor": "Run",
-    "Gradle.GameManagerStandardTest.executor": "Debug",
+    "Gradle.GameManagerStandardTest.executor": "Run",
     "Gradle.PlayerFormula1InitializerFromTxtTest.executor": "Run",
     "Gradle.PlayerFormula1Test.executor": "Run",
     "Gradle.StrategyDumbTest.executor": "Run",
@@ -204,7 +214,7 @@
       <workItem from="1719861622580" duration="1858000" />
       <workItem from="1719986372387" duration="6519000" />
       <workItem from="1720121623057" duration="4684000" />
-      <workItem from="1720171244383" duration="4522000" />
+      <workItem from="1720171244383" duration="6943000" />
     </task>
     <task id="LOCAL-00001" summary="Changed project structure. Created Grid and its Initializer classes.">
       <option name="closed" value="true" />
@@ -558,14 +568,21 @@
       <option name="project" value="LOCAL" />
       <updated>1720126135516</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Tests for GameManager">
+      <option name="closed" value="true" />
+      <created>1720184721543</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1720184721543</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added javadocs and license to all classes" />
     <MESSAGE value="Fixed a couple bugs, will begin full-blown testing soon" />
     <MESSAGE value="Started testing; fixed input issue: now the application can run as intended from the command line." />
     <MESSAGE value="Testing of player and grid classes; small retouches" />
@@ -590,7 +607,8 @@
     <MESSAGE value="Asserts added, fixed concurrency bug in JavaFX, refactore minor names and test code" />
     <MESSAGE value="Comment added" />
     <MESSAGE value="Refactored GameManager, added new exception when file fails validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored GameManager, added new exception when file fails validation" />
+    <MESSAGE value="Tests for GameManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tests for GameManager" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

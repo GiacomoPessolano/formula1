@@ -83,8 +83,10 @@ public class GameManagerStandard implements GameManager {
     /**
      * Constructs a GameManagerStandard with its initializer and turn manager. The constructor creates
      * immutable copies of the grid and players but doesn't start the game on its own.
+     * Uses a validator to perform checks on the data structures.
      *
      * @param initializer Initializer to retrieve the grid and the players.
+     * @param validator Validator to perform checks on the data structures.
      */
     public GameManagerStandard(GameInitializer initializer, Validator validator)
             throws ValidationFailedException {
@@ -96,7 +98,21 @@ public class GameManagerStandard implements GameManager {
         this.originalPositions = initializer.parsePlayers();
 
         if (!validator.performAllChecks()) throw new ValidationFailedException(
-                "I dati inseriti non sono validi.");
+                "The given configuration failed validation tests.");
+    }
+
+    /**
+     * Constructs a GameManagerStandard with its initializer and turn manager. The constructor creates
+     * immutable copies of the grid and players but doesn't start the game on its own.
+     *
+     * @param initializer Initializer to retrieve the grid and the players.
+     */
+    public GameManagerStandard(GameInitializer initializer) {
+        assert initializer != null;
+
+        this.originalGrid = initializer.parseGrid();
+        this.originalPlayers = initializer.parseTurns();
+        this.originalPositions = initializer.parsePlayers();
     }
 
     /**
@@ -162,6 +178,8 @@ public class GameManagerStandard implements GameManager {
      * Executes a turn and checks for the win condition. The player's movement and the updates to
      * the data structures are the turn manager's responsibility.
      * The game ends when someone reaches the finish line or everyone has crashed.
+     *
+     * @param turnManager TurnManager to handle the game's logic.
      */
     @Override
     public void nextTurn(TurnManager turnManager) {

@@ -128,7 +128,7 @@ public class UserInterfaceCLI implements UserInterface {
         if (manager.getWinner() == null) {
             System.out.println("Nobody won the game.");
         } else {
-            System.out.println("The winner is " + manager.getWinner().getName() + "!");
+            System.out.println("The winner is " + winner.getName() + "!");
         }
     }
 

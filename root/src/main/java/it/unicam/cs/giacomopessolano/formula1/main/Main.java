@@ -137,12 +137,8 @@ public class Main extends Application {
                 game.startGame();
                 ui.displayGrid(game);
                 break;
-            } catch (UnrecognizedFileException e) {
-                ui.errorMessage("The track was not recognized; check if you put it in the right folder.");
-            } catch (IncorrectConfigurationException e) {
-                ui.errorMessage("The track was formatted incorrectly; check instructions");
-            } catch (ValidationFailedException e) {
-                ui.errorMessage("The track failed validation checks.");
+            } catch (UnrecognizedFileException | ValidationFailedException | IncorrectConfigurationException e) {
+                ui.errorMessage(e.getMessage());
             } catch (Exception e) {
                 ui.errorMessage("Something went wrong: " + e.getMessage());
             }
@@ -159,6 +155,7 @@ public class Main extends Application {
         executor.execute(() -> {
             boolean keepGoing = true;
             while (keepGoing) {
+                //game won't continue until Next Turn button is pressed
                 ui.pause();
                 Platform.runLater(() -> {
                     ui.turnMessage(game);

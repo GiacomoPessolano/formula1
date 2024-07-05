@@ -64,10 +64,10 @@ public class InteractionHandlerJavaFX implements InteractionHandler {
                     if (possibleDirections.contains(direction)) {
                         return direction;
                     } else {
-                        throw new IllegalArgumentException("Invalid direction entered.");
+                        throw new IllegalArgumentException();
                     }
                 } else {
-                    throw new IllegalArgumentException("No direction entered.");
+                    throw new IllegalArgumentException();
                 }
             } catch (IllegalArgumentException e) {
                 impossibleDirectionAlert();
